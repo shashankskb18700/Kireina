@@ -1,6 +1,8 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetc } from "../../action/index";
+import { authService } from "../../firebase/fbase";
 
 // import { XMLParser } from "fast-xml-parser";
 // import XMLParse from "react-xml-parser";
@@ -44,15 +46,25 @@ const Search = (props) => {
   //   )
   // })
 
+  const signOut = () => {
+    let auth = authService.getAuth();
+    authService.signOut(auth, () => {
+      console.log("signOUt");
+    });
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      ></input>
-      <button onClick={() => props.fetc(title)}>submit</button>
-      {/* <div>{b}</div> */}
+      <div>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        ></input>
+        <button onClick={() => props.fetc(title)}>submit</button>
+        {/* <div>{b}</div> */}
+      </div>
+      <button onClick={() => signOut()}>Logout</button>
     </div>
   );
 };

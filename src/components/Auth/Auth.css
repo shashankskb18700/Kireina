@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.authh {
+  width: 100vw;
+  height: 100vh;
+
+  background: linear-gradient(
+    to right bottom,
+    #297ea6 0%,
+    #00101c 50%,
+    #297ea6 50%,
+    rgba(249, 0, 4, 1) 100%
+  );
+}
