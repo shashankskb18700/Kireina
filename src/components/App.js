@@ -23,7 +23,10 @@ const App = () => {
   console.log(authService.getAuth().currentUser);
   return (
     <div>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : "loading"}
+      <div className="header">
+        <h2>Kireina</h2>
+      </div>
+      <div>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : "loading"}</div>
       {/* <Auth /> */}
 
       {/* <Search /> */}

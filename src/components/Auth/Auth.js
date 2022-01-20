@@ -56,10 +56,21 @@ const Auth = (props) => {
 
   return (
     <div className="authh">
-      {newUser ? <SignUp /> : <SignIn />}
-      <button onClick={onClick}>
-        {newUser ? "Already a user" : "new user"}{" "}
-      </button>
+      <div className="container">
+        <div className="gif"></div>
+        <div className="au">
+          {newUser ? <SignUp /> : <SignIn />}
+          {/* <button onClick={onClick}>
+            {newUser ? "Already a user" : "New user ? please sign up"}{" "}
+          </button> */}
+          <div onClick={onClick}>
+            {newUser
+              ? "Already a user ? please Log in"
+              : "New user ? please sign up"}{" "}
+          </div>
+        </div>
+      </div>
+
       {/* {props.authDtls ? SignInSignup() : null} */}
     </div>
   );

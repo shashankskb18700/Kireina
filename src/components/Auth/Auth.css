@@ -6,8 +6,46 @@
 
 .authh {
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
 
+  background: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.gif {
+  width: 400px;
+  height: 400px;
+  background: url("../../Assets/ezgif-3-058e11b821.gif");
+  /* background-color: antiquewhite; */
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(245, 222, 179);
+  clip-path: polygon(
+    20% 0%,
+    97% 0%,
+    1000% 20%,
+    1000% 80%,
+    97% 100%,
+    20% 100%,
+    0% 80%,
+    0% 20%
+  ); */
+}
+
+/* linear-gradient(
+    to right bottom,
+    #297ea6 0%,
+    #00101c 50%,
+    #297ea6 50%,
+    rgba(249, 0, 4, 1) 100%
+  ); */
+
+.au {
   background: linear-gradient(
     to right bottom,
     #297ea6 0%,
@@ -15,4 +53,11 @@
     #297ea6 50%,
     rgba(249, 0, 4, 1) 100%
   );
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: right;
+  color: white;
+  font-family: sans-serif;
+  font-style: italic;
 }

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetc } from "../../action/index";
 import { authService } from "../../firebase/fbase";
+import { Redirect } from "react-router-dom";
 
 // import { XMLParser } from "fast-xml-parser";
 // import XMLParse from "react-xml-parser";

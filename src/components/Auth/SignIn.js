@@ -58,16 +58,16 @@ const SignIn = (props) => {
 
           {/*  */}
 
-          {/*  */}
+      {/*  */}
 
-          {/* <input
+      {/* <input
             type="button"
             value="Sign In"
             onClick={() => props.det({ email, password })}
           /> */}
-        {/* </div> */}
-        {/* <button onClick={() => SignInGoogle()}>Sign in with google</button> */}
-      {/* // </form> */} 
+      {/* </div> */}
+      {/* <button onClick={() => SignInGoogle()}>Sign in with google</button> */}
+      {/* // </form> */}
 
       {/*  */}
 
@@ -86,7 +86,7 @@ const SignIn = (props) => {
             </svg>
           </label>
           <input
-          name="email"
+            name="email"
             id="username"
             className="lf--input"
             onChange={onChange}
@@ -117,13 +117,23 @@ const SignIn = (props) => {
           />
         </div>
 
-        <button className="lf--submit"  onClick={() => props.det({ email, password })}>LOGIN</button>
-        <button onClick={() => SignInGoogle()}>Sign in with google</button>
+        <button
+          className="lf--submit"
+          onClick={() => props.det({ email, password })}
+        >
+          LOGIN
+        </button>
+        <br></br>
+        <button className="lf--submit" onClick={() => SignInGoogle()}>
+          {/* LOGIN IN WITH */}
+          {/* <br></br> */}
+          <i class="fab fa-google fa-2x">oogle</i>
+        </button>
         {/* <input  className="lf--submit"type="submit"  value="LOGIN" /> */}
       </form>
-      <a className="lf--forgot" >
+      {/* <a className="lf--forgot" >
         Forgot password?
-      </a>
+      </a> */}
     </div>
   );
 };

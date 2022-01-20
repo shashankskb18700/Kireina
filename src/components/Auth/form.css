@@ -1,9 +1,13 @@
 .login-form {
-  width: 60vw;
-  /* height:60vw; */
+  width: 475px;
+  height: 60vh;
   padding: 2em;
   position: relative;
-  background: rgba(0, 0, 0, 0.15);
+  /* background: rgba(0, 0, 0, 0.15); */
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 .login-form:before {
   content: "";

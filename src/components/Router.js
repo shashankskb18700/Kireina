@@ -23,4 +23,7 @@ const AppRouter = ({ isLoggedIn }) => {
   );
 };
 
+// hash router use hash before any url so to make it work you have to use browser router , and no matter what if you are on home , even you want to go  auth , you won't be able to do so because , in code you set isLogged in and it checks for your logged in or not and then it shows page 
+
+
 export default AppRouter;
