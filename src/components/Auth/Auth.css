@@ -8,7 +8,7 @@
   width: 100vw;
   height: 95vh;
 
-  background: aliceblue;
+  background: mintcream;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -56,8 +56,16 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  text-align: right;
+  text-align: end;
+
   color: white;
   font-family: sans-serif;
   font-style: italic;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  padding-left: 10px;
+}
+.au :hover {
+  color: red;
 }

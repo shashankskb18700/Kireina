@@ -65,8 +65,8 @@ const Auth = (props) => {
           </button> */}
           <div onClick={onClick}>
             {newUser
-              ? "Already a user ? please Log in"
-              : "New user ? please sign up"}{" "}
+              ? "Already a user ? please Log in     "
+              : "New user ? please sign up    "}{" "}
           </div>
         </div>
       </div>
