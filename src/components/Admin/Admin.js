@@ -33,9 +33,29 @@ const Admin = () => {
       target: { name, value },
     } = event;
     if (name === "header") {
+      addDoc(collection(dbService.getFirestore(), "header"), {
+        header,
+        createdAt: Date.now(),
+      });
+
       console.log("header is talking");
     } else if (name === "monthly") {
+      addDoc(collection(dbService.getFirestore(), "monthly"), {
+        monthly,
+        createdAt: Date.now(),
+      });
+
       console.log("monthly is talking");
+    } else if (name === "weekly") {
+      addDoc(collection(dbService.getFirestore(), "weekly"), {
+        weekly,
+        createdAt: Date.now(),
+      });
+    } else if (name === "allTime") {
+      addDoc(collection(dbService.getFirestore(), "allTime"), {
+        allTime,
+        createdAt: Date.now(),
+      });
     }
     // dbService.addDoc(dbService.collection(dbService.fir))
   };
@@ -68,9 +88,9 @@ const Admin = () => {
           name="monthly"
           type="text"
           value={monthly}
-          placeholder="montlhy"
+          placeholder="monthly"
           onChange={onChange}
-          name="montly"
+          name="monthly"
         />
         {/* <button className="bu">monthly</button> */}
         <input
