@@ -24,39 +24,57 @@ const Admin = () => {
     }
   };
 
-  const onSubmit = (event) => {
+  const obj = {
+    header: header,
+    monthly: monthly,
+    weekly: weekly,
+    allTime: allTime,
+  };
+
+  const onSubmit = async (event) => {
     event.preventDefault();
-    const { addDoc, collection, getFireStore } = dbService;
-    // console.log(event.target);
-    //button event has neither name nor value)
+
+    const { addDoc, collection } = dbService;
+
     const {
-      target: { name, value },
+      target: { name },
     } = event;
-    if (name === "header") {
-      addDoc(collection(dbService.getFirestore(), "header"), {
-        header,
-        createdAt: Date.now(),
-      });
 
-      console.log("header is talking");
-    } else if (name === "monthly") {
-      addDoc(collection(dbService.getFirestore(), "monthly"), {
-        monthly,
+    try {
+      await addDoc(collection(dbService.getFirestore(), name), {
+        hea: obj[name],
         createdAt: Date.now(),
       });
-
-      console.log("monthly is talking");
-    } else if (name === "weekly") {
-      addDoc(collection(dbService.getFirestore(), "weekly"), {
-        weekly,
-        createdAt: Date.now(),
-      });
-    } else if (name === "allTime") {
-      addDoc(collection(dbService.getFirestore(), "allTime"), {
-        allTime,
-        createdAt: Date.now(),
-      });
+    } catch (e) {
+      console.log(e);
     }
+
+    // console.log(window[name]);
+    // if (name === "header") {
+    //   addDoc(collection(dbService.getFirestore(), "header"), {
+    //     header,
+    //     createdAt: Date.now(),
+    //   });
+
+    //   console.log("header is talking");
+    // } else if (name === "monthly") {
+    //   addDoc(collection(dbService.getFirestore(), "monthly"), {
+    //     monthly,
+    //     createdAt: Date.now(),
+    //   });
+
+    //   console.log("monthly is talking");
+    // } else if (name === "weekly") {
+    //   addDoc(collection(dbService.getFirestore(), "weekly"), {
+    //     weekly,
+    //     createdAt: Date.now(),
+    //   });
+    // } else if (name === "allTime") {
+    //   addDoc(collection(dbService.getFirestore(), "allTime"), {
+    //     allTime,
+    //     createdAt: Date.now(),
+    //   });
+    // }
     // dbService.addDoc(dbService.collection(dbService.fir))
   };
 
