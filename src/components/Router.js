@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Search from "./search/search";
 import Auth from "./Auth/Auth";
 import Admin from "./Admin/Admin";
+import Home from "./Home/Home";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -21,6 +22,10 @@ const AppRouter = ({ isLoggedIn }) => {
         )}
         <Route exact path="/admin">
           <Admin />
+        </Route>
+
+        <Route exact path="/home">
+          <Home />
         </Route>
       </Switch>
     </Router>

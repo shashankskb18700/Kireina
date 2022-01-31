@@ -42,8 +42,9 @@ const Admin = () => {
 
     try {
       await addDoc(collection(dbService.getFirestore(), name), {
-        hea: obj[name],
+        value: obj[name],
         createdAt: Date.now(),
+        id: Date.now(),
       });
     } catch (e) {
       console.log(e);
