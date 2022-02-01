@@ -82,7 +82,7 @@ const Admin = () => {
   console.log(dbService);
 
   return (
-    <div>
+    <div className="admin">
       <h1> I am a admin</h1>
       <form className="adminF" onSubmit={onSubmit}>
         <input
@@ -152,6 +152,13 @@ const Admin = () => {
           className="bu"
         />
       </form>
+
+      <br />
+      <h1>
+        {" "}
+        only add link of a photo and to get them in order you have to update
+        them in order{" "}
+      </h1>
     </div>
   );
 };

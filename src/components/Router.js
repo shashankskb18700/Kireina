@@ -11,7 +11,7 @@ const AppRouter = ({ isLoggedIn }) => {
       <Switch>
         {isLoggedIn ? (
           <Route exact path="/">
-            <Search />
+            <Home />
           </Route>
         ) : (
           <>
@@ -24,9 +24,9 @@ const AppRouter = ({ isLoggedIn }) => {
           <Admin />
         </Route>
 
-        <Route exact path="/home">
+        {/* <Route exact path="/home">
           <Home />
-        </Route>
+        </Route> */}
       </Switch>
     </Router>
   );

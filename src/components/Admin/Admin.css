@@ -3,12 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: myFirstFont;
+  src: url(../../Assets/fonts/MonoLisa-ExtraLightItalic.ttf);
+}
 
 .adminF {
   display: flex;
   flex-direction: column;
 }
+
 .bu {
   background-color: red;
   margin-bottom: 30px;
+  outline: none;
+  border: violet;
+}
+.bu:hover {
+  background-color: lightsalmon;
+}
+
+.admin {
+  font-family: myFirstFont;
 }
