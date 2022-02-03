@@ -1,7 +1,11 @@
 import { orderBy } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { dbService } from "../../firebase/fbase";
+
+//
+
 import Search from "../search/search";
+import Header from "./HomeComponent/Header";
 
 const Home = () => {
   const [item, setItem] = useState({});
@@ -74,6 +78,7 @@ const Home = () => {
     <div>
       <h1> home</h1>
       <Search />
+      <Header imgArray={item.headr} />
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
       ))} */}

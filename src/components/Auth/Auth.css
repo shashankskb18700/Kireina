@@ -46,13 +46,15 @@
   ); */
 
 .au {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right bottom,
     #297ea6 0%,
     #00101c 50%,
     #297ea6 50%,
     rgba(249, 0, 4, 1) 100%
-  );
+  ); */
+  background-color: light;
+  background: linear-gradient(#7aabac, #b7dfec);
   display: flex;
   justify-content: space-around;
   flex-direction: column;

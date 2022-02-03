@@ -127,7 +127,7 @@ const SignIn = (props) => {
         <button className="lf--submit" onClick={() => SignInGoogle()}>
           {/* LOGIN IN WITH */}
           {/* <br></br> */}
-          <i class="fab fa-google fa-2x">oogle</i>
+          <i className="fab fa-google fa-2x">oogle</i>
         </button>
         {/* <input  className="lf--submit"type="submit"  value="LOGIN" /> */}
       </form>
