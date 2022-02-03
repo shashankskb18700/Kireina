@@ -6,12 +6,14 @@ import "./Header.css";
 
 const Header = (imgArray) => {
   const imgArr = [];
-
-  Object.values(imgArray).map((tt) => (
-    <div>
-      {tt.map((st) => imgArr.push(<img key={st.value} src={`${st.value}`} />))}
-    </div>
-  ));
+  if (Object.values(imgArray)[0] !== undefined)
+    Object.values(imgArray).map((tt) => (
+      <div>
+        {tt.map((st) =>
+          imgArr.push(<img key={st.value} src={`${st.value}`} />)
+        )}
+      </div>
+    ));
 
   return (
     <div>

@@ -13,3 +13,12 @@
 .alice-carousel__dots {
   position: relative;
 }
+
+img {
+  width: 100vw;
+  height: 80vh;
+}
+
+.alice {
+  border: 2px whitesmoke currentColor;
+}

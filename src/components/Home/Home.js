@@ -78,7 +78,7 @@ const Home = () => {
     <div>
       <h1> home</h1>
       <Search />
-      <Header imgArray={item.headr} />
+      <Header imgArray={item ? item.headr : undefined} />
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
       ))} */}
