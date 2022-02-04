@@ -5,13 +5,13 @@
 
   padding: 2% 2%;
 }
-@font-face {
+/* @font-face {
   font-family: myFont;
   src: url(/src/Assets/fonts/MonoLisa-ExtraLight.ttf);
-}
-.head {
+} */
+/* .head {
   font-family: myFont;
-}
+} */
 
 .alice-carousel__wrapper {
   width: 100vw;
