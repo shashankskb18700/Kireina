@@ -5,8 +5,8 @@ import "./Admin.css";
 
 const Admin = () => {
   const [header, setHeader] = useState("");
-  const [monthly, setMontly] = useState("");
-  const [weekly, setWeekly] = useState("");
+  const [topAiring, setTpAir] = useState("");
+  const [UpComing, setUpComing] = useState("");
   const [allTime, setAllTime] = useState("");
 
   const onChange = (event) => {
@@ -15,10 +15,10 @@ const Admin = () => {
     } = event;
     if (name === "header") {
       setHeader(value);
-    } else if (name === "monthly") {
-      setMontly(value);
-    } else if (name === "weekly") {
-      setWeekly(value);
+    } else if (name === "topAiring") {
+      setTpAir(value);
+    } else if (name === "UpComing") {
+      setUpComing(value);
     } else if (name === "allTime") {
       setAllTime(value);
     }
@@ -26,8 +26,8 @@ const Admin = () => {
 
   const obj = {
     header: header,
-    monthly: monthly,
-    weekly: weekly,
+    topAiring: topAiring,
+    UpComing: UpComing,
     allTime: allTime,
   };
 
@@ -58,16 +58,16 @@ const Admin = () => {
     //   });
 
     //   console.log("header is talking");
-    // } else if (name === "monthly") {
-    //   addDoc(collection(dbService.getFirestore(), "monthly"), {
-    //     monthly,
+    // } else if (name === "topAiring") {
+    //   addDoc(collection(dbService.getFirestore(), "topAiring"), {
+    //     topAiring,
     //     createdAt: Date.now(),
     //   });
 
-    //   console.log("monthly is talking");
-    // } else if (name === "weekly") {
-    //   addDoc(collection(dbService.getFirestore(), "weekly"), {
-    //     weekly,
+    //   console.log("topAiring is talking");
+    // } else if (name === "UpComing") {
+    //   addDoc(collection(dbService.getFirestore(), "UpComing"), {
+    //     UpComing,
     //     createdAt: Date.now(),
     //   });
     // } else if (name === "allTime") {
@@ -104,34 +104,34 @@ const Admin = () => {
         />
 
         <input
-          name="monthly"
+          name="topAiring"
           type="text"
-          value={monthly}
-          placeholder="monthly"
+          value={topAiring}
+          placeholder="topAiring"
           onChange={onChange}
-          name="monthly"
+          name="topAiring"
         />
-        {/* <button className="bu">monthly</button> */}
+        {/* <button className="bu">topAiring</button> */}
         <input
           type="button"
-          value="monthly"
-          name="monthly"
+          value="topAiring"
+          name="topAiring"
           onClick={onSubmit}
           className="bu"
         />
 
         <input
-          name="weekly"
+          name="UpComing"
           type="text"
-          value={weekly}
+          value={UpComing}
           onChange={onChange}
-          placeholder="weekly"
+          placeholder="UpComing"
         />
-        {/* <button className="bu">weekly</button> */}
+        {/* <button className="bu">UpComing</button> */}
         <input
           type="button"
-          value="weekly"
-          name="weekly"
+          value="UpComing"
+          name="UpComing"
           onClick={onSubmit}
           className="bu"
         />

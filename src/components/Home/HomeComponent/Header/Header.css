@@ -5,10 +5,19 @@
 
   padding: 2% 2%;
 }
+@font-face {
+  font-family: myFont;
+  src: url(/src/Assets/fonts/MonoLisa-ExtraLight.ttf);
+}
+.head {
+  font-family: myFont;
+}
 
 .alice-carousel__wrapper {
   width: 100vw;
   height: 500px;
+  /* margin: 10px; */
+  /* margin-left: 1vw; */
 }
 .alice-carousel__dots {
   position: relative;

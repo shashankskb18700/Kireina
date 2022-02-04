@@ -5,14 +5,16 @@ import { dbService } from "../../firebase/fbase";
 //
 
 import Search from "../search/search";
-import Header from "./HomeComponent/Header";
+import Header from "./HomeComponent/Header/Header";
+import TopAriring from "./HomeComponent/TopAiring/TopAiring";
 
 const Home = () => {
   const [item, setItem] = useState({});
+
   const { onSnapshot, collection } = dbService;
 
   useEffect(() => {
-    const dataArr = ["headr", "month", "week", "allTime"];
+    const dataArr = ["headr", "topAiring", "week", "allTime"];
 
     const arc = [];
     const newObj = {};
@@ -22,8 +24,8 @@ const Home = () => {
       orderBy("id", "asc")
     );
 
-    const monthlyQuery = dbService.query(
-      collection(dbService.getFirestore(), "monthly"),
+    const topAiringQuery = dbService.query(
+      collection(dbService.getFirestore(), "topAiring"),
       orderBy("id", "asc")
     );
 
@@ -39,16 +41,13 @@ const Home = () => {
 
     const dataObj = {
       headr: headerQuery,
-      month: monthlyQuery,
+      topAiring: topAiringQuery,
       week: weeklyQuery,
       allTime: allTimeQuery,
     };
 
     dataArr.map(async (a) => {
-      console.log(dataObj[a]);
-
       await onSnapshot(dataObj[a], (snapshot) => {
-        console.log(snapshot.docs);
         const arr = snapshot.docs.map((docs) => ({
           id: docs.id,
           ...docs.data(),
@@ -56,11 +55,20 @@ const Home = () => {
         newObj[a] = arr;
         arc.push(arr);
         console.log(arc);
-        setItem(newObj);
+
+        console.log(newObj);
+
+        // let head = newObj["headr"];
+        // let top = newObj["topAiring"];
+        // setTopAir(top);
+        // setHeader(head);
+
+        // console.log(head);
+
+        setItem({ ...newObj });
       });
     });
-
-    console.log(dataObj);
+    // setItem({ ...newObj });
     console.log(newObj);
     // onSnapshot(headerQuery, (snapshot) => {
     //   const arr = snapshot.docs.map((docs) => ({
@@ -79,6 +87,7 @@ const Home = () => {
       <h1> home</h1>
       <Search />
       <Header imgArray={item ? item.headr : undefined} />
+      <TopAriring imgArray={item ? item.topAiring : undefined} />
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
       ))} */}
