@@ -10,6 +10,8 @@
 
 # production
 /build
+
+# fonts 
 /src/Assets/fonts
 
 # misc
@@ -24,4 +26,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .ttf
-./Assets/fonts

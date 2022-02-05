@@ -17,7 +17,11 @@ const Header = ({ imgArray }) => {
   //   ));
   if (imgArray) {
     imgArray.map((st) => (
-      <div>{imgArr.push(<img key={st.value} src={`${st.value}`} />)}</div>
+      <div>
+        {imgArr.push(
+          <img className="headerImg" key={st.value} src={`${st.value}`} />
+        )}
+      </div>
     ));
   }
 

@@ -6,7 +6,7 @@ import "./Admin.css";
 const Admin = () => {
   const [header, setHeader] = useState("");
   const [topAiring, setTpAir] = useState("");
-  const [UpComing, setUpComing] = useState("");
+  const [topUpcoming, settopUpcoming] = useState("");
   const [allTime, setAllTime] = useState("");
 
   const onChange = (event) => {
@@ -17,8 +17,8 @@ const Admin = () => {
       setHeader(value);
     } else if (name === "topAiring") {
       setTpAir(value);
-    } else if (name === "UpComing") {
-      setUpComing(value);
+    } else if (name === "topUpcoming") {
+      settopUpcoming(value);
     } else if (name === "allTime") {
       setAllTime(value);
     }
@@ -27,7 +27,7 @@ const Admin = () => {
   const obj = {
     header: header,
     topAiring: topAiring,
-    UpComing: UpComing,
+    topUpcoming: topUpcoming,
     allTime: allTime,
   };
 
@@ -65,9 +65,9 @@ const Admin = () => {
     //   });
 
     //   console.log("topAiring is talking");
-    // } else if (name === "UpComing") {
-    //   addDoc(collection(dbService.getFirestore(), "UpComing"), {
-    //     UpComing,
+    // } else if (name === "topUpcoming") {
+    //   addDoc(collection(dbService.getFirestore(), "topUpcoming"), {
+    //     topUpcoming,
     //     createdAt: Date.now(),
     //   });
     // } else if (name === "allTime") {
@@ -121,17 +121,17 @@ const Admin = () => {
         />
 
         <input
-          name="UpComing"
+          name="topUpcoming"
           type="text"
-          value={UpComing}
+          value={topUpcoming}
           onChange={onChange}
-          placeholder="UpComing"
+          placeholder="topUpcoming"
         />
-        {/* <button className="bu">UpComing</button> */}
+        {/* <button className="bu">topUpcoming</button> */}
         <input
           type="button"
-          value="UpComing"
-          name="UpComing"
+          value="topUpcoming"
+          name="topUpcoming"
           onClick={onSubmit}
           className="bu"
         />

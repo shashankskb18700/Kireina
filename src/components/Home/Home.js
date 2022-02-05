@@ -6,7 +6,7 @@ import { dbService } from "../../firebase/fbase";
 
 import Search from "../search/search";
 import Header from "./HomeComponent/Header/Header";
-import TopAriring from "./HomeComponent/TopAiring/TopAiring";
+import TopAriring from "./HomeComponent/TopAiring/TopAnime";
 
 const Home = () => {
   const [item, setItem] = useState({});
@@ -14,7 +14,7 @@ const Home = () => {
   const { onSnapshot, collection } = dbService;
 
   useEffect(() => {
-    const dataArr = ["headr", "topAiring", "week", "allTime"];
+    const dataArr = ["headr", "topAiring", "topUpcoming", "allTime"];
 
     const arc = [];
     const newObj = {};
@@ -29,8 +29,8 @@ const Home = () => {
       orderBy("id", "asc")
     );
 
-    const weeklyQuery = dbService.query(
-      collection(dbService.getFirestore(), "weekly"),
+    const topUpcomingQuery = dbService.query(
+      collection(dbService.getFirestore(), "topUpcoming"),
       orderBy("id", "asc")
     );
 
@@ -42,7 +42,7 @@ const Home = () => {
     const dataObj = {
       headr: headerQuery,
       topAiring: topAiringQuery,
-      week: weeklyQuery,
+      topUpcoming: topUpcomingQuery,
       allTime: allTimeQuery,
     };
 
@@ -87,7 +87,13 @@ const Home = () => {
       <h1> home</h1>
       <Search />
       <Header imgArray={item ? item.headr : undefined} />
+      <h2>Top Airing</h2>
+
       <TopAriring imgArray={item ? item.topAiring : undefined} />
+      <h2>Top Upcoming</h2>
+      <TopAriring imgArray={item ? item.topUpcoming : undefined} />
+      <h2>All Time Popular</h2>
+      <TopAriring imgArray={item ? item.allTime : undefined} />
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
       ))} */}
@@ -130,7 +136,7 @@ export default Home;
 // const dataObj = {
 //   headr: headerQuery,
 //   month: monthlyQuery,
-//   week: weeklyQuery,
+//   topUpcoming: topUpcominglyQuery,
 //   allTime: allTimeQuery,
 // };
 

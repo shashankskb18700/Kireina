@@ -5,13 +5,13 @@
 
   padding: 2% 2%;
 }
-/* @font-face {
+@font-face {
   font-family: myFont;
-  src: url(/src/Assets/fonts/MonoLisa-ExtraLight.ttf);
-} */
-/* .head {
+  src: url(/src/Assets/fonts/MonoLisa-Medium.ttf);
+}
+.head {
   font-family: myFont;
-} */
+}
 
 .alice-carousel__wrapper {
   width: 100vw;
@@ -23,11 +23,18 @@
   position: relative;
 }
 
-img {
-  width: 100vw;
-  height: 80vh;
-}
+/* img {
+  
+} */
 
 .alice {
   border: 2px whitesmoke currentColor;
+  /* width: 96%;
+  height: 80vh; */
+  /* margin-left: 2%;
+  margin-right: 2%; */
+}
+.headerImg {
+  width: 100vw;
+  height: 80vh;
 }

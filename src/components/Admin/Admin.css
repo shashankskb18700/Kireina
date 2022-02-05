@@ -3,10 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* @font-face {
+@font-face {
   font-family: myFirstFont;
   src: url(../../Assets/fonts/MonoLisa-ExtraLightItalic.ttf);
-} */
+}
 
 .adminF {
   display: flex;
@@ -23,6 +23,6 @@
   background-color: lightsalmon;
 }
 
-/* .admin {
+.admin {
   font-family: myFirstFont;
-} */
+}
