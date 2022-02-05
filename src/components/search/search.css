@@ -1,0 +1,26 @@
+.inp {
+  width: 20vw;
+  height: 28px;
+  border: none;
+  outline: none;
+  background-color: grey;
+}
+.inp:focus {
+  outline: none;
+  background-color: rgba(128, 128, 128, 0.63);
+}
+.sub-but {
+  outline: none;
+  border: none;
+  background-color: grey;
+  position: absolute;
+}
+.sub-but :hover {
+  background-color: white;
+}
+
+.submit-png {
+  object-fit: contain;
+  width: 25px;
+  height: 25px;
+}

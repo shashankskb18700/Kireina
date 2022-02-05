@@ -5,6 +5,9 @@ import { fetc } from "../../action/index";
 import { authService } from "../../firebase/fbase";
 import { Redirect } from "react-router-dom";
 
+import "./search.css";
+import se from "../.././Assets/zoom-front-gradient.png";
+
 // import { XMLParser } from "fast-xml-parser";
 // import XMLParse from "react-xml-parser";
 // import parser from 'xml2json';
@@ -47,25 +50,21 @@ const Search = (props) => {
   //   )
   // })
 
-  const signOut = () => {
-    let auth = authService.getAuth();
-    authService.signOut(auth, () => {
-      console.log("signOUt");
-    });
-  };
-
   return (
     <div>
       <div>
         <input
+          className="inp"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         ></input>
-        <button onClick={() => props.fetc(title)}>submit</button>
+        <button className="sub-but" onClick={() => props.fetc(title)}>
+          <img src={se} className="submit-png" />
+        </button>
+
         {/* <div>{b}</div> */}
       </div>
-      <button onClick={() => signOut()}>Logout</button>
     </div>
   );
 };

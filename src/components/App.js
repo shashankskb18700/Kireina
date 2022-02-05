@@ -5,7 +5,7 @@ import { authService } from "../firebase/fbase";
 import Search from "./search/search.js";
 import Auth from "./Auth/Auth";
 import AppRouter from "./Router";
-import NavHeader from "./Header-Footer/NavHeader";
+import NavHeader from "./Header-Footer/NavHeader/NavHeader";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
