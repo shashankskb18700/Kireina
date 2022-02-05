@@ -13,6 +13,7 @@
 
 # fonts 
 /src/Assets/fonts
+/src/Assets/icons
 
 # misc
 .DS_Store
