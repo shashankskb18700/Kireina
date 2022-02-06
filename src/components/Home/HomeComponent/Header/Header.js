@@ -28,7 +28,6 @@ const Header = ({ imgArray }) => {
   // console.log(imgArr);
   return (
     <div className="head">
-      i am a header
       <div className="alice">
         <AliceCarousel
           disableButtonsControls={true}

@@ -15,6 +15,68 @@
 }
 .navigator {
   display: flex;
-  width: 30%;
+  width: 25%;
+  align-items: center;
   justify-content: space-between;
+}
+.nav {
+  color: grey;
+}
+.nav:hover {
+  color: rgb(221, 196, 92);
+}
+.title-name {
+  transform: translate(-20%, -20%);
+
+  /* margin-left: 10%; */
+  display: block;
+  color: rgb(221, 196, 92);
+  /* font-size: 124px; */
+  letter-spacing: 0.5vw;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 13px;
+}
+.title-name::before {
+  content: "Kireina";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    grey 2px,
+    grey 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+.title-name::after {
+  content: "Kireina";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    grey 2px,
+    grey 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+.title-name:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+.title-name:hover:after {
+  top: -10px;
+  left: -10px;
 }

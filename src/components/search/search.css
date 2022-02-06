@@ -1,9 +1,11 @@
 .inp {
-  width: 20vw;
+  width: 24vw;
   height: 28px;
   border: none;
   outline: none;
   background-color: grey;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .inp:focus {
   outline: none;
@@ -14,9 +16,13 @@
   border: none;
   background-color: grey;
   position: absolute;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .sub-but :hover {
-  background-color: white;
+  /* background-color: white; */
+  cursor: pointer;
+  /* margin-bottom: 2px; */
 }
 
 .submit-png {

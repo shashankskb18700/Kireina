@@ -6,7 +6,7 @@ import { authService } from "../../firebase/fbase";
 import { Redirect } from "react-router-dom";
 
 import "./search.css";
-import searchIcon from "../.././Assets/icons/zoom-front-gradient.png";
+import searchIcon from "../.././Assets/icons/zoom-front-premium.png";
 
 // import { XMLParser } from "fast-xml-parser";
 // import XMLParse from "react-xml-parser";

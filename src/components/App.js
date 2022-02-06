@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <NavHeader />
+        <NavHeader authStatus={isLoggedIn} />
       </div>
       <div>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : "loading"}</div>
       {/* <Auth /> */}

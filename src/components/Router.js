@@ -7,28 +7,26 @@ import Home from "./Home/Home";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
-    <Router>
-      <Switch>
-        {isLoggedIn ? (
-          <Route exact path="/">
-            <Home />
-          </Route>
-        ) : (
-          <>
-            <Route exact path="/auth">
-              <Auth />
-            </Route>
-          </>
-        )}
-        <Route exact path="/admin">
-          <Admin />
+    <Switch>
+      {isLoggedIn ? (
+        <Route exact path="/">
+          <Home />
         </Route>
+      ) : (
+        <>
+          <Route exact path="/auth">
+            <Auth />
+          </Route>
+        </>
+      )}
+      <Route path="/admin">
+        <Admin />
+      </Route>
 
-        {/* <Route exact path="/home">
+      {/* <Route exact path="/home">
           <Home />
         </Route> */}
-      </Switch>
-    </Router>
+    </Switch>
   );
 };
 

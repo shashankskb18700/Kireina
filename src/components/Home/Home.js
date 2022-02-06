@@ -84,9 +84,6 @@ const Home = () => {
 
   return (
     <div>
-      <h1> home</h1>
-
-      <Search />
       <Header imgArray={item ? item.headr : undefined} />
       <h2>Top Airing</h2>
 

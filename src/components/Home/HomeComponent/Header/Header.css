@@ -1,10 +1,14 @@
-.sliderimg {
+/* .sliderimg {
   width: 100%;
   height: 500px;
   object-fit: cover;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
 
   padding: 2% 2%;
-}
+} */
 @font-face {
   font-family: myFont;
   src: url(/src/Assets/fonts/MonoLisa-Medium.ttf);
@@ -14,8 +18,9 @@
 }
 
 .alice-carousel__wrapper {
-  width: 100vw;
-  height: 500px;
+  /* width: 100vw;
+  height: 500px; */
+  color: none;
   /* margin: 10px; */
   /* margin-left: 1vw; */
 }
@@ -35,6 +40,14 @@
   margin-right: 2%; */
 }
 .headerImg {
-  width: 100vw;
+  width: 97vw;
   height: 80vh;
+  padding-left: 3vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* padding-right: 5vw; */
 }
+/* .alice-carousel {
+  color: white;
+  width: 80%;
+} */
