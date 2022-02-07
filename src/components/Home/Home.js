@@ -8,6 +8,10 @@ import Search from "../search/search";
 import Header from "./HomeComponent/Header/Header";
 import TopAriring from "./HomeComponent/TopAiring/TopAnime";
 
+//
+
+import "./Home.css";
+
 const Home = () => {
   const [item, setItem] = useState({});
 
@@ -83,15 +87,27 @@ const Home = () => {
   console.log(item);
 
   return (
-    <div>
+    <div className="hom">
       <Header imgArray={item ? item.headr : undefined} />
-      <h2>Top Airing</h2>
 
-      <TopAriring imgArray={item ? item.topAiring : undefined} />
-      <h2>Top Upcoming</h2>
-      <TopAriring imgArray={item ? item.topUpcoming : undefined} />
-      <h2>All Time Popular</h2>
-      <TopAriring imgArray={item ? item.allTime : undefined} />
+      <div className="cont-all">
+        <div className="Best-list">
+          <h2 className="Best-T">Top Airing</h2>
+
+          <TopAriring imgArray={item ? item.topAiring : undefined} />
+        </div>
+
+        <div className="Best-list">
+          <h2 className="Best-T">Top Upcoming</h2>
+          <TopAriring imgArray={item ? item.topUpcoming : undefined} />
+        </div>
+
+        <div className="Best-list">
+          <h2 className="Best-T">All Time Popular</h2>
+          <TopAriring imgArray={item ? item.allTime : undefined} />
+        </div>
+      </div>
+
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
       ))} */}

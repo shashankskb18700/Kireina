@@ -23,7 +23,7 @@ const NavHeader = ({ authStatus }) => {
       </div>
 
       <div className="navigator">
-        <Link to="/home">
+        <Link to="/">
           <i className="fas fa-home nav"></i>
         </Link>
 
