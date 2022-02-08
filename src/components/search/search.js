@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { fetc } from "../../action/index";
+import { fetc } from "../../redux/action/index";
 import { authService } from "../../firebase/fbase";
 import { Redirect } from "react-router-dom";
 

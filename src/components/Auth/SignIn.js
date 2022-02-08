@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { det } from "../../action/det";
+import { det } from "../../redux/action/det";
 import { authService } from "../../firebase/fbase";
 
 import "./form.css";

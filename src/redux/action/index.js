@@ -1,4 +1,4 @@
-import srch from "../Api/Api.js";
+import srch from "../../Api/Api";
 
 export const fetc = (title) => {
   return async (dispatch) => {

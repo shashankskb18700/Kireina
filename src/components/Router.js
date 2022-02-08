@@ -4,6 +4,7 @@ import Search from "./search/search";
 import Auth from "./Auth/Auth";
 import Admin from "./Admin/Admin";
 import Home from "./Home/Home";
+import TesFu from "../tesFu";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -26,6 +27,9 @@ const AppRouter = ({ isLoggedIn }) => {
       {/* <Route exact path="/home">
           <Home />
         </Route> */}
+      <Route exact path="/test">
+        <TesFu />
+      </Route>
     </Switch>
   );
 };

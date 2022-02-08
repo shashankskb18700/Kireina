@@ -21,7 +21,11 @@ const TopAnime = ({ imgArray }) => {
 
   return (
     <div className="content">
-      <div className="h-scroll">{imgArr.map((a) => a)}</div>
+      <div className="h-scroll">
+        {imgArr.map((a) => a)}
+        <button>View All</button>
+      </div>
+
       <div className="chain"></div>
     </div>
   );
