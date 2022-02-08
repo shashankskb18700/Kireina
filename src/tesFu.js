@@ -21,11 +21,12 @@ class TesFu extends React.Component {
     //   mode: "cors",
     // });
     // console.log(dc);
+    const { name } = this.state;
+    const nam = {
+      name,
+    };
 
-    const pos = await axios.post("/post", this.state.name, {
-      mode: "cors",
-      body: this.state.name,
-    });
+    const pos = await axios.post("/post", nam);
     console.log(pos);
   };
   onChange = (event) => {
