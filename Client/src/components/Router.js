@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Search from "./search/search";
 import Auth from "./Auth/Auth";
 import Admin from "./Admin/Admin";
@@ -7,29 +12,41 @@ import Home from "./Home/Home";
 import TesFu from "../tesFu";
 
 const AppRouter = ({ isLoggedIn }) => {
+  console.log("form router ");
+  console.log(isLoggedIn);
   return (
     <Switch>
-      {isLoggedIn ? (
-        <Route exact path="/">
-          <Home />
-        </Route>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route
+        exact
+        path="/auth"
+        render={() => (isLoggedIn ? <Redirect to="/" /> : <Auth />)}
+      />
+
+      {/* {isLoggedIn ? (
+        <>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </>
       ) : (
         <>
           <Route exact path="/auth">
             <Auth />
           </Route>
         </>
-      )}
+      )} */}
       <Route path="/admin">
         <Admin />
       </Route>
-
-      {/* <Route exact path="/home">
-          <Home />
-        </Route> */}
       <Route exact path="/test">
         <TesFu />
       </Route>
+      {/* <Route exact path="/home">
+          <Home />
+        </Route> */}
     </Switch>
   );
 };

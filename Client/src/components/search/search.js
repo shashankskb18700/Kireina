@@ -1,9 +1,11 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { fetc } from "../../redux/action/index";
 import { authService } from "../../firebase/fbase";
 import { Redirect } from "react-router-dom";
+
+import { fetc } from "../../redux/action/index";
+import { backend } from "../../redux/action/backend";
 
 import "./search.css";
 import searchIcon from "../.././Assets/icons/zoom-front-premium.png";
@@ -49,6 +51,8 @@ const Search = (props) => {
   //     <div>{a.info[1]}</div>
   //   )
   // })
+  // console.log(backend);
+  // console.log(props.wholest);
 
   return (
     <div>
@@ -59,9 +63,20 @@ const Search = (props) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         ></input>
-        <button className="sub-but" onClick={() => props.fetc(title)}>
+        {/*  */}
+
+        {/* //this call will fetch xml data , it to frontend */}
+
+        {/* <button className="sub-but" onClick={() => props.fetc(title)}>
+          <img src={searchIcon} className="submit-png" />
+        </button> */}
+
+        {/* // this call will fetch json dadta it to backend */}
+        <button className="sub-but" onClick={() => props.backend(title)}>
           <img src={searchIcon} className="submit-png" />
         </button>
+
+        {/*  */}
 
         {/* <div>{b}</div> */}
       </div>
@@ -73,4 +88,4 @@ const mapStateToProps = (state) => {
   return { wholest: state };
 };
 
-export default connect(mapStateToProps, { fetc })(Search);
+export default connect(mapStateToProps, { fetc, backend })(Search);
