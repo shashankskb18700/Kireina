@@ -44,7 +44,9 @@ const NavHeader = ({ authStatus }) => {
             <i className="fas fa-sign-out-alt  fa-lg nav"></i>
           </button>
         ) : (
-          <i className="fas fa-sign-in-alt nav"></i>
+          <Link to="/auth">
+            <i className="fas fa-sign-in-alt nav"></i>
+          </Link>
         )}
       </div>
     </div>

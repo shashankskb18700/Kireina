@@ -33,7 +33,7 @@
 
   /* margin-left: 10%; */
   display: block;
-  color: rgb(221, 196, 92);
+  color: rgb(236, 193, 19);
   /* font-size: 124px; */
   letter-spacing: 0.5vw;
   font-size: 30px;
@@ -48,8 +48,8 @@
     45deg,
     transparent 0,
     transparent 2px,
-    grey 2px,
-    grey 4px
+    rgb(167, 19, 19) 2px,
+    rgb(167, 19, 19) 4px
   );
   -webkit-background-clip: text;
   top: 0px;
@@ -65,8 +65,8 @@
     135deg,
     transparent 0,
     transparent 2px,
-    grey 2px,
-    grey 4px
+    rgb(105, 74, 74) 2px,
+    rgb(146, 107, 107) 4px
   );
   -webkit-background-clip: text;
   top: 0px;

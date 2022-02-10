@@ -10,6 +10,7 @@ import Auth from "./Auth/Auth";
 import Admin from "./Admin/Admin";
 import Home from "./Home/Home";
 import TesFu from "../tesFu";
+import AnimeSearched from "./search/AnimeSearched/AnimeSearched";
 
 const AppRouter = ({ isLoggedIn }) => {
   console.log("form router ");
@@ -47,6 +48,9 @@ const AppRouter = ({ isLoggedIn }) => {
       {/* <Route exact path="/home">
           <Home />
         </Route> */}
+      <Route exact path="/animeD">
+        <AnimeSearched />
+      </Route>
     </Switch>
   );
 };
