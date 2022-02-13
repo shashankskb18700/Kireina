@@ -14,7 +14,7 @@
 # fonts 
 /src/Assets/fonts
 /src/Assets/icons
-/Client/src/Assets
+/Client/src/Assets/fonts
 
 # misc
 .DS_Store
