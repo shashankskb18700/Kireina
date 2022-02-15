@@ -11,6 +11,7 @@ import Admin from "./Admin/Admin";
 import Home from "./Home/Home";
 import TesFu from "../tesFu";
 import AnimeSearched from "./search/AnimeSearched/AnimeSearched";
+import DetailedAnime from "./DetailedAnime/DetailedAnime";
 
 const AppRouter = ({ isLoggedIn }) => {
   console.log("form router ");
@@ -50,6 +51,9 @@ const AppRouter = ({ isLoggedIn }) => {
         </Route> */}
       <Route exact path="/animeD">
         <AnimeSearched />
+      </Route>
+      <Route exact path="/animeD/fullD">
+        <DetailedAnime />
       </Route>
     </Switch>
   );

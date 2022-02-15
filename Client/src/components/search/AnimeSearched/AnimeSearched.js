@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import DetailedAnime from "../../DetailedAnime/DetailedAnime";
 
 const AnimeSearched = (props) => {
+  const [arrState, setArrState] = useState({});
+
   console.log(Object.keys(props.detail));
+
   const detail = Object.values(props.detail);
   const arr = [];
   const arrDetail = [];
+
   if (Object.keys(props.detail).length !== 0) {
     console.log(detail[0]);
     const anime = Object.values(detail[0]);
@@ -35,16 +40,18 @@ const AnimeSearched = (props) => {
 
   const fullDetail = (index) => {
     console.log(index);
-    console.log(arrDetail[index]);
+    setArrState(arrDetail[index]);
   };
+  // console.log(arrDetail[0]);
+  console.log(arrState);
 
   return (
     <div>
       <h1>AnimeSearched</h1>
-      {/* {data} */}
       {arr.map((a) => (
         <img src={a} key={a} onClick={() => fullDetail(arr.indexOf(a))} />
       ))}
+      <DetailedAnime allInfo={arrState} />;
     </div>
   );
 };
