@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+
 import DetailedAnime from "../../DetailedAnime/DetailedAnime";
+
+import { clickedAnime } from "../../../redux/action/clickedAnime";
+
+import { Tester } from "../../../redux/action/tester";
 
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
 
   console.log(Object.keys(props.detail));
+
+  console.log(props.full);
 
   const detail = Object.values(props.detail);
   const arr = [];
@@ -41,6 +48,8 @@ const AnimeSearched = (props) => {
   const fullDetail = (index) => {
     console.log(index);
     setArrState(arrDetail[index]);
+    // <DetailedAnime allInfo={index} />;
+    // props.clickedAnime(index);
   };
   // console.log(arrDetail[0]);
   console.log(arrState);
@@ -51,15 +60,28 @@ const AnimeSearched = (props) => {
       {arr.map((a) => (
         <img src={a} key={a} onClick={() => fullDetail(arr.indexOf(a))} />
       ))}
-      <DetailedAnime allInfo={arrState} />;
+      {/* {arr.map((a) => (
+        <img
+          src={a}
+          key={a}
+          onClick={() => props.clickedAnime(arrDetail[arr.indexOf(a)])}
+        />
+      ))} */}
+      {/* {arr.map((a) => (
+        <img src={a} key={a} onClick={() => props.Tester()} />
+      ))} */}
+      //only anime which is aired on tv nothing else
+      {arrState.$.type === "TV" ? <DetailedAnime allInfo={arrState} /> : null}
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { detail: state.srchRedu };
+  return { detail: state.srchRedu, full: state };
 };
-export default connect(mapStateToProps)(AnimeSearched);
+export default connect(mapStateToProps, { clickedAnime, Tester })(
+  AnimeSearched
+);
 
 // arr.push(Object.values(a.info[0].img[0].src))
 
