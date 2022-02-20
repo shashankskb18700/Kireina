@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
 //props are coming i need to render it on that page
 //one reducer updation is removoing every state and even that sate is note accesible to other component
 
-const DetailedAnime = ({ allInfo }) => {
-  const [allIn, setAllInfo] = useState({});
+const DetailedAnime = (props) => {
+  const [allInfo, setAllInfo] = useState({});
   //it will cause innfinite rerender , figure way to stop it
   // setAllInfo(allInfo);
-  console.log(allIn);
-  const d = () => setAllInfo(allInfo);
+  console.log(props.detail.Clickd.newD);
+  // setAllInfo(props.detail.Clickd.newD);
+  if (allInfo !== props.detail.Clickd.newD) {
+    setAllInfo(props.detail.Clickd.newD);
+  }
 
+  console.log(allInfo);
+  // useEffect(() => {
+  //   setAllInfo(props);
+  // }, [props]);
+  // console.log(props);
+  // console.log(allInf);
   // data we have
   // $--> name
-  // console.log("ew=");
+  // console.log(allInfo.$);
   // console.log(props.allInf);
 
   //cast list -> it too big it has name of both character and the person who played it
@@ -52,18 +61,18 @@ const DetailedAnime = ({ allInfo }) => {
     <div>
       <h1>Detailed anime</h1>
       <div>
-        <h4>name: {allInfo.$.name}</h4>
-        <h4>type: {allInfo.$.type}</h4>
+        {/* <h4>name: {allInfo.$.name}</h4>
+        <h4>type: {allInfo.$.type}</h4> */}
         {/* only for anime so check  it is anime or mangfirst  */}
-        <h4>toatal number of episode {allInfo.episode.length}</h4>
+        {/* <h4>toatal number of episode {allInfo.episode.length}</h4> */}
         <div>
           <h4>Raitng and review===</h4>
-          <h5>
+          {/* <h5>
             nb_vote =={allInfo.ratings[0].$.nb_votes} <br></br>
             weighted_score= {allInfo.ratings[0].$.weighted_score}
             <br></br>
             bayesian_score= {allInfo.ratings[0].$.bayesian_score}
-          </h5>
+          </h5> */}
         </div>
         <img
           src={Object.values(allInfo.info[0].img[0])[0].src}
@@ -75,6 +84,6 @@ const DetailedAnime = ({ allInfo }) => {
   );
 };
 const mapStateToProps = (state) => {
-  return { allInf: state };
+  return { detail: state };
 };
 export default connect(mapStateToProps)(DetailedAnime);

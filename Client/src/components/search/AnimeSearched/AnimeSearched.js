@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import DetailedAnime from "../../DetailedAnime/DetailedAnime";
@@ -10,19 +11,19 @@ import { Tester } from "../../../redux/action/tester";
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
 
-  console.log(Object.keys(props.detail));
+  // console.log(Object.keys(props.detail));
 
   console.log(props.full);
 
-  const detail = Object.values(props.detail);
+  const detail = Object.values(props.detail.srch);
   const arr = [];
   const arrDetail = [];
-
-  if (Object.keys(props.detail).length !== 0) {
+  console.log(props.detail.srch);
+  if (Object.keys(props.detail.srch).length !== 0) {
     console.log(detail[0]);
     const anime = Object.values(detail[0]);
 
-    console.log(anime);
+    // console.log(anime);
 
     anime.map((d) => (
       <div>
@@ -49,7 +50,7 @@ const AnimeSearched = (props) => {
     console.log(index);
     setArrState(arrDetail[index]);
     // <DetailedAnime allInfo={index} />;
-    // props.clickedAnime(index);
+    props.clickedAnime(arrDetail[index]);
   };
   // console.log(arrDetail[0]);
   console.log(arrState);
@@ -58,7 +59,9 @@ const AnimeSearched = (props) => {
     <div>
       <h1>AnimeSearched</h1>
       {arr.map((a) => (
-        <img src={a} key={a} onClick={() => fullDetail(arr.indexOf(a))} />
+        <Link to="/animeD/fullD">
+          <img src={a} key={a} onClick={() => fullDetail(arr.indexOf(a))} />
+        </Link>
       ))}
       {/* {arr.map((a) => (
         <img
@@ -71,7 +74,7 @@ const AnimeSearched = (props) => {
         <img src={a} key={a} onClick={() => props.Tester()} />
       ))} */}
       //only anime which is aired on tv nothing else
-      {arrState.$.type === "TV" ? <DetailedAnime allInfo={arrState} /> : null}
+      {/* {arrState.$.type === "TV" ? <DetailedAnime allInf={arrState} /> : "ewe"} */}
     </div>
   );
 };

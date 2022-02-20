@@ -5,7 +5,7 @@ export const AuthDetails = (state = {}, action) => {
       // const [name, email] = action.payload;
       // console.log(name);
       // console.log(email);
-      return action.payload;
+      return { ...state, au: action.payload };
     default:
       return {};
   }

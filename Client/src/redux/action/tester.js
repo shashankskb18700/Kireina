@@ -1,6 +1,6 @@
-export const Tester = () => {
+export const Tester = (vAL) => {
   return {
     type: "TESTER",
-    payload: "i am a tester",
+    payload: vAL,
   };
 };

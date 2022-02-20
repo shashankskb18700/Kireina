@@ -5,7 +5,7 @@ export const Clicked = (state = {}, action) => {
     case "CLICK":
       console.log("super inside");
       console.log(action.payload);
-      return { state, ...action.payload };
+      return { ...state, newD: action.payload };
     default:
       console.log("i am defauler");
       return state;
