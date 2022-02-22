@@ -13,8 +13,12 @@ const DetailedAnime = (props) => {
   if (allInfo !== props.detail.Clickd.newD) {
     setAllInfo(props.detail.Clickd.newD);
   }
+  console.log(Object.values(allInfo));
+  // console.log(allInfo);
+  // const { $, info, credit,episode } = allInfo;
+  // console.log(info);
+  // console.log($);
 
-  console.log(allInfo);
   // useEffect(() => {
   //   setAllInfo(props);
   // }, [props]);
@@ -56,29 +60,35 @@ const DetailedAnime = (props) => {
 
   //
   // console.log(Object.values(allInfo.info[0].img[0])[0].src);
-
-  return (
-    <div>
-      <h1>Detailed anime</h1>
+  const fuc = () => {
+    return (
       <div>
-        {/* <h4>name: {allInfo.$.name}</h4>
-        <h4>type: {allInfo.$.type}</h4> */}
-        {/* only for anime so check  it is anime or mangfirst  */}
-        {/* <h4>toatal number of episode {allInfo.episode.length}</h4> */}
+        <h4>name: {allInfo.$.name}</h4>
+        <h4>type: {allInfo.$.type}</h4>
         <div>
           <h4>Raitng and review===</h4>
-          {/* <h5>
+          <h5>
             nb_vote =={allInfo.ratings[0].$.nb_votes} <br></br>
             weighted_score= {allInfo.ratings[0].$.weighted_score}
             <br></br>
             bayesian_score= {allInfo.ratings[0].$.bayesian_score}
-          </h5> */}
+          </h5>
         </div>
         <img
           src={Object.values(allInfo.info[0].img[0])[0].src}
           key={Object.values(allInfo.info[0].img[0])[0].src}
         />
-        {/* <h4>credits:  </h4> */}
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <h1>Detailed anime</h1>
+      <div>
+        {/* only for anime so check  it is anime or mangfirst  */}
+        {/* <h4>toatal number of episode {allInfo.episode.length}</h4> */}
+        {Object.values(allInfo)[0] ? fuc() : null}
       </div>
     </div>
   );

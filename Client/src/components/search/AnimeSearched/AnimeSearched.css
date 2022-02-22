@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.anime-manga-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 50px 35px;
+  margin-left: 4%;
+  /* margin-left: 8%;
+  margin-right: 8%; */
+}
+.anim-mang {
+  width: 230px;
+  height: 290px;
+}
+
+.title-nam {
+  color: red;
+  width: 230px;
+}
