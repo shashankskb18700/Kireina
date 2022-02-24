@@ -9,6 +9,7 @@ import "./DetailedAnime.css";
 const DetailedAnime = (props) => {
   const [allInfo, setAllInfo] = useState({});
   let plotStory = "";
+  let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
   // setAllInfo(allInfo);
   console.log(props.detail.Clickd.newD);
