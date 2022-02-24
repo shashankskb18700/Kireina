@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.detailed {
+  background-color: rgba(110, 105, 105, 0.733);
+
+  width: 100vw;
+  height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: ; */
+  /* align-items: center; */
+}
+.img-det {
+  width: 215px;
+  height: 303.797px;
+  background-color: red;
+  margin-top: 15px;
+  /* margin-right: 30px; */
+}
+.imgAndTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  height: 152.781px;
+  width: 100vw;
+  margin-right: 50px;
+  /* margin-bottom: 220px; */
+}
+.imgAndTitle h2 {
+  margin-top: 50px;
+}
+.allDetail {
+  color: rgb(70, 70, 187);
+  display: flex;
+  justify-content: space-around;
+  background-color: grey;
+}
+
+.nameOf {
+  font-family: best-title;
+  font-size: 1.7em;
+  font-weight: 1200;
+}
+
+@font-face {
+  font-family: best-title;
+  src: url(/src/Assets/fonts/MonoLisa-Bold.ttf);
+}
+@font-face {
+  font-family: plot-story;
+  src: url(../../Assets/fonts/MonoLisa-ExtraLight.ttf);
+}
+.specific-det {
+  margin-top: 200px;
+}
+
+.story-credit {
+  width: 64vw;
+  font-family: plot-story;
+  font-size: 13px;
+  margin-left: 20px;
+}
+.story-credit h3 {
+  padding: 10px;
+  border-bottom: 2px solid red;
+}
+.episod {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.story-credit .episod {
+  border-bottom: 2px solid red;
+}
+.credit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid red;
+}
+.cast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid red;
+}

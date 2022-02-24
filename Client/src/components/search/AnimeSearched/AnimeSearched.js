@@ -28,7 +28,7 @@ const AnimeSearched = (props) => {
 
     if (Object.keys(props.detail.srch).length !== 0) {
       console.log(detail[0]);
-      const animeManga = Object.values(detail[0]);
+      const animeManga = Object.values(detail[0].ann);
 
       // anime has two array one of really anime and another of manga so to seprate just check they have two array or not and split anime and manga apart
       console.log(animeManga);
@@ -102,7 +102,10 @@ const AnimeSearched = (props) => {
               key={a}
               onClick={() => fullDetail(arr.indexOf(a))}
             />
-            <div className="title-nam">{arrDetail[arr.indexOf(a)].$.name}</div>
+            <div className="title-nam">
+              {arrDetail[arr.indexOf(a)].$.name}
+              {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
+            </div>
           </Link>
         ))}
       </div>
