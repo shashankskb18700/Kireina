@@ -8,7 +8,7 @@
   background-color: rgba(110, 105, 105, 0.733);
 
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   /* display: flex;
   flex-direction: column; */
   /* justify-content: ; */
@@ -18,22 +18,28 @@
   width: 215px;
   height: 303.797px;
   background-color: red;
-  margin-top: 15px;
+  /* margin-top: 15%; */
+  position: absolute;
+  top: 40%;
+  left: 10%;
   /* margin-right: 30px; */
 }
 .imgAndTitle {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background: white;
-  height: 152.781px;
+  /* background: white; */
+  height: 60vh;
   width: 100vw;
   margin-right: 50px;
+  background-position: center;
+
   /* margin-bottom: 220px; */
+  /* background: url(https://cdn30.neko-sama.xyz/0/28170ylIloIU.jpg) ; */
 }
-.imgAndTitle h2 {
+/* .imgAndTitle h2 {
   margin-top: 50px;
-}
+} */
 .allDetail {
   color: rgb(70, 70, 187);
   display: flex;
@@ -43,8 +49,13 @@
 
 .nameOf {
   font-family: best-title;
-  font-size: 1.7em;
+  font-size: 2em;
   font-weight: 1200;
+  /* text-align: end; */
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  color: white;
 }
 
 @font-face {
@@ -67,14 +78,16 @@
 }
 .story-credit h3 {
   padding: 10px;
-  border-bottom: 2px solid red;
+  padding-bottom: 30px;
+  /* border-bottom: 2px solid red; */
 }
 .episod {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .story-credit .episod {
-  border-bottom: 2px solid red;
+  /* border-bottom: 2px solid red; */
+  padding-bottom: 30px;
 }
 .credit {
   display: grid;

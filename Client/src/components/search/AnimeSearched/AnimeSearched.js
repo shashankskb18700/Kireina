@@ -25,6 +25,7 @@ const AnimeSearched = (props) => {
 
   if (Object.values(props.detail)[0]) {
     const detail = Object.values(props.detail.srch);
+    console.log(detail);
 
     if (Object.keys(props.detail.srch).length !== 0) {
       console.log(detail[0]);
@@ -91,7 +92,6 @@ const AnimeSearched = (props) => {
 
   return (
     <div>
-      <h1>AnimeSearched</h1>
       <h3>ANIME</h3>
       <div className="anime-manga-grid">
         {anime.map((a) => (

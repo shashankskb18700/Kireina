@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 //props are coming i need to render it on that page
 //one reducer updation is removoing every state and even that sate is note accesible to other component
@@ -14,21 +15,52 @@ const DetailedAnime = (props) => {
   // setAllInfo(allInfo);
   console.log(props.detail.Clickd.newD);
   // setAllInfo(props.detail.Clickd.newD);
-  if (allInfo !== props.detail.Clickd.newD) {
-    setAllInfo(props.detail.Clickd.newD);
+  if (props.detail.Clickd.newD) {
+    if (allInfo !== props.detail.Clickd.newD.ann) {
+      setAllInfo(props.detail.Clickd.newD.ann);
 
-    console.log(allInfo);
+      console.log(allInfo);
+    }
   }
 
-  if (Object.values(allInfo)[0]) {
-    allInfo.info.map((a) => (
-      <div>{a.$.type === "Plot Summary" ? (plotStory = a._) : ""}</div>
-    ));
+  if (allInfo) {
+    if (Object.values(allInfo)[0]) {
+      allInfo.info.map((a) => (
+        <div>{a.$.type === "Plot Summary" ? (plotStory = a._) : ""}</div>
+      ));
+    }
   }
+  let url = "";
+  // const banner = async (url) => {
+  //   const res = await axios.post("/mored", { dwe: url });
 
-  props.detail.srchRedu.srch.d.map((a) => (
-    <div>{console.log(a.title_english)}</div>
+  //   console.log(res);
+  // };
+
+  props.detail.srchRedu.srch.d.map(async (a) => (
+    <div>
+      {console.log(
+        "Attack on Titan Final Season Part 2" ===
+          "Attack on Titan The Final Season Part 2"
+      )}
+    </div>
   ));
+
+  // allInfo.$ && allInfo.$.name === a.title_english
+  //         ? props.detail.srchRedu.srch.d[
+  //             props.detail.srchRedu.srch.d.indexOf(a)
+  //           ].url
+  //         : ""
+  //     )
+
+  // (url =
+  //   props.detail.srchRedu.srch.d[
+  //     props.detail.srchRedu.srch.d.indexOf(a)
+  //   ].url && banner(url))
+
+  // banner(url);
+  console.log(url);
+
   // console.log(plotStory + "            i am plot ");
   // console.log(allInfo);
   // const { $, info, credit,episode } = allInfo;
@@ -76,23 +108,41 @@ const DetailedAnime = (props) => {
 
   //
   // console.log(Object.values(allInfo.info[0].img[0])[0].src);
+  // style={{background:url(props.detail.Clickd.newD.vostr.data.banner)}}
+  let bannerUrl = props.detail.Clickd.newD
+    ? props.detail.Clickd.newD.vostr.data.banner
+    : "";
+  // console.log(props.detail.Clickd.newD.vostr.data.banner);
+  console.log(bannerUrl);
 
   const fuc = () => {
     return (
       <div className="detailed">
-        <div className="imgAndTitle">
-          <img
-            className="img-det"
-            src={
-              Object.keys(allInfo.info[0])[1] === "img"
-                ? allInfo.info[0].img.length > 1
-                  ? Object.values(allInfo.info[0].img[1])[0].src
-                  : Object.values(allInfo.info[0].img[0])[0].src
-                : ""
-            }
-            key={Object.values(allInfo.info[0].img[0])[0].src}
-          />
-          <h2 className="nameOf">{allInfo.$.name}</h2>
+        <div
+          className="imgAndTitle"
+          style={{
+            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(128, 128 ,128) ), url(${bannerUrl})`,
+            // backgroundColor: "rgb(128 128 128)",
+
+            backgroundPosition: "centre",
+            backgroundSize: "100vw 61vh",
+          }}
+        >
+          {/* <img src={bannerUrl}></img> */}
+          <div>
+            <img
+              className="img-det"
+              src={
+                Object.keys(allInfo.info[0])[1] === "img"
+                  ? allInfo.info[0].img.length > 1
+                    ? Object.values(allInfo.info[0].img[1])[0].src
+                    : Object.values(allInfo.info[0].img[0])[0].src
+                  : ""
+              }
+              key={Object.values(allInfo.info[0].img[0])[0].src}
+            />
+            <h2 className="nameOf">{allInfo.$.name}</h2>
+          </div>
         </div>
 
         <div className="allDetail">
@@ -108,7 +158,7 @@ const DetailedAnime = (props) => {
           </div>
 
           <div className="story-credit">
-            <h2>Plot Summary</h2>
+            {/* <h2>Plot Summary</h2> */}
             <h3>{plotStory}</h3>
 
             {/* //only works with anime for managa you need to set fall back or go and render other page for managa */}
@@ -151,6 +201,7 @@ const DetailedAnime = (props) => {
               ))}
               {/* {console.log(allInfo.cast[0].person[0]._)}
               {console.log(allInfo.cast[0].role[0])} */}
+              {/* {console.log(url.length > 0 ? banner(url) : "")} */}
             </div>
           </div>
         </div>

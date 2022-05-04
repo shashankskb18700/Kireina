@@ -34,11 +34,32 @@ app.post("/post", async (req, res) => {
   //animeVostfr api
   const anotherData = await animeVostfr.loadAnime();
 
-  var moreData = await animeVostfr.searchAnime(anotherData, `${req.body.name}`);
+  // var moreData = await animeVostfr.searchAnime(anotherData, `${req.body.name}`);
+  var moreData = await animeVostfr.searchAnime(
+    anotherData,
+    "Tokyo Ghoul: Pinto"
+  );
   console.log(moreData);
   // res.send(JSON.stringify(moreData));
   // console.log(va.data);
   // res.send("request complete");
+
+  //
+
+  // const valu = await animeVostfr
+  //   .getMoreInformation(moreData[0].url)
+  //   .catch((err) => displayError(err));
+
+  ///
+
+  // console.log("Synopsis: ", valu.synop);
+  // console.log("Banner: ", valu.banner);
+  // console.log("Youtube embed trailer link: ", valu.trailer);
+  // console.log("Episodes: ", valu.eps);
+
+  //
+
+  //
   xml2js.parseString(va.data, function (err, result) {
     // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
     console.log(result);
@@ -49,6 +70,22 @@ app.post("/post", async (req, res) => {
   // console.log("i am runnig");
   // res.status(200).send("data updated");
   // res.end(JSON.stringify(moreData));
+});
+
+app.post("/mored", async (req, res) => {
+  console.log(req.body);
+
+  const anotherData = await animeVostfr.loadAnime();
+  var moreData = await animeVostfr.searchAnime(anotherData, req.body.name);
+  console.log(moreData);
+  const valu = await animeVostfr.getMoreInformation(moreData[0].url);
+
+  console.log(valu);
+  console.log("Synopsis: ", valu.synop);
+  console.log("Banner: ", valu.banner);
+  console.log("Youtube embed trailer link: ", valu.trailer);
+  console.log("Episodes: ", valu.eps);
+  res.send(JSON.stringify(valu));
 });
 
 const port = 5000;
