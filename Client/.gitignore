@@ -18,6 +18,8 @@ node_modules
 /src/Assets/icons
 /Client/src/Assets/fonts
 
+/node_modules
+
 /Client/node_modules
 
 # misc
