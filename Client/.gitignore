@@ -16,7 +16,7 @@
 /src/Assets/icons
 /Client/src/Assets/fonts
 
-
+/Client/node_modules
 # misc
 .DS_Store
 .env
