@@ -34,3 +34,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .ttf
+
+
+./node_modules
+/Client/node_modules

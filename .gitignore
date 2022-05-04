@@ -35,10 +35,11 @@ yarn-error.log*
 
 
 
-Client/node_modules
+/Client/node_modules
 /server/node_modules
 
+Client/node_modules 
 server/node_modules
 
-
+./Client/node_modules
 node_modules/
