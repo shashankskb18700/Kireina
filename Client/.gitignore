@@ -8,6 +8,8 @@
 # testing
 /coverage
 
+
+node_modules
 # production
 /build
 
@@ -17,6 +19,7 @@
 /Client/src/Assets/fonts
 
 /Client/node_modules
+
 # misc
 .DS_Store
 .env
