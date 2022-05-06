@@ -85,7 +85,7 @@ const AnimeSearched = (props) => {
     console.log(index);
     setArrState(arrDetail[index]);
     // <DetailedAnime allInfo={index} />;
-    props.clickedAnime(arrDetail[index]);
+    props.clickedAnime(arrDetail[index], props.full.srchRedu.srch.d);
   };
   // console.log(arrDetail[0]);
   console.log(arrState);

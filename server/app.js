@@ -6,6 +6,8 @@ import express, { json } from "express";
 import fetch from "node-fetch";
 import xml2js from "xml2js";
 import axios from "axios";
+import levenshtein from "fast-levenshtein";
+
 const app = express();
 
 app.use(express.json());
@@ -35,10 +37,7 @@ app.post("/post", async (req, res) => {
   const anotherData = await animeVostfr.loadAnime();
 
   // var moreData = await animeVostfr.searchAnime(anotherData, `${req.body.name}`);
-  var moreData = await animeVostfr.searchAnime(
-    anotherData,
-    "Tokyo Ghoul: Pinto"
-  );
+  var moreData = await animeVostfr.searchAnime(anotherData, req.body.name);
   console.log(moreData);
   // res.send(JSON.stringify(moreData));
   // console.log(va.data);
@@ -75,9 +74,29 @@ app.post("/post", async (req, res) => {
 app.post("/mored", async (req, res) => {
   console.log(req.body);
 
+  const arr = [];
+  let min = req.body.tit.length;
+  req.body.tit.forEach((element) => {
+    arr.push(levenshtein.get(element, req.body.name));
+    // console.log(levenshtein.get(element, req.body.name));
+  });
+  let bestTitle = arr.sort((a, b) => a - b)[0];
+  // console.log(min);
+  let bestOne = "";
+
+  req.body.tit.forEach((element) => {
+    if (levenshtein.get(element, req.body.name) === bestTitle) {
+      bestOne = element;
+    }
+  });
+
+  console.log(bestOne);
+
+  // console.log(levenshtein.get("body", "bod"));
+
   const anotherData = await animeVostfr.loadAnime();
-  var moreData = await animeVostfr.searchAnime(anotherData, req.body.name);
-  console.log(moreData);
+  var moreData = await animeVostfr.searchAnime(anotherData, bestOne);
+  // console.log(moreData);
   const valu = await animeVostfr.getMoreInformation(moreData[0].url);
 
   console.log(valu);

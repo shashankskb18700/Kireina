@@ -116,6 +116,7 @@ const DetailedAnime = (props) => {
   console.log(bannerUrl);
 
   const fuc = () => {
+    console.log(allInfo.$.type);
     return (
       <div className="detailed">
         <div
@@ -139,7 +140,11 @@ const DetailedAnime = (props) => {
                     : Object.values(allInfo.info[0].img[0])[0].src
                   : ""
               }
-              key={Object.values(allInfo.info[0].img[0])[0].src}
+              key={
+                allInfo.$.type === "movie"
+                  ? Object.values(allInfo.info[0].img[0])[0].src
+                  : ""
+              }
             />
             <h2 className="nameOf">{allInfo.$.name}</h2>
           </div>
@@ -149,12 +154,16 @@ const DetailedAnime = (props) => {
           <div className="specific-det">
             <h4>type: {allInfo.$.type}</h4>
             <h4>Raitng and review===</h4>
-            <h5>
-              nb_vote =={allInfo.ratings[0].$.nb_votes} <br></br>
-              weighted_score= {allInfo.ratings[0].$.weighted_score}
-              <br></br>
-              bayesian_score= {allInfo.ratings[0].$.bayesian_score}
-            </h5>
+            {allInfo.ratings ? (
+              <h5>
+                nb_vote =={allInfo.ratings[0].$.nb_votes} <br></br>
+                weighted_score= {allInfo.ratings[0].$.weighted_score}
+                <br></br>
+                bayesian_score= {allInfo.ratings[0].$.bayesian_score}
+              </h5>
+            ) : (
+              <div></div>
+            )}
           </div>
 
           <div className="story-credit">
@@ -192,13 +201,15 @@ const DetailedAnime = (props) => {
             {/* here you have to do all the credit and those kind of stuff */}
             <h2>Cast</h2>
             <div className="cast">
-              {allInfo.cast.map((a) => (
-                <div>
-                  Person-
-                  {a.person[0]._} &nbsp; Role-
-                  {a.role[0]}
-                </div>
-              ))}
+              {allInfo.cast
+                ? allInfo.cast.map((a) => (
+                    <div>
+                      Person-
+                      {a.person[0]._} &nbsp; Role-
+                      {a.role[0]}
+                    </div>
+                  ))
+                : ""}
               {/* {console.log(allInfo.cast[0].person[0]._)}
               {console.log(allInfo.cast[0].role[0])} */}
               {/* {console.log(url.length > 0 ? banner(url) : "")} */}
