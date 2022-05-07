@@ -37,14 +37,14 @@ const DetailedAnime = (props) => {
   //   console.log(res);
   // };
 
-  props.detail.srchRedu.srch.d.map(async (a) => (
-    <div>
-      {console.log(
-        "Attack on Titan Final Season Part 2" ===
-          "Attack on Titan The Final Season Part 2"
-      )}
-    </div>
-  ));
+  // props.detail.srchRedu.srch.d.map(async (a) => (
+  //   <div>
+  //     {console.log(
+  //       "Attack on Titan Final Season Part 2" ===
+  //         "Attack on Titan The Final Season Part 2"
+  //     )}
+  //   </div>
+  // ));
 
   // allInfo.$ && allInfo.$.name === a.title_english
   //         ? props.detail.srchRedu.srch.d[
@@ -173,7 +173,7 @@ const DetailedAnime = (props) => {
             {/* //only works with anime for managa you need to set fall back or go and render other page for managa */}
             {/* {console.log(allInfo.episode[0].title[0]._)} */}
 
-            <h2>Episode</h2>
+            <h2> {allInfo.episode ? "Episode" : ""}</h2>
             <div className="episod">
               {allInfo.episode
                 ? allInfo.episode.map((a) => (

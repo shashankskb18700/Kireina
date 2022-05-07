@@ -21,6 +21,9 @@ const AnimeSearched = (props) => {
   let anime = [];
   let manga = [];
 
+  const animeDetail = [];
+  const mangaDetail = [];
+
   // console.log(props.detail.srch);
 
   if (Object.values(props.detail)[0]) {
@@ -33,15 +36,15 @@ const AnimeSearched = (props) => {
 
       // anime has two array one of really anime and another of manga so to seprate just check they have two array or not and split anime and manga apart
       console.log(animeManga);
-      anime = animeManga[0];
-      manga = animeManga[1];
+      // anime = animeManga[0];
+      // manga = animeManga[1];
 
       animeManga.map((d) => (
         <div>
           {console.log(d)}
           {d.map((a) => (
             <div>
-              {arrDetail.push(a)}
+              {a.$.type === "manga" ? mangaDetail.push(a) : animeDetail.push(a)}
               {/* {console.log(Object.keys(a.info[0])[1] === "img")} */}
               {/* {console.log(a.info[0])} */}
               {/* {console.log(Object.values(a.ratings[0])[0])} */}
@@ -52,7 +55,8 @@ const AnimeSearched = (props) => {
                 : ""} */}
               {/* {console.log(Object.values(a.info[0].img[1])[0].src)} */}
               {console.log("just c")}
-              {console.log(a.info[0].img)}
+              {console.log("a hai hum humko izzat do ")}
+              {/* {console.log(a.$.type)} */}
               {/* {console.log(Object.values(a.info[0].img).length)} */}
               {/* // i think in code geass case Object.keys(a.info[0])[1] === "img"
               this thing ins nothing */}
@@ -61,10 +65,26 @@ const AnimeSearched = (props) => {
                   ? arr.push(Object.values(a.info[0].img[1])[0].src)
                   : arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
-              {Object.keys(a.info[0])[1] === "img"
+
+              {/*  */}
+
+              {/* {Object.keys(a.info[0])[1] === "img"
                 ? a.info[0].img.length > 1
                   ? arr.push(Object.values(a.info[0].img[1])[0].src)
                   : arr.push(Object.values(a.info[0].img[0])[0].src)
+                : ""} */}
+              {/* && a.$.type !== "manga"
+                && a.$.type === "manga" */}
+              {Object.keys(a.info[0])[1] === "img" && a.$.type !== "manga"
+                ? a.info[0].img.length > 1
+                  ? anime.push(Object.values(a.info[0].img[1])[0].src)
+                  : anime.push(Object.values(a.info[0].img[0])[0].src)
+                : ""}
+
+              {Object.keys(a.info[0])[1] === "img" && a.$.type === "manga"
+                ? a.info[0].img.length > 1
+                  ? manga.push(Object.values(a.info[0].img[1])[0].src)
+                  : manga.push(Object.values(a.info[0].img[0])[0].src)
                 : ""}
             </div>
           ))}
@@ -75,18 +95,28 @@ const AnimeSearched = (props) => {
   console.log(arr);
   console.log(arrDetail);
 
-  anime = arr.slice(0, anime.length);
-  manga = arr.slice(anime.length);
+  // anime = arr.slice(0, anime.length);
+  // manga = arr.slice(anime.length);
 
   console.log(anime);
   console.log(manga);
 
   const fullDetail = (index) => {
-    console.log(index);
-    setArrState(arrDetail[index]);
+    // console.log(index);
+    // console.log(animeDetail);
+    setArrState(animeDetail[index]);
     // <DetailedAnime allInfo={index} />;
-    props.clickedAnime(arrDetail[index], props.full.srchRedu.srch.d);
+    props.clickedAnime(animeDetail[index], props.full.srchRedu.srch.d);
   };
+
+  const fullDetailManga = (index) => {
+    console.log(index);
+
+    setArrState(mangaDetail[index]);
+    // <DetailedAnime allInfo={index} />;
+    props.clickedAnime(mangaDetail[index], props.full.srchRedu.srch.d);
+  };
+
   // console.log(arrDetail[0]);
   console.log(arrState);
 
@@ -100,10 +130,10 @@ const AnimeSearched = (props) => {
               className="anim-mang"
               src={a}
               key={a}
-              onClick={() => fullDetail(arr.indexOf(a))}
+              onClick={() => fullDetail(anime.indexOf(a))}
             />
             <div className="title-nam">
-              {arrDetail[arr.indexOf(a)].$.name}
+              {animeDetail[anime.indexOf(a)].$.name}
               {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
             </div>
           </Link>
@@ -117,9 +147,11 @@ const AnimeSearched = (props) => {
               className="anim-mang"
               src={a}
               key={a}
-              onClick={() => fullDetail(arr.indexOf(a))}
+              onClick={() => fullDetailManga(manga.indexOf(a))}
             />
-            <div className="title-nam">{arrDetail[arr.indexOf(a)].$.name}</div>
+            <div className="title-nam">
+              {mangaDetail[manga.indexOf(a)].$.name}
+            </div>
           </Link>
         ))}
       </div>
