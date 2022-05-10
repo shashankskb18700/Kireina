@@ -29,7 +29,7 @@
   flex-direction: row;
   justify-content: space-around;
   /* background: white; */
-  height: 60vh;
+  height: 65vh;
   width: 100vw;
   margin-right: 50px;
   background-position: center;
@@ -41,10 +41,10 @@
   margin-top: 50px;
 } */
 .allDetail {
-  color: rgb(70, 70, 187);
+  color: black;
   display: flex;
   justify-content: space-around;
-  background-color: grey;
+  background-color: white;
 }
 
 .nameOf {
@@ -55,7 +55,7 @@
   position: absolute;
   top: 55%;
   left: 30%;
-  color: white;
+  color: black;
 }
 
 @font-face {
@@ -67,7 +67,16 @@
   src: url(../../Assets/fonts/MonoLisa-ExtraLight.ttf);
 }
 .specific-det {
-  margin-top: 200px;
+  /* display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70vw;
+
+  position: absolute;
+  top: 67%;
+  left: 30%; */
+  margin-top: 13%;
+  margin-left: 8.5%;
 }
 
 .story-credit {

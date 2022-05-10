@@ -1,0 +1,22 @@
+.info {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  background-color: white;
+  font-family: tex;
+  height: 12vh;
+  align-items: center;
+  font-weight: 800;
+  margin-top: 20px;
+}
+.info h5 {
+  color: grey;
+}
+.info h4 {
+  color: rgb(107, 236, 22);
+  width: 50%;
+}
+@font-face {
+  font-family: "tex";
+  src: url(../../../Assets/fonts/MonoLisa-Bold.ttf);
+}

@@ -44,7 +44,11 @@ const AnimeSearched = (props) => {
           {console.log(d)}
           {d.map((a) => (
             <div>
-              {a.$.type === "manga" ? mangaDetail.push(a) : animeDetail.push(a)}
+              {a.$.type === "manga"
+                ? mangaDetail.push(a)
+                : a.credit !== undefined
+                ? animeDetail.push(a)
+                : ""}
               {/* {console.log(Object.keys(a.info[0])[1] === "img")} */}
               {/* {console.log(a.info[0])} */}
               {/* {console.log(Object.values(a.ratings[0])[0])} */}
@@ -54,8 +58,7 @@ const AnimeSearched = (props) => {
                 ? arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
               {/* {console.log(Object.values(a.info[0].img[1])[0].src)} */}
-              {console.log("just c")}
-              {console.log("a hai hum humko izzat do ")}
+
               {/* {console.log(a.$.type)} */}
               {/* {console.log(Object.values(a.info[0].img).length)} */}
               {/* // i think in code geass case Object.keys(a.info[0])[1] === "img"
@@ -74,8 +77,12 @@ const AnimeSearched = (props) => {
                   : arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
               {/* && a.$.type !== "manga"
+              
                 && a.$.type === "manga" */}
-              {Object.keys(a.info[0])[1] === "img" && a.$.type !== "manga"
+              {console.log(a.credit)}
+              {Object.keys(a.info[0])[1] === "img" &&
+              a.$.type !== "manga" &&
+              a.credit !== undefined
                 ? a.info[0].img.length > 1
                   ? anime.push(Object.values(a.info[0].img[1])[0].src)
                   : anime.push(Object.values(a.info[0].img[0])[0].src)

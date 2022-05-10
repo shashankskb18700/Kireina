@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+import Rating from "./Rating/Rating";
+
+import Info from "./Info/Info";
+
 //props are coming i need to render it on that page
 //one reducer updation is removoing every state and even that sate is note accesible to other component
 
@@ -122,11 +126,11 @@ const DetailedAnime = (props) => {
         <div
           className="imgAndTitle"
           style={{
-            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(128, 128 ,128) ), url(${bannerUrl})`,
+            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(255 ,255, 255) ), url(${bannerUrl})`,
             // backgroundColor: "rgb(128 128 128)",
 
             backgroundPosition: "centre",
-            backgroundSize: "100vw 61vh",
+            backgroundSize: "100vw 66vh",
           }}
         >
           {/* <img src={bannerUrl}></img> */}
@@ -152,18 +156,40 @@ const DetailedAnime = (props) => {
 
         <div className="allDetail">
           <div className="specific-det">
-            <h4>type: {allInfo.$.type}</h4>
-            <h4>Raitng and review===</h4>
+            <h4>
+              <Info valueName={"Type"} value={allInfo.$.type} />{" "}
+            </h4>
+
             {allInfo.ratings ? (
-              <h5>
+              <h5 style={{ width: "70px", height: "70px" }}>
+                {/*                 
                 nb_vote =={allInfo.ratings[0].$.nb_votes} <br></br>
                 weighted_score= {allInfo.ratings[0].$.weighted_score}
                 <br></br>
-                bayesian_score= {allInfo.ratings[0].$.bayesian_score}
+                bayesian_score= {allInfo.ratings[0].$.bayesian_score} */}
+                <Rating
+                  value={allInfo.ratings[0].$.weighted_score}
+                  text={"Rating"}
+                />
               </h5>
             ) : (
               <div></div>
             )}
+
+            <div className="">
+              {allInfo.staff
+                ? allInfo.staff.map((a) => (
+                    <div>
+                      {console.log(a.task)}
+                      {a.task[0] === "Script" ? (
+                        <Info valueName={"Writer"} value={a.person[0]._} />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  ))
+                : ""}
+            </div>
           </div>
 
           <div className="story-credit">

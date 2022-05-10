@@ -1,0 +1,34 @@
+.rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  /* height: fit-content; */
+  height: 12vh;
+  background-color: white;
+  padding: 10px 0 10px 0;
+  color: gray;
+  font-family: tex;
+  margin-top: 16px;
+}
+
+.circBar {
+  width: 80px;
+  padding-right: 5%;
+
+  stroke: rgb(243, 0, 0);
+  color: rgb(121, 247, 37);
+}
+
+.ratingName {
+  width: 20%;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  color: gray;
+}
+
+@font-face {
+  font-family: tex;
+  src: url(../../../Assets/fonts/MonoLisa-Bold.ttf);
+}
