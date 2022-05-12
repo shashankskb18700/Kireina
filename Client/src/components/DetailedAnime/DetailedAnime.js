@@ -10,9 +10,12 @@ import Info from "./Info/Info";
 //one reducer updation is removoing every state and even that sate is note accesible to other component
 
 import "./DetailedAnime.css";
+import ListScroller from "./ListScroller/ListScroller";
 
 const DetailedAnime = (props) => {
   const [allInfo, setAllInfo] = useState({});
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(1);
   let plotStory = "";
   let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
@@ -117,8 +120,80 @@ const DetailedAnime = (props) => {
     ? props.detail.Clickd.newD.vostr.data.banner
     : "";
   // console.log(props.detail.Clickd.newD.vostr.data.banner);
-  console.log(bannerUrl);
 
+  const staffList = {
+    Script: ["Script"],
+    Director: ["Director"],
+    "Sound Director": ["Sound Director"],
+    Producer: ["Producer"],
+    "Animation Director": ["Animation Director"],
+  };
+
+  // allInfo.staff
+  // ? allInfo.staff.forEach{
+  //   a => {
+
+  // }
+
+  // } : " ";
+  // allInfo.staff.map((a) => {
+  //   a.task[0] === "Director" ? staffList[a.task[0]].push(a.person[0]._) : "";
+  // });
+
+  // a.task[0] === "Script" ||
+  //       a.task[0] === "Director" ||
+  //       a.task[0] === "Sound Director" ||
+  //       a.task[0] === "Producer" ||
+  //       a.task[0] === "Animation Director"
+  //       ? staffList[a.task[0]].push(a.person[0]._)
+  //       : ""
+  // <Info valueName={a.task[0]} value={a.person[0]._} />
+  console.log(staffList);
+
+  const episodes = [];
+
+  if (allInfo.episode) {
+    for (let i = 0; i < allInfo.episode.length / 12; i++) {
+      episodes.push(
+        <ListScroller start={i * 12} end={(i + 1) * 12} allInfo={allInfo} />
+      );
+    }
+    for (let a of allInfo.staff) {
+      if (a.task[0] === "Script") {
+        staffList[a.task[0]].push(a.person[0]._);
+      } else if (a.task[0] === "Director") {
+        staffList[a.task[0]].push(a.person[0]._);
+      } else if (a.task[0] === "Sound Director") {
+        staffList[a.task[0]].push(a.person[0]._);
+      } else if (a.task[0] === "Producer") {
+        staffList[a.task[0]].push(a.person[0]._);
+      } else if (a.task[0] === "Animation Director") {
+        staffList[a.task[0]].push(a.person[0]._);
+      }
+
+      // a.task[0] === "Script" ||
+      //       a.task[0] === "Director" ||
+      //       a.task[0] === "Sound Director" ||
+      //       a.task[0] === "Producer" ||
+      //       a.task[0] === "Animation Director"
+      //       ? staffList[a.task[0]].push(a.person[0]._)
+      //       : ""
+    }
+  }
+
+  console.log(staffList);
+  const forward = () => {
+    if (end <= allInfo.episode.length / 12) {
+      setStart(start + 1);
+      setEnd(end + 1);
+    }
+  };
+  const backward = () => {
+    if (start > 0) {
+      setStart(start - 1);
+      setEnd(end - 1);
+    }
+  };
   const fuc = () => {
     console.log(allInfo.$.type);
     return (
@@ -175,42 +250,50 @@ const DetailedAnime = (props) => {
             ) : (
               <div></div>
             )}
-
-            <div className="">
-              {allInfo.staff
-                ? allInfo.staff.map((a) => (
-                    <div>
-                      {console.log(a.task)}
-                      {a.task[0] === "Script" ? (
-                        <Info valueName={"Writer"} value={a.person[0]._} />
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  ))
-                : ""}
-            </div>
           </div>
 
           <div className="story-credit">
             {/* <h2>Plot Summary</h2> */}
             <h3>{plotStory}</h3>
-
             {/* //only works with anime for managa you need to set fall back or go and render other page for managa */}
             {/* {console.log(allInfo.episode[0].title[0]._)} */}
-
             <h2> {allInfo.episode ? "Episode" : ""}</h2>
             <div className="episod">
-              {allInfo.episode
+              {/* {allInfo.episode
                 ? allInfo.episode.map((a) => (
                     <div>
                       episode: {a.$.num} &nbsp; {a.title[0]._}
                       <br />
                     </div>
                   ))
-                : ""}
-            </div>
+                : ""} */}
+              <div
+                style={{
+                  display: "flex",
+                  width: "50px",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div
+                  style={{ fontSize: "20px", fontWeight: "800" }}
+                  className="forward"
+                  onClick={() => backward()}
+                >
+                  &lt;
+                </div>
+                <div
+                  style={{ fontSize: "20px", fontWeight: "800" }}
+                  className="backward"
+                  onClick={() => forward()}
+                >
+                  &gt;
+                </div>
+              </div>
 
+              <div>{episodes.slice(start, end)}</div>
+              {/* <ListScroller start={0} end={12} allInfo={allInfo} /> */}
+              {/* {console.log(allInfo.episode.length)} */}
+            </div>
             <h2>Credit</h2>
             <div className="credit">
               {allInfo.credit
@@ -223,10 +306,20 @@ const DetailedAnime = (props) => {
             </div>
             {/* <div>{console.log(allInfo.credit[0].company[0]._)}</div>
             <div>{console.log(allInfo.credit[0].task[0])}</div> */}
-
             {/* here you have to do all the credit and those kind of stuff */}
-            <h2>Cast</h2>
-            <div className="cast">
+            <h2>Staff</h2>
+            <div className="staff"></div>
+            {Object.values(staffList).map((a) => (
+              <div className="staffLis">
+                <div className="staffTask">{a[0]}</div>
+                <div className="staffName">
+                  {a.slice(1).map((name) => (
+                    <div>{name}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {/* <div className="cast">
               {allInfo.cast
                 ? allInfo.cast.map((a) => (
                     <div>
@@ -235,11 +328,11 @@ const DetailedAnime = (props) => {
                       {a.role[0]}
                     </div>
                   ))
-                : ""}
-              {/* {console.log(allInfo.cast[0].person[0]._)}
+                : ""} */}
+            {/* {console.log(allInfo.cast[0].person[0]._)}
               {console.log(allInfo.cast[0].role[0])} */}
-              {/* {console.log(url.length > 0 ? banner(url) : "")} */}
-            </div>
+            {/* {console.log(url.length > 0 ? banner(url) : "")} */}
+            {/* </div> */}
           </div>
         </div>
       </div>

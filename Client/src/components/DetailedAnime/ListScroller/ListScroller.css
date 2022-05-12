@@ -1,0 +1,24 @@
+.listIndivisual {
+  /* margin: 30px; */
+  width: 70vw;
+  /* height: 400px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.epi {
+  background-color: rgb(122, 240, 110);
+  width: 60px;
+  /* height: 500px; */
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.episodeBlock {
+  display: flex;
+  margin-top: 40px;
+  margin-right: 40px;
+  width: 30vw;
+}

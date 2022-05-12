@@ -91,8 +91,13 @@
   /* border-bottom: 2px solid red; */
 }
 .episod {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: fit-content;
 }
 .story-credit .episod {
   /* border-bottom: 2px solid red; */
@@ -107,4 +112,37 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 2px solid red;
+}
+
+/* .forward {
+  animation-name: fadee;
+  animation-duration: 0.8s;
+}
+@keyframes fadee {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(40%);
+  }
+} */
+
+.staff {
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+.staffLis {
+  background-color: rgb(123, 240, 130);
+  padding-right: 10px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.staffTask {
+  font-size: 30px;
 }
