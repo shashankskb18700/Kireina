@@ -6,7 +6,7 @@
 
 .detailed {
   background-color: rgba(110, 105, 105, 0.733);
-
+  overflow-x: hidden;
   width: 100vw;
   /* height: 100vh; */
   /* display: flex;
@@ -75,15 +75,19 @@
   position: absolute;
   top: 67%;
   left: 30%; */
-  margin-top: 13%;
-  margin-left: 8.5%;
+  /* margin-top: 13%; */
+  /* margin-left: 8.5%; */
+  position: absolute;
+  top: 90%;
+  left: 10%;
 }
 
 .story-credit {
   width: 64vw;
   font-family: plot-story;
   font-size: 13px;
-  margin-left: 20px;
+  margin-left: 30%;
+  /* margin-left: 20px; */
 }
 .story-credit h3 {
   padding: 10px;
@@ -106,7 +110,7 @@
 .credit {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-bottom: 2px solid red;
+  /* border-bottom: 2px solid red; */
 }
 .cast {
   display: grid;
@@ -130,19 +134,45 @@
 
 .staff {
   display: flex;
+  margin-top: 30px;
   flex-direction: column;
+
   /* grid-template-columns: 1fr 1fr 1fr; */
 }
 
 .staffLis {
-  background-color: rgb(123, 240, 130);
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 1%,
+    rgba(128, 128, 128, 0.08)
+  );
+
   padding-right: 10px;
+  padding-left: 10px;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* border-bottom-left-radius: 5%;
+  border-top-left-radius: 5%; */
 }
 
 .staffTask {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: rgb(123, 240, 130);
   font-size: 30px;
+  padding-left: 20px;
+}
+.staffName {
+  /* display: flex; */
+  /* justify-content: flex-start; */
+  /* width: 100vw; */
+  /* height: 30vh; */
+}
+
+.trailer {
+  border: none;
 }

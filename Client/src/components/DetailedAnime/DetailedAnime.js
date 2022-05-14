@@ -119,6 +119,10 @@ const DetailedAnime = (props) => {
   let bannerUrl = props.detail.Clickd.newD
     ? props.detail.Clickd.newD.vostr.data.banner
     : "";
+
+  let youtubeUrl = props.detail.Clickd.newD
+    ? props.detail.Clickd.newD.vostr.data.trailer
+    : "";
   // console.log(props.detail.Clickd.newD.vostr.data.banner);
 
   const staffList = {
@@ -183,9 +187,17 @@ const DetailedAnime = (props) => {
 
   console.log(staffList);
   const forward = () => {
-    if (end <= allInfo.episode.length / 12) {
-      setStart(start + 1);
-      setEnd(end + 1);
+    let lenCalc = allInfo.episode.length % 12;
+    if (lenCalc === 0) {
+      if (end <= allInfo.episode.length / 12 - 1) {
+        setStart(start + 1);
+        setEnd(end + 1);
+      }
+    } else {
+      if (end <= allInfo.episode.length / 12) {
+        setStart(start + 1);
+        setEnd(end + 1);
+      }
     }
   };
   const backward = () => {
@@ -299,7 +311,8 @@ const DetailedAnime = (props) => {
               {allInfo.credit
                 ? allInfo.credit.map((a) => (
                     <div>
-                      company -{a.company[0]._} &nbsp; task -{a.task[0]}
+                      <Info valueName={a.task[0]} value={a.company[0]._} />
+                      {/* company -{a.company[0]._} &nbsp; task -{a.task[0]} */}
                     </div>
                   ))
                 : ""}
@@ -307,14 +320,15 @@ const DetailedAnime = (props) => {
             {/* <div>{console.log(allInfo.credit[0].company[0]._)}</div>
             <div>{console.log(allInfo.credit[0].task[0])}</div> */}
             {/* here you have to do all the credit and those kind of stuff */}
-            <h2>Staff</h2>
+
             <div className="staff"></div>
+            <h2>Staff</h2>
             {Object.values(staffList).map((a) => (
               <div className="staffLis">
                 <div className="staffTask">{a[0]}</div>
                 <div className="staffName">
                   {a.slice(1).map((name) => (
-                    <div>{name}</div>
+                    <div style={{ paddingBottom: "4px" }}>{name}</div>
                   ))}
                 </div>
               </div>
@@ -333,6 +347,15 @@ const DetailedAnime = (props) => {
               {console.log(allInfo.cast[0].role[0])} */}
             {/* {console.log(url.length > 0 ? banner(url) : "")} */}
             {/* </div> */}
+            <div className="trailer">
+              <h2> Trailer</h2>
+              <br></br>
+              <iframe
+                frameBorder="0"
+                style={{ width: "100%", height: "600px" }}
+                src={youtubeUrl}
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

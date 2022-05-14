@@ -1,20 +1,24 @@
 .info {
   display: flex;
-  width: 150px;
+  width: 17vw;
   justify-content: space-between;
   background-color: white;
   font-family: tex;
+
   height: 12vh;
   align-items: center;
   font-weight: 800;
   margin-top: 20px;
+  font-size: 15px;
 }
 .info h5 {
   color: grey;
+  padding-right: 30%;
 }
 .info h4 {
   color: rgb(107, 236, 22);
-  width: 50%;
+
+  /* width: 30%; */
 }
 @font-face {
   font-family: "tex";
