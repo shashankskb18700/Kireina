@@ -24,6 +24,9 @@ const AnimeSearched = (props) => {
   const animeDetail = [];
   const mangaDetail = [];
 
+  let animeName = [];
+
+  let anotherTitle = "";
   // console.log(props.detail.srch);
 
   if (Object.values(props.detail)[0]) {
@@ -44,11 +47,11 @@ const AnimeSearched = (props) => {
           {console.log(d)}
           {d.map((a) => (
             <div>
-              {a.$.type === "manga"
+              {/* {a.$.type === "manga"
                 ? mangaDetail.push(a)
                 : a.credit !== undefined
-                ? animeDetail.push(a)
-                : ""}
+                ? ""
+                : ""} */}
               {/* {console.log(Object.keys(a.info[0])[1] === "img")} */}
               {/* {console.log(a.info[0])} */}
               {/* {console.log(Object.values(a.ratings[0])[0])} */}
@@ -71,6 +74,18 @@ const AnimeSearched = (props) => {
 
               {/*  */}
 
+              {a.info.map((inf) => (
+                <div>
+                  {a.$.type !== "manga" && a.credit !== undefined
+                    ? inf.$.type === "Alternative title" && inf.$.lang === "EN"
+                      ? anotherTitle.length < inf._.length
+                        ? (anotherTitle = inf._)
+                        : ""
+                      : ""
+                    : ""}
+                </div>
+              ))}
+
               {/* {Object.keys(a.info[0])[1] === "img"
                 ? a.info[0].img.length > 1
                   ? arr.push(Object.values(a.info[0].img[1])[0].src)
@@ -84,36 +99,49 @@ const AnimeSearched = (props) => {
               a.$.type !== "manga" &&
               a.credit !== undefined
                 ? a.info[0].img.length > 1
-                  ? anime.push(Object.values(a.info[0].img[1])[0].src)
-                  : anime.push(Object.values(a.info[0].img[0])[0].src)
+                  ? anime.push(Object.values(a.info[0].img[1])[0].src) &&
+                    animeDetail.push(a) &&
+                    animeName.push(anotherTitle)
+                  : anime.push(Object.values(a.info[0].img[0])[0].src) &&
+                    animeDetail.push(a) &&
+                    animeName.push(anotherTitle)
                 : ""}
 
               {Object.keys(a.info[0])[1] === "img" && a.$.type === "manga"
                 ? a.info[0].img.length > 1
-                  ? manga.push(Object.values(a.info[0].img[1])[0].src)
-                  : manga.push(Object.values(a.info[0].img[0])[0].src)
+                  ? manga.push(Object.values(a.info[0].img[1])[0].src) &&
+                    mangaDetail.push(a)
+                  : manga.push(Object.values(a.info[0].img[0])[0].src) &&
+                    mangaDetail.push(a)
                 : ""}
+
+              {(anotherTitle = "")}
             </div>
           ))}
         </div>
       ));
     }
   }
-  console.log(arr);
-  console.log(arrDetail);
+  // console.log(arr);
+  // console.log(arrDetail);
 
   // anime = arr.slice(0, anime.length);
   // manga = arr.slice(anime.length);
 
-  console.log(anime);
-  console.log(manga);
+  // console.log(anime);
+  // console.log(manga);
 
   const fullDetail = (index) => {
+    let name =
+      animeDetail[index].$.name.length > animeName[index].length
+        ? animeDetail[index].$.name
+        : animeName[index];
+    console.log(name);
     // console.log(index);
     // console.log(animeDetail);
     setArrState(animeDetail[index]);
     // <DetailedAnime allInfo={index} />;
-    props.clickedAnime(animeDetail[index], props.full.srchRedu.srch.d);
+    props.clickedAnime(animeDetail[index], props.full.srchRedu.srch.d, name);
   };
 
   const fullDetailManga = (index) => {
@@ -140,7 +168,11 @@ const AnimeSearched = (props) => {
               onClick={() => fullDetail(anime.indexOf(a))}
             />
             <div className="title-nam">
-              {animeDetail[anime.indexOf(a)].$.name}
+              {animeDetail[anime.indexOf(a)].$.name.length >
+              animeName[anime.indexOf(a)].length
+                ? animeDetail[anime.indexOf(a)].$.name
+                : animeName[anime.indexOf(a)]}
+              {/* {animeDetail[anime.indexOf(a)].$.name} */}
               {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
             </div>
           </Link>

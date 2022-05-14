@@ -154,6 +154,7 @@ const DetailedAnime = (props) => {
   // <Info valueName={a.task[0]} value={a.person[0]._} />
   console.log(staffList);
 
+  console.log(youtubeUrl);
   const episodes = [];
 
   if (allInfo.episode) {
@@ -237,7 +238,7 @@ const DetailedAnime = (props) => {
                   : ""
               }
             />
-            <h2 className="nameOf">{allInfo.$.name}</h2>
+            <h2 className="nameOf">{props.detail.Clickd.newD.name}</h2>
           </div>
         </div>
 
@@ -350,11 +351,16 @@ const DetailedAnime = (props) => {
             <div className="trailer">
               <h2> Trailer</h2>
               <br></br>
-              <iframe
-                frameBorder="0"
-                style={{ width: "100%", height: "600px" }}
-                src={youtubeUrl}
-              ></iframe>
+
+              {youtubeUrl ? (
+                <iframe
+                  frameBorder="0"
+                  style={{ width: "100%", height: "600px" }}
+                  src={youtubeUrl}
+                ></iframe>
+              ) : (
+                <div>Not found </div>
+              )}
             </div>
           </div>
         </div>
