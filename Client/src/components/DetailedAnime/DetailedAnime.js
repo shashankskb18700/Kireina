@@ -14,6 +14,7 @@ import ListScroller from "./ListScroller/ListScroller";
 
 const DetailedAnime = (props) => {
   const [allInfo, setAllInfo] = useState({});
+  const [vostfr, setVostfr] = useState({});
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(1);
   let plotStory = "";
@@ -26,6 +27,7 @@ const DetailedAnime = (props) => {
     if (allInfo !== props.detail.Clickd.newD.ann) {
       setAllInfo(props.detail.Clickd.newD.ann);
 
+      setVostfr(props.detail.Clickd.newD.vostr);
       console.log(allInfo);
     }
   }
@@ -35,9 +37,11 @@ const DetailedAnime = (props) => {
       allInfo.info.map((a) => (
         <div>{a.$.type === "Plot Summary" ? (plotStory = a._) : ""}</div>
       ));
+      plotStory = allInfo.$.type === "movie" ? vostfr.data.synop : plotStory;
     }
   }
   let url = "";
+
   // const banner = async (url) => {
   //   const res = await axios.post("/mored", { dwe: url });
 
@@ -152,16 +156,16 @@ const DetailedAnime = (props) => {
   //       ? staffList[a.task[0]].push(a.person[0]._)
   //       : ""
   // <Info valueName={a.task[0]} value={a.person[0]._} />
-  console.log(staffList);
 
-  console.log(youtubeUrl);
   const episodes = [];
 
-  if (allInfo.episode) {
-    for (let i = 0; i < allInfo.episode.length / 12; i++) {
-      episodes.push(
-        <ListScroller start={i * 12} end={(i + 1) * 12} allInfo={allInfo} />
-      );
+  if (allInfo.episode || allInfo.staff) {
+    if (allInfo.episode) {
+      for (let i = 0; i < allInfo.episode.length / 12; i++) {
+        episodes.push(
+          <ListScroller start={i * 12} end={(i + 1) * 12} allInfo={allInfo} />
+        );
+      }
     }
     for (let a of allInfo.staff) {
       if (a.task[0] === "Script") {
@@ -186,7 +190,6 @@ const DetailedAnime = (props) => {
     }
   }
 
-  console.log(staffList);
   const forward = () => {
     let lenCalc = allInfo.episode.length % 12;
     if (lenCalc === 0) {
@@ -208,7 +211,6 @@ const DetailedAnime = (props) => {
     }
   };
   const fuc = () => {
-    console.log(allInfo.$.type);
     return (
       <div className="detailed">
         <div
@@ -334,6 +336,7 @@ const DetailedAnime = (props) => {
                 </div>
               </div>
             ))}
+
             {/* <div className="cast">
               {allInfo.cast
                 ? allInfo.cast.map((a) => (

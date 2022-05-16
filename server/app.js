@@ -7,6 +7,7 @@ import fetch from "node-fetch";
 import xml2js from "xml2js";
 import axios from "axios";
 import levenshtein from "fast-levenshtein";
+import translate from "translate";
 
 const app = express();
 
@@ -99,6 +100,16 @@ app.post("/mored", async (req, res) => {
   // console.log(moreData);
   const valu = await animeVostfr.getMoreInformation(moreData[0].url);
 
+  // translate.engine = "google";
+  // translate.key = process.env.GOOGLE;
+  // // translate.from = "fr";
+
+  // const text = await translate(valu.synop.slice(10), {
+  //   to: "english",
+  //   from: "French",
+  // });
+
+  // valu.synop = text;
   console.log(valu);
   console.log("Synopsis: ", valu.synop);
   console.log("Banner: ", valu.banner);
