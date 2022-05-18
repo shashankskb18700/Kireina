@@ -8,6 +8,7 @@ import xml2js from "xml2js";
 import axios from "axios";
 import levenshtein from "fast-levenshtein";
 import translate from "translate";
+import _, { map } from "underscore";
 
 const app = express();
 
@@ -99,17 +100,20 @@ app.post("/mored", async (req, res) => {
   var moreData = await animeVostfr.searchAnime(anotherData, bestOne);
   // console.log(moreData);
   const valu = await animeVostfr.getMoreInformation(moreData[0].url);
+  valu.synop = valu.synop.replace(/l*L*&#\d*;/g, "");
 
-  // translate.engine = "google";
-  // translate.key = process.env.GOOGLE;
-  // // translate.from = "fr";
+  translate.engine = "google";
+  translate.key = process.env.GOOGLE;
+  // translate.from = "fr";
 
-  // const text = await translate(valu.synop.slice(10), {
-  //   to: "english",
-  //   from: "French",
-  // });
+  const text = await translate(valu.synop, {
+    to: "english",
+    from: "French",
+  });
 
-  // valu.synop = text;
+  valu.synop = text;
+  // valu.synop = _.unescape(valu.synop);
+
   console.log(valu);
   console.log("Synopsis: ", valu.synop);
   console.log("Banner: ", valu.banner);

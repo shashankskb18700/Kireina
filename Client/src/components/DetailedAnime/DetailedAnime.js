@@ -305,7 +305,14 @@ const DetailedAnime = (props) => {
                 </div>
               </div>
 
-              <div>{episodes.slice(start, end)}</div>
+              {/* <div>{console.log(vostfr.data.eps[0].time)}</div> */}
+              <div>
+                {episodes.length > 0 ? (
+                  episodes.slice(start, end)
+                ) : (
+                  <h2>{"Duration" + " : " + vostfr.data.eps[0].time} </h2>
+                )}
+              </div>
               {/* <ListScroller start={0} end={12} allInfo={allInfo} /> */}
               {/* {console.log(allInfo.episode.length)} */}
             </div>
