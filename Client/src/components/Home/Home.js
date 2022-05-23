@@ -7,7 +7,7 @@ import { dbService } from "../../firebase/fbase";
 import Search from "../search/search";
 import Header from "./HomeComponent/Header/Header";
 import TopAriring from "./HomeComponent/TopAiring/TopAnime";
-
+import NavHeader from "../Header-Footer/NavHeader/NavHeader";
 //
 
 import "./Home.css";
@@ -88,6 +88,7 @@ const Home = () => {
 
   return (
     <div className="hom">
+      <NavHeader />
       <Header imgArray={item ? item.headr : undefined} />
 
       <div className="cont-all">

@@ -59,12 +59,18 @@ app.post("/post", async (req, res) => {
   // console.log("Episodes: ", valu.eps);
 
   //
-
+  var bestScore = animeVostfr.bestScoreAnime(anotherData);
+  var popularAnime = animeVostfr.popularAnime(anotherData);
   //
   xml2js.parseString(va.data, function (err, result) {
     // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
     console.log(result);
-    let rre = { result: result, d: moreData };
+    let rre = {
+      result: result,
+      d: moreData,
+      bestScore: bestScore,
+      popularAnime: popularAnime,
+    };
     res.send(JSON.stringify(rre, null, 2));
   });
   // console.log(va);
@@ -92,12 +98,16 @@ app.post("/mored", async (req, res) => {
     }
   });
 
-  console.log(bestOne);
-
   // console.log(levenshtein.get("body", "bod"));
 
   const anotherData = await animeVostfr.loadAnime();
-  var moreData = await animeVostfr.searchAnime(anotherData, bestOne);
+
+  if (req.body.type === "Movie") {
+    var moreData = await animeVostfr.searchMovieAnime(anotherData, bestOne);
+  } else {
+    var moreData = await animeVostfr.searchAnime(anotherData, bestOne);
+  }
+
   // console.log(moreData);
   const valu = await animeVostfr.getMoreInformation(moreData[0].url);
   valu.synop = valu.synop.replace(/l*L*&#\d*;/g, "");

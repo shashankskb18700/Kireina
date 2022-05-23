@@ -11,6 +11,7 @@ import Info from "./Info/Info";
 
 import "./DetailedAnime.css";
 import ListScroller from "./ListScroller/ListScroller";
+import NavHeader from "../Header-Footer/NavHeader/NavHeader";
 
 const DetailedAnime = (props) => {
   const [allInfo, setAllInfo] = useState({});
@@ -213,6 +214,7 @@ const DetailedAnime = (props) => {
   const fuc = () => {
     return (
       <div className="detailed">
+        <NavHeader />
         <div
           className="imgAndTitle"
           style={{

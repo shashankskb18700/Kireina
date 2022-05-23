@@ -9,6 +9,7 @@ import { clickedAnime } from "../../../redux/action/clickedAnime";
 import { Tester } from "../../../redux/action/tester";
 
 import "./AnimeSearched.css";
+import NavHeader from "../../Header-Footer/NavHeader/NavHeader";
 
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
@@ -157,6 +158,7 @@ const AnimeSearched = (props) => {
 
   return (
     <div>
+      <NavHeader />
       <h3>ANIME</h3>
       <div className="anime-manga-grid">
         {anime.map((a) => (

@@ -30,6 +30,7 @@ export const clickedAnime = (picked, vostfr, name) => {
     const response = await axios.post("/mored", {
       name: name,
       tit: titleArr,
+      type: picked.$.type,
     });
     dispatch({
       type: "CLICK",

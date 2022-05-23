@@ -56,13 +56,36 @@ const Auth = (props) => {
 
   return (
     <div className="authh">
+      <div className="brandName"> Kiriena</div>
       <div className="container">
-        <div className="gif"></div>
+        <div className="gif">
+          {" "}
+          <div className="slog">
+            <span className="firstLet" style={{ fontSize: "80px" }}>
+              S
+            </span>
+            EARCH ,
+            <span className="firstLet" style={{ fontSize: "80px" }}>
+              T
+            </span>
+            RACK <br></br>
+            <span className="firstLet" style={{ fontSize: "80px" }}>
+              &
+            </span>
+            &nbsp;
+            <span className="firstLet" style={{ fontSize: "80px" }}>
+              D
+            </span>
+            ISCOVER{" "}
+            <span className="firstLet" style={{ fontSize: "80px" }}>
+              A
+            </span>
+            NIME
+          </div>
+        </div>
         <div className="au">
           {newUser ? <SignUp /> : <SignIn />}
-          {/* <button onClick={onClick}>
-            {newUser ? "Already a user" : "New user ? please sign up"}{" "}
-          </button> */}
+
           <div onClick={onClick}>
             {newUser
               ? "Already a user ? please Log in     "
@@ -79,3 +102,9 @@ const mapStateToProps = (state) => {
   return { authDtls: state.AuthDetail };
 };
 export default connect(mapStateToProps)(Auth);
+
+{
+  /* <button onClick={onClick}>
+            {newUser ? "Already a user" : "New user ? please sign up"}{" "}
+          </button> */
+}

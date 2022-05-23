@@ -6,23 +6,44 @@
 
 .authh {
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
 
   background: mintcream;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  /* background: blanchedalmond; */
+  /* background: url(../../Assets/Harribel\ Ulquiorra\ Cifer\ wallpaper\ 1920x1080\ 292324\ WallpaperUP.jpg); */
+  background-size: cover;
+
+  background-image: linear-gradient(
+      to left,
+      rgb(255, 255, 255, 0),
+      rgb(255, 255, 255, 0.2)
+    ),
+    url(../../Assets//Harribel\ Ulquiorra\ Cifer\ wallpaper\ 1920x1080\ 292324\ WallpaperUP.jpg);
 }
 .gif {
-  width: 400px;
-  height: 400px;
-  background: url("../../Assets/ezgif-3-058e11b821.gif");
+  color: white;
+  font-size: 50px;
+  font-family: boold;
+  /* width: 400px; */
+  /* height: 400px; */
+  mix-blend-mode: difference;
+  -webkit-text-stroke: 3px white;
+  -webkit-text-fill-color: transparent;
+  /* background: url("../../Assets/ezgif-3-058e11b821.gif"); */
   /* background-color: antiquewhite; */
+}
+.firstLet {
+  -webkit-text-stroke: 8px white;
 }
 .container {
   display: flex;
-  justify-content: center;
+  width: 90vw;
+  justify-content: space-between;
+  /* margin: 0px 50px 0 50px; */
   align-items: center;
   /* background-color: rgb(245, 222, 179);
   clip-path: polygon(
@@ -53,21 +74,52 @@
     #297ea6 50%,
     rgba(249, 0, 4, 1) 100%
   ); */
-  background-color: light;
-  background: linear-gradient(#7aabac, #b7dfec);
+  /* background-color: light; */
+  /* background: linear-gradient(#7aabac, #b7dfec); */
+  background: rgba(255, 255, 255, 40%);
+  /* mix-blend-mode: color-dodge; */
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   text-align: end;
-
+  /* width: 40vw; */
   color: white;
   font-family: sans-serif;
   font-style: italic;
   border-radius: 10px;
-  padding-bottom: 10px;
+  margin-top: 5%;
+  /* padding-bottom: 10px;
   padding-right: 5px;
-  padding-left: 10px;
+  padding-left: 10px; */
+  /* margin-left: 40%; */
 }
 .au :hover {
   color: red;
+}
+
+.brandName {
+  font-size: 160px;
+  font-weight: 800;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  /* color: white; */
+  -webkit-text-fill-color: transparent;
+  /* text-shadow: 0px 2px 2px rgba(233, 67, 67, 0.897); */
+  /* background: rgba(255, 255, 255, 0.2); */
+
+  font-family: boold;
+  /* border: solid #7aabac 4px; */
+  -webkit-text-stroke: 12px white;
+  mix-blend-mode: difference;
+}
+
+.slog {
+  margin-top: 90px;
+}
+
+@font-face {
+  font-family: boold;
+
+  src: url(/src/Assets/fonts/MonoLisa-Bold.ttf);
 }

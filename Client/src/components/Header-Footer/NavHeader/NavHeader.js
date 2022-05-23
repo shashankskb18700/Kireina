@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 import "./NavHeader.css";
 
-const NavHeader = ({ authStatus }) => {
+const NavHeader = () => {
+  let authStatus = authService.getAuth().currentUser;
   const signOut = () => {
     let auth = authService.getAuth();
     authService.signOut(auth, () => {
