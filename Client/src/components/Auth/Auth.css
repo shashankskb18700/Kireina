@@ -19,8 +19,8 @@
 
   background-image: linear-gradient(
       to left,
-      rgb(255, 255, 255, 0),
-      rgb(255, 255, 255, 0.2)
+      rgba(255, 255, 255, 0),
+      rgba(16, 14, 122, 0.616)
     ),
     url(../../Assets//Harribel\ Ulquiorra\ Cifer\ wallpaper\ 1920x1080\ 292324\ WallpaperUP.jpg);
 }
@@ -104,7 +104,7 @@
   top: 50px;
   left: 20px;
   /* color: white; */
-  -webkit-text-fill-color: transparent;
+  /* -webkit-text-fill-color: transparent; */
   /* text-shadow: 0px 2px 2px rgba(233, 67, 67, 0.897); */
   /* background: rgba(255, 255, 255, 0.2); */
 

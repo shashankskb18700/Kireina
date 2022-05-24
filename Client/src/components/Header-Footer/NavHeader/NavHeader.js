@@ -19,9 +19,7 @@ const NavHeader = () => {
   return (
     <div className="NavHeader">
       <h2 className="title-name">Kireina</h2>
-      <div>
-        <Search />
-      </div>
+      <div>{/* <Search /> */}</div>
 
       <div className="navigator">
         <Link to="/">

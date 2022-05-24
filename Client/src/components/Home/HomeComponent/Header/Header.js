@@ -3,6 +3,7 @@ import AliceCarousel from "react-alice-carousel";
 
 import "react-alice-carousel/lib/alice-carousel.css";
 import "./Header.css";
+import Search from "../../../search/search";
 
 const Header = ({ imgArray }) => {
   console.log(imgArray);
@@ -29,7 +30,9 @@ const Header = ({ imgArray }) => {
   return (
     <div className="head">
       <div className="alice">
-        <AliceCarousel
+        <Search />
+
+        {/* <AliceCarousel
           disableButtonsControls={true}
           infinite={true}
           autoPlay={true}
@@ -41,7 +44,7 @@ const Header = ({ imgArray }) => {
           disableAutoPlayOnAction={false}
           disableDotsControls={true}
           items={imgArr}
-        ></AliceCarousel>
+        ></AliceCarousel> */}
       </div>
     </div>
   );

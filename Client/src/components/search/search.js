@@ -17,7 +17,7 @@ import searchIcon from "../.././Assets/icons/zoom-front-premium.png";
 // var parse = new DOMParser();
 
 const Search = (props) => {
-  const [title, setTitle] = useState(" ");
+  const [title, setTitle] = useState("");
 
   console.log(props.wholest.srchRedu);
 
@@ -56,6 +56,8 @@ const Search = (props) => {
 
   return (
     <div>
+      <h1 className="tagLine"> Search thousands of anime & manga </h1>
+      <br></br>
       <div>
         <input
           className="inp"
