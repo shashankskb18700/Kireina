@@ -28,6 +28,17 @@
 .nav:hover {
   color: rgb(221, 196, 92);
 }
+.searchCont {
+  width: 30%;
+}
+.searchCont input {
+  font-size: 18px;
+  padding-left: 10px;
+  height: 35px;
+}
+.searchCont button {
+  width: 31.4px;
+}
 .title-name {
   transform: translate(-20%, -20%);
 

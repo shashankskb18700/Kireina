@@ -19,7 +19,14 @@ const NavHeader = () => {
   return (
     <div className="NavHeader">
       <h2 className="title-name">Kireina</h2>
-      <div>{/* <Search /> */}</div>
+      <div className="searchCont">
+        {window.location.href === `http://localhost:3000/animeD` ? (
+          <Search />
+        ) : (
+          ""
+        )}
+      </div>
+      {console.log(window.location.href)}
 
       <div className="navigator">
         <Link to="/">

@@ -25,13 +25,13 @@
 }
 
 .compImg {
-  width: 300px;
+  width: 150px;
   border: solid 2px gray;
   margin: 3px;
   border-radius: 5px;
   /* height: ; */
 }
-.chain {
+/* .chain {
   position: absolute;
   left: 0;
   content: "";
@@ -40,9 +40,9 @@
   height: 6px;
   background: url(/src/Assets/pattern_chain_blue.png) left top repeat-x;
   background-size: 18px auto;
-  opacity: 0.2;
-  /* animation: chainAnime02 2s infinite linear; */
-  animation-duration: 2s;
+  opacity: 0.2; */
+/* animation: chainAnime02 2s infinite linear; */
+/* animation-duration: 2s;
   animation-timing-function: linear;
   animation-delay: 0s;
   animation-iteration-count: infinite;
@@ -50,15 +50,15 @@
   animation-fill-mode: none;
   animation-play-state: running;
   animation-name: chainAnime01;
-}
+} */
 /* @keyframes{
   chainAnime02
 } */
-@keyframes chainAnime01 {
+/* @keyframes chainAnime01 {
   0% {
     background-position: left 0 top;
   }
   100% {
     background-position: left -18px top;
   }
-}
+} */

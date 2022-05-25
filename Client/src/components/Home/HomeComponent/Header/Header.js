@@ -30,7 +30,11 @@ const Header = ({ imgArray }) => {
   return (
     <div className="head">
       <div className="alice">
-        <Search />
+        <h1 className="tagLine"> Search thousands of anime & manga </h1>
+        <br></br>
+        <div className="srchCont">
+          <Search />
+        </div>
 
         {/* <AliceCarousel
           disableButtonsControls={true}

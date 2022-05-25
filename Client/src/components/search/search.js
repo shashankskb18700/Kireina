@@ -56,32 +56,27 @@ const Search = (props) => {
 
   return (
     <div>
-      <h1 className="tagLine"> Search thousands of anime & manga </h1>
-      <br></br>
-      <div>
-        <input
-          className="inp"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
-        {/*  */}
+      <input
+        className="inp"
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      ></input>
 
-        {/* //this call will fetch xml data , it to frontend */}
+      {/* //this call will fetch xml data , it to frontend */}
 
-        {/* <button className="sub-but" onClick={() => props.fetc(title)}>
+      {/* <button className="sub-but" onClick={() => props.fetc(title)}>
           <img src={searchIcon} className="submit-png" />
         </button> */}
 
-        {/* // this call will fetch json dadta it to backend */}
-        <button className="sub-but" onClick={() => props.backend(title)}>
-          <img src={searchIcon} className="submit-png" />
-        </button>
+      {/* // this call will fetch json dadta it to backend */}
+      <button className="sub-but" onClick={() => props.backend(title)}>
+        <img src={searchIcon} className="submit-png" />
+      </button>
 
-        {/*  */}
+      {/*  */}
 
-        {/* <div>{b}</div> */}
-      </div>
+      {/* <div>{b}</div> */}
     </div>
   );
 };
