@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { authService } from "../../firebase/fbase";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import { fetc } from "../../redux/action/index";
 import { backend } from "../../redux/action/backend";
@@ -19,7 +19,7 @@ import searchIcon from "../.././Assets/icons/zoom-front-premium.png";
 const Search = (props) => {
   const [title, setTitle] = useState("");
 
-  console.log(props.wholest.srchRedu);
+  console.log(props.wholest);
 
   // var xmlDoc = parse.parseFromString(props.wholest.srchRedu, "text/xml");
   // console.log(typeof xmlDoc);
@@ -70,9 +70,19 @@ const Search = (props) => {
         </button> */}
 
       {/* // this call will fetch json dadta it to backend */}
-      <button className="sub-but" onClick={() => props.backend(title)}>
-        <img src={searchIcon} className="submit-png" />
-      </button>
+      {/* {console.log(window.location.href)} */}
+
+      {window.location.href === `http://localhost:3000/` ? (
+        <Link to="/animeD">
+          <button className="sub-but" onClick={() => props.backend(title)}>
+            <img src={searchIcon} className="submit-png" />
+          </button>
+        </Link>
+      ) : (
+        <button className="sub-but" onClick={() => props.backend(title)}>
+          <img src={searchIcon} className="submit-png" />
+        </button>
+      )}
 
       {/*  */}
 

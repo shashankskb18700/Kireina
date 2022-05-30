@@ -12,6 +12,7 @@ import Home from "./Home/Home";
 import TesFu from "../tesFu";
 import AnimeSearched from "./search/AnimeSearched/AnimeSearched";
 import DetailedAnime from "./DetailedAnime/DetailedAnime";
+import Wishlist from "./wishlist/Wishlist";
 
 import Tes from ".././tes";
 const AppRouter = ({ isLoggedIn }) => {
@@ -58,6 +59,9 @@ const AppRouter = ({ isLoggedIn }) => {
       </Route>
       <Route exact path="/tes">
         <Tes />
+      </Route>
+      <Route exact path="/wishlist">
+        <Wishlist />
       </Route>
     </Switch>
   );

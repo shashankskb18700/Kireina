@@ -22,6 +22,7 @@ const DetailedAnime = (props) => {
   let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
   // setAllInfo(allInfo);
+  console.log(props.detail);
   console.log(props.detail.Clickd.newD);
   // setAllInfo(props.detail.Clickd.newD);
   if (props.detail.Clickd.newD) {

@@ -3,12 +3,14 @@ import { SearchReducer } from "./SerchReducer";
 import { AuthDetails } from "./AuthDetails";
 import { Clicked } from "./Clicked";
 import { Tesho } from "./tesho";
+import { WishListReducer } from "./WishlistReducer";
 
 export default combineReducers({
   srchRedu: SearchReducer,
   AuthDetail: AuthDetails,
   Clickd: Clicked,
   Te: Tesho,
+  wishlistData: WishListReducer,
 });
 
 // now you have to figure out how to use xml data , because that's what you are getting so we need to change it

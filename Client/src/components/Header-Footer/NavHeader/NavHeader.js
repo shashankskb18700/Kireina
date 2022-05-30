@@ -33,7 +33,9 @@ const NavHeader = () => {
           <i className="fas fa-home nav"></i>
         </Link>
 
-        <i className="fas fa-heart nav"></i>
+        <Link to="/wishlist">
+          <i className="fas fa-heart nav"></i>
+        </Link>
 
         <i className="fas fa-user nav"></i>
 

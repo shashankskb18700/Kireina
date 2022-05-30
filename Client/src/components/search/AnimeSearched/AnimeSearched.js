@@ -11,6 +11,8 @@ import { Tester } from "../../../redux/action/tester";
 import "./AnimeSearched.css";
 import NavHeader from "../../Header-Footer/NavHeader/NavHeader";
 import Search from "../search";
+// import Wishlist from "../../wishlist/Wishlist";
+import { Wish } from "../../../redux/action/wishlistActionCreator";
 
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
@@ -170,6 +172,11 @@ const AnimeSearched = (props) => {
               key={a}
               onClick={() => fullDetail(anime.indexOf(a))}
             />
+
+            <br></br>
+            <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)])}>
+              Wishlist
+            </div>
             <div className="title-nam">
               {animeDetail[anime.indexOf(a)].$.name.length >
               animeName[anime.indexOf(a)].length
@@ -216,7 +223,7 @@ const AnimeSearched = (props) => {
 const mapStateToProps = (state) => {
   return { detail: state.srchRedu, full: state };
 };
-export default connect(mapStateToProps, { clickedAnime, Tester })(
+export default connect(mapStateToProps, { clickedAnime, Tester, Wish })(
   AnimeSearched
 );
 
