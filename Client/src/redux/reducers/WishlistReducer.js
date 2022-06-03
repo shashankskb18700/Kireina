@@ -1,9 +1,9 @@
-export const WishListReducer = (state = {}, action) => {
+export const WishListReducer = (state = "", action) => {
   console.log("wishlis reducer ++++++++++");
 
   switch (action.type) {
     case "WISHLIST":
-      return { ...action.payload };
+      return action.payload;
     default:
       return state;
   }

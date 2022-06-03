@@ -14,6 +14,8 @@ import Search from "../search";
 // import Wishlist from "../../wishlist/Wishlist";
 import { Wish } from "../../../redux/action/wishlistActionCreator";
 
+import Wishlist from "../../wishlist/Wishlist";
+
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
 
@@ -165,17 +167,18 @@ const AnimeSearched = (props) => {
       <h3>ANIME</h3>
       <div className="anime-manga-grid">
         {anime.map((a) => (
-          <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
-            <img
-              className="anim-mang"
-              src={a}
-              key={a}
-              onClick={() => fullDetail(anime.indexOf(a))}
-            />
-
+          <div>
+            <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
+              <img
+                className="anim-mang"
+                src={a}
+                key={a}
+                onClick={() => fullDetail(anime.indexOf(a))}
+              />
+            </Link>
             <br></br>
             <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)])}>
-              Wishlist
+              <Wishlist />
             </div>
             <div className="title-nam">
               {animeDetail[anime.indexOf(a)].$.name.length >
@@ -185,7 +188,7 @@ const AnimeSearched = (props) => {
               {/* {animeDetail[anime.indexOf(a)].$.name} */}
               {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       <h3>MANGA</h3>
