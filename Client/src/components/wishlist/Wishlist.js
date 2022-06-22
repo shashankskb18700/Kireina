@@ -16,6 +16,7 @@ const Wishlist = (props) => {
   console.log(props.wishlistItem);
 
   let animId = props.wishlistItem;
+
   // too many times same data is being sent of firebase
   // if (arrayId.indexOf(userName) >= 0) {
 
@@ -41,13 +42,13 @@ const Wishlist = (props) => {
     query();
   }, []);
 
-  const query = async () => {
+  const query = () => {
     const wishlistQuery = dbService.query(
       collection(dbService.getFirestore(), userName),
       orderBy("id", "asc")
     );
 
-    await onSnapshot(wishlistQuery, (snapshot) => {
+    onSnapshot(wishlistQuery, (snapshot) => {
       const arr = snapshot.docs.map((docs) => docs.data().value);
       console.log(arr);
       // const arra = [...arrayId];
@@ -60,12 +61,8 @@ const Wishlist = (props) => {
   };
 
   console.log(arrayId);
-  // when idAnime is not  equal , it hasn't been setted ,a when it setted ti does not run
-  // if (arrayId.indexOf(props.wishlistItem) < 0) {
 
-  // i think props.wishlist lost it value after one iteration and it became undefined thats why it kept on running
-
-  // not this not the case but some how it is runnig for 50 times
+  //ye data jab tak dobara fetch ho raha hai tab tak ye code do bar chal ja  raha at best case ( means with good internet so to stop this mess on way can to check either pervious value is same or not , but this  model will not apply on delete element )
   if (arrayId.indexOf(animId) < 0) {
     console.log("inside of ch");
     console.log(props.wishlistItem);
@@ -85,7 +82,7 @@ const Wishlist = (props) => {
       // setIdAnime(props.wishlistItem);
     }
   }
-  // console.log(idAnime);
+  console.log(idAnime);
   return (
     <div>
       <button>wish</button>

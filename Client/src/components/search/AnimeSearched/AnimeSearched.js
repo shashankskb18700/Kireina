@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { dbService } from "../../../firebase/fbase";
+import { orderBy } from "firebase/firestore";
+
 import DetailedAnime from "../../DetailedAnime/DetailedAnime";
 
 import { clickedAnime } from "../../../redux/action/clickedAnime";
@@ -15,6 +18,7 @@ import Search from "../search";
 import { Wish } from "../../../redux/action/wishlistActionCreator";
 
 import Wishlist from "../../wishlist/Wishlist";
+import WW from "../../wishlist/WW";
 
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
@@ -158,6 +162,31 @@ const AnimeSearched = (props) => {
     props.clickedAnime(mangaDetail[index], props.full.srchRedu.srch.d);
   };
 
+  const wishlist = (id) => {
+    const { addDoc, collection, onSnapshot } = dbService;
+    const wishlistQuery = dbService.query(
+      collection(dbService.getFirestore(), "shas01758@gmail.com"),
+      orderBy("id", "asc")
+    );
+
+    onSnapshot(wishlistQuery, (snapshot) => {
+      const arr = snapshot.docs.map((docs) => docs.data().value);
+      console.log(arr);
+      // const arra = [...arrayId];
+      // arra
+      //arrayId is getting completly changed ;
+
+      // setArrayId([...arrayId, ...arr]);
+      if (arr.indexOf(id) < 0) {
+        addDoc(collection(dbService.getFirestore(), "shas01758@gmail.com"), {
+          value: id,
+          createdAt: Date.now(),
+          id: Date.now(),
+        });
+      }
+    });
+    console.log(id);
+  };
   // console.log(arrDetail[0]);
   console.log(arrState);
 
@@ -177,9 +206,15 @@ const AnimeSearched = (props) => {
               />
             </Link>
             <br></br>
-            <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)])}>
+            {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
               <Wishlist />
-            </div>
+            </div> */}
+            <button
+              type="button"
+              onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
+              style={{ width: "50px", height: "50px" }}
+            />
+
             <div className="title-nam">
               {animeDetail[anime.indexOf(a)].$.name.length >
               animeName[anime.indexOf(a)].length
