@@ -49,13 +49,13 @@ const Wishlist = (props) => {
     );
 
     onSnapshot(wishlistQuery, (snapshot) => {
-      const arr = snapshot.docs.map((docs) => docs.data().value);
+      const arr = snapshot.docs.map((docs) => docs);
       console.log(arr);
       // const arra = [...arrayId];
       // arra
       //arrayId is getting completly changed ;
 
-      setArrayId([...arrayId, ...arr]);
+      // setArrayId([...arrayId, ...arr]);
     });
     // console.log(onSanpshot);
   };

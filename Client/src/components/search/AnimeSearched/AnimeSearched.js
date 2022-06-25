@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { dbService } from "../../../firebase/fbase";
 import { orderBy } from "firebase/firestore";
+import { deleteDoc } from "firebase/firestore";
 
 import DetailedAnime from "../../DetailedAnime/DetailedAnime";
 
@@ -22,6 +23,7 @@ import WW from "../../wishlist/WW";
 
 const AnimeSearched = (props) => {
   const [arrState, setArrState] = useState({});
+  const [wishState, setWish] = useState([]);
 
   // console.log(Object.keys(props.detail));
 
@@ -163,7 +165,9 @@ const AnimeSearched = (props) => {
   };
 
   const wishlist = (id) => {
-    const { addDoc, collection, onSnapshot } = dbService;
+    console.log("***************************");
+    console.log(typeof id);
+    const { addDoc, collection, onSnapshot, setDoc, doc } = dbService;
     const wishlistQuery = dbService.query(
       collection(dbService.getFirestore(), "shas01758@gmail.com"),
       orderBy("id", "asc")
@@ -178,17 +182,38 @@ const AnimeSearched = (props) => {
 
       // setArrayId([...arrayId, ...arr]);
       if (arr.indexOf(id) < 0) {
-        addDoc(collection(dbService.getFirestore(), "shas01758@gmail.com"), {
-          value: id,
-          createdAt: Date.now(),
-          id: Date.now(),
+        // addDoc(collection(dbService.getFirestore(), "shas01758@gmail.com"), {
+        //   value: id,
+        //   createdAt: Date.now(),
+        //   id: Date.now(),
+        // });
+        const data = { value: id, createdAt: Date.now(), id: Date.now() };
+        setDoc(doc(dbService.getFirestore(), "shas01758@gmail.com", id), data);
+      } else {
+        deleteDoc(
+          doc(dbService.getFirestore(), "shas01758@gmail.com", "6592")
+        ).then(() => {
+          console.log("deleted");
         });
+        // dbService
+        //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+        //   .document("6270")
+        //   .delete();
+        // dbService
+        //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+        //   .doc("6270")
+        //   .delete();
+        // dbService.deleteDoc("shas01758@gmail.com").then(() => {
+        //   console.log("document deleted");
+        // });
       }
+      setWish([...arr]);
     });
     console.log(id);
   };
   // console.log(arrDetail[0]);
   console.log(arrState);
+  console.log(wishState);
 
   return (
     <div>
@@ -209,11 +234,24 @@ const AnimeSearched = (props) => {
             {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
               <Wishlist />
             </div> */}
-            <button
+            {wishState.indexOf(animeDetail[anime.indexOf(a)].$.id) > 0 ? (
+              <button
+                type="button"
+                onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
+                style={{ width: "50px", height: "50px", background: "red" }}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
+                style={{ width: "50px", height: "50px" }}
+              />
+            )}
+            {/* <button
               type="button"
               onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
               style={{ width: "50px", height: "50px" }}
-            />
+            /> */}
 
             <div className="title-nam">
               {animeDetail[anime.indexOf(a)].$.name.length >
