@@ -37,55 +37,43 @@ const Wishlist = (props) => {
   // }
 
   const { collection, onSnapshot } = dbService;
-  useEffect(() => {
-    console.log("use effect");
-    query();
-  }, []);
+  useEffect(async () => {
+    await query();
+    props.Wish(idAnime);
+  }, [idAnime]);
 
-  const query = () => {
+  const query = async () => {
     const wishlistQuery = dbService.query(
       collection(dbService.getFirestore(), userName),
       orderBy("id", "asc")
     );
 
-    onSnapshot(wishlistQuery, (snapshot) => {
-      const arr = snapshot.docs.map((docs) => docs);
+    await onSnapshot(wishlistQuery, (snapshot) => {
+      const arr = snapshot.docs.map((docs) => docs.data().value);
       console.log(arr);
       // const arra = [...arrayId];
       // arra
       //arrayId is getting completly changed ;
+      let wishlistIds = arr.toString();
+      wishlistIds = wishlistIds.replaceAll(",", "/");
 
-      // setArrayId([...arrayId, ...arr]);
+      setIdAnime(wishlistIds);
+      if (idAnime.length > 0) {
+        props.Wish(idAnime);
+      }
+      // setArrayId([...arr]);
     });
-    // console.log(onSanpshot);
+    // there will be delay in fetching data thats why some why it is not working
   };
 
-  console.log(arrayId);
+  // console.log(arrayId);
+  console.log(idAnime);
 
-  //ye data jab tak dobara fetch ho raha hai tab tak ye code do bar chal ja  raha at best case ( means with good internet so to stop this mess on way can to check either pervious value is same or not , but this  model will not apply on delete element )
-  if (arrayId.indexOf(animId) < 0) {
-    console.log("inside of ch");
-    console.log(props.wishlistItem);
-
-    if (props.wishlistItem) {
-      const { addDoc, collection } = dbService;
-      console.log("sending data");
-      console.log(idAnime);
-      console.log(props.wishlistItem);
-
-      addDoc(collection(dbService.getFirestore(), userName), {
-        value: props.wishlistItem, // if seetin props wishlitItem , then it is saying invalid data undefined
-        createdAt: Date.now(),
-        id: Date.now(),
-      });
-      query();
-      // setIdAnime(props.wishlistItem);
-    }
-  }
   console.log(idAnime);
   return (
     <div>
       <button>wish</button>
+      <button onClick={() => props.Wish("5232/2333")}> action creator</button>
     </div>
   );
 };
@@ -93,4 +81,4 @@ const mapStateToProps = (state) => {
   return { wishlistItem: state.wishlistData };
 };
 
-export default connect(mapStateToProps)(Wishlist);
+export default connect(mapStateToProps, { Wish })(Wishlist);

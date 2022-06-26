@@ -1,6 +1,7 @@
-export const Wish = (obj) => {
+export const Wish = (wishlistSting) => {
+  console.log(wishlistSting);
   return {
     type: "WISHLIST",
-    payload: obj.$.id,
+    payload: wishlistSting,
   };
 };

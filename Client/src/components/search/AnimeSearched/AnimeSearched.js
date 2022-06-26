@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { dbService } from "../../../firebase/fbase";
-import { orderBy } from "firebase/firestore";
+import { authService } from "../../../firebase/fbase";
+import { orderBy, query } from "firebase/firestore";
 import { deleteDoc } from "firebase/firestore";
 
 import DetailedAnime from "../../DetailedAnime/DetailedAnime";
@@ -40,6 +41,8 @@ const AnimeSearched = (props) => {
 
   let anotherTitle = "";
   // console.log(props.detail.srch);
+
+  let email = authService.getAuth().currentUser.email;
 
   if (Object.values(props.detail)[0]) {
     const detail = Object.values(props.detail.srch);
@@ -164,51 +167,115 @@ const AnimeSearched = (props) => {
     props.clickedAnime(mangaDetail[index], props.full.srchRedu.srch.d);
   };
 
-  const wishlist = (id) => {
+  const wishlist = async (id) => {
     console.log("***************************");
     console.log(typeof id);
     const { addDoc, collection, onSnapshot, setDoc, doc } = dbService;
-    const wishlistQuery = dbService.query(
-      collection(dbService.getFirestore(), "shas01758@gmail.com"),
-      orderBy("id", "asc")
+    // const wishlistQuery = dbService.query(
+    //   collection(dbService.getFirestore(), "shas01758@gmail.com"),
+    //   orderBy("id", "asc")
+    // );
+    // console.log(wishlistQuery);
+
+    // const q = dbService.query(
+    //   collection(dbService.getFirestore(), "shas01758@gmail.com"),
+    //   dbService.where("id", "==", true)
+    // );
+    // const docRef = doc(
+    //   dbService.getFirestore(),
+    //   "shas01758@gmail.com",
+    //   "64530"
+    // );
+    // const docSnap = dbService.getDoc(q);
+    // console.log(docSnap);
+    let querySnapshot = await dbService.getDocs(
+      collection(dbService.getFirestore(), email)
     );
-
-    onSnapshot(wishlistQuery, (snapshot) => {
-      const arr = snapshot.docs.map((docs) => docs.data().value);
-      console.log(arr);
-      // const arra = [...arrayId];
-      // arra
-      //arrayId is getting completly changed ;
-
-      // setArrayId([...arrayId, ...arr]);
-      if (arr.indexOf(id) < 0) {
-        // addDoc(collection(dbService.getFirestore(), "shas01758@gmail.com"), {
-        //   value: id,
-        //   createdAt: Date.now(),
-        //   id: Date.now(),
-        // });
-        const data = { value: id, createdAt: Date.now(), id: Date.now() };
-        setDoc(doc(dbService.getFirestore(), "shas01758@gmail.com", id), data);
-      } else {
-        deleteDoc(
-          doc(dbService.getFirestore(), "shas01758@gmail.com", "6592")
-        ).then(() => {
-          console.log("deleted");
-        });
-        // dbService
-        //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
-        //   .document("6270")
-        //   .delete();
-        // dbService
-        //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
-        //   .doc("6270")
-        //   .delete();
-        // dbService.deleteDoc("shas01758@gmail.com").then(() => {
-        //   console.log("document deleted");
-        // });
-      }
-      setWish([...arr]);
+    console.log(querySnapshot);
+    let arr = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      arr.push(doc.data().value);
     });
+    console.log(arr);
+
+    if (arr.indexOf(id) < 0) {
+      // addDoc(collection(dbService.getFirestore(), email), {
+      //   value: id,
+      //   createdAt: Date.now(),
+      //   id: Date.now(),
+      // });
+      const data = { value: id, createdAt: Date.now(), id: Date.now() };
+      await setDoc(doc(dbService.getFirestore(), email, id), data);
+      arr.push(id);
+    } else {
+      await deleteDoc(doc(dbService.getFirestore(), email, id)).then(() => {
+        console.log("deleted");
+      });
+
+      arr = arr.filter((item) => item !== id);
+      // querySnapshot = await dbService.getDocs(
+      //   collection(dbService.getFirestore(), "shas01758@gmail.com")
+      // );
+      // console.log(querySnapshot);
+      // arr = [];
+      // querySnapshot.forEach((doc) => {
+      //   // doc.data() is never undefined for query doc snapshots
+      //   arr.push(doc.data().value);
+      // });
+      // console.log(arr);
+      // dbService
+      //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+      //   .document("6270")
+      //   .delete();
+      // dbService
+      //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+      //   .doc("6270")
+      //   .delete();
+      // dbService.deleteDoc("shas01758@gmail.com").then(() => {
+      //   console.log("document deleted");
+      // });
+    }
+
+    // onSnapshot(wishlistQuery, (snapshot) => {
+    //   const arr = snapshot.docs.map((docs) => docs.data().value);
+    //   console.log(arr);
+    //   // const arra = [...arrayId];
+    //   // arra
+    //   //arrayId is getting completly changed ;
+
+    //   // setArrayId([...arrayId, ...arr]);
+
+    //   //
+
+    // if (arr.indexOf(id) < 0) {
+    //   // addDoc(collection(dbService.getFirestore(), "shas01758@gmail.com"), {
+    //   //   value: id,
+    //   //   createdAt: Date.now(),
+    //   //   id: Date.now(),
+    //   // });
+    //   const data = { value: id, createdAt: Date.now(), id: Date.now() };
+    //   setDoc(doc(dbService.getFirestore(), "shas01758@gmail.com", id), data);
+    // } else {
+    //   deleteDoc(
+    //     doc(dbService.getFirestore(), "shas01758@gmail.com", id)
+    //   ).then(() => {
+    //     console.log("deleted");
+    //   });
+    //   // dbService
+    //   //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+    //   //   .document("6270")
+    //   //   .delete();
+    //   // dbService
+    //   //   .collection(dbService.getFirestore(), "shas01758@gmail.com")
+    //   //   .doc("6270")
+    //   //   .delete();
+    //   // dbService.deleteDoc("shas01758@gmail.com").then(() => {
+    //   //   console.log("document deleted");
+    //   // });
+    // }
+    setWish([...arr]);
+    // });
     console.log(id);
   };
   // console.log(arrDetail[0]);
