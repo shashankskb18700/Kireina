@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wishlistImage img {
+  width: 250px;
+  height: 300px;
+}
+.wishlistItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.WishlistTitleName {
+  width: 200px;
+}

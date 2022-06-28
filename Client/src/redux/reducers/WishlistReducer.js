@@ -3,7 +3,7 @@ export const WishListReducer = (state = "", action) => {
 
   switch (action.type) {
     case "WISHLIST":
-      return action.payload;
+      return action.payload.data;
     default:
       return state;
   }

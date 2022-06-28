@@ -52,11 +52,20 @@ const Home = () => {
 
     dataArr.map(async (a) => {
       await onSnapshot(dataObj[a], (snapshot) => {
-        const arr = snapshot.docs.map((docs) => ({
-          id: docs.id,
-          ...docs.data(),
-        }));
-        newObj[a] = arr;
+        // const arr = snapshot.docs.map((docs) => ({
+        //   id: docs.id,
+        //   ...docs.data(),
+        // }));
+
+        const arr = snapshot.docs.map((docs) => docs.data().value);
+        console.log(arr);
+        // const arra = [...arrayId];
+        // arra
+        //arrayId is getting completly changed ;
+        let wishlistIds = arr.toString();
+        wishlistIds = wishlistIds.replaceAll(",", "/");
+
+        newObj[a] = wishlistIds;
         arc.push(arr);
         console.log(arc);
 
@@ -95,17 +104,17 @@ const Home = () => {
         <div className="Best-list">
           <h2 className="Best-T">Top Airing</h2>
 
-          <TopAriring imgArray={item ? item.topAiring : undefined} />
+          <TopAriring animeId={item ? item.topAiring : undefined} />
         </div>
 
         <div className="Best-list">
           <h2 className="Best-T">Top Upcoming</h2>
-          <TopAriring imgArray={item ? item.topUpcoming : undefined} />
+          <TopAriring animeId={item ? item.topUpcoming : undefined} />
         </div>
 
         <div className="Best-list">
           <h2 className="Best-T">All Time Popular</h2>
-          <TopAriring imgArray={item ? item.allTime : undefined} />
+          <TopAriring animeId={item ? item.allTime : undefined} />
         </div>
       </div>
 

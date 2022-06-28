@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 import "./TopAnime.css";
 
-const TopAnime = ({ imgArray }) => {
+const TopAnime = ({ animeId }) => {
   // console.log(imgArr.imgArray.topAiring);
 
-  const imgArr = [];
+  // const imgArr = [];
 
-  if (imgArray) {
-    imgArray.map((va) => (
-      <div>
-        {imgArr.push(
-          <img className="compImg" key={va.value} src={`${va.value}`} />
-        )}
-      </div>
-    ));
-  }
+  // if (imgArray) {
+  //   imgArray.map((va) => (
+  //     <div>
+  //       {imgArr.push(
+  //         <img className="compImg" key={va.value} src={`${va.value}`} />
+  //       )}
+  //     </div>
+  //   ));
+  // }
 
+  // useEffect(() => {
+  //    if
+  // })
+  console.log(typeof animeId);
   return (
     <div className="content">
       <div className="h-scroll">
-        {imgArr.map((a) => a)}
+        {/* {imgArr.map((a) => a)} */}
         <button>View All</button>
       </div>
 

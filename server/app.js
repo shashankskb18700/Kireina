@@ -79,6 +79,23 @@ app.post("/post", async (req, res) => {
   // res.end(JSON.stringify(moreData));
 });
 
+app.post("/wishlist", async (req, res) => {
+  console.log(req.body);
+  const wishlisted = await axios.get(
+    `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${req.body.name}`
+  );
+
+  console.log(wishlisted.data);
+  xml2js.parseString(wishlisted.data, function (err, result) {
+    // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
+    console.log(result);
+    let wishlistedItem = {
+      wishlisted: result,
+    };
+    res.send(JSON.stringify(wishlistedItem, null, 2));
+  });
+});
+
 app.post("/mored", async (req, res) => {
   console.log(req.body);
 
