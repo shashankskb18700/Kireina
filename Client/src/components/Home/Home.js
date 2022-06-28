@@ -1,6 +1,7 @@
 import { orderBy } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { dbService } from "../../firebase/fbase";
+import { connect } from "react-redux";
 
 //
 
@@ -10,9 +11,11 @@ import TopAriring from "./HomeComponent/TopAiring/TopAnime";
 import NavHeader from "../Header-Footer/NavHeader/NavHeader";
 //
 
+import { TopAnimeActionCreator } from "../../redux/action/topAnimeActionCreator";
+
 import "./Home.css";
 
-const Home = () => {
+const Home = (props) => {
   const [item, setItem] = useState({});
 
   const { onSnapshot, collection } = dbService;
@@ -77,12 +80,16 @@ const Home = () => {
         // setHeader(head);
 
         // console.log(head);
+        if (Object.values(newObj).length === 4) {
+          props.TopAnimeActionCreator(Object.values(newObj), newObj);
+        }
 
         setItem({ ...newObj });
       });
     });
     // setItem({ ...newObj });
     console.log(newObj);
+    // props.TopAnimeActionCreator("ewe");
     // onSnapshot(headerQuery, (snapshot) => {
     //   const arr = snapshot.docs.map((docs) => ({
     //     id: docs.id,
@@ -93,14 +100,14 @@ const Home = () => {
   }, []);
 
   console.log("form my side");
-  console.log(item);
+  console.log(Object.values(item).length);
 
   return (
     <div className="hom">
       <NavHeader />
       <Header imgArray={item ? item.headr : undefined} />
 
-      <div className="cont-all">
+      {/* <div className="cont-all">
         <div className="Best-list">
           <h2 className="Best-T">Top Airing</h2>
 
@@ -116,7 +123,7 @@ const Home = () => {
           <h2 className="Best-T">All Time Popular</h2>
           <TopAriring animeId={item ? item.allTime : undefined} />
         </div>
-      </div>
+      </div> */}
 
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
@@ -125,7 +132,11 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return { state: state };
+};
+
+export default connect(mapStateToProps, { TopAnimeActionCreator })(Home);
 
 //
 

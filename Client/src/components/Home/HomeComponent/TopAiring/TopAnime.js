@@ -21,7 +21,9 @@ const TopAnime = ({ animeId }) => {
   // }
 
   // useEffect(() => {
-  //    if
+  //   if (animeId.length > 0) {
+
+  //    }
   // })
   console.log(typeof animeId);
   return (

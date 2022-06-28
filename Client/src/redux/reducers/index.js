@@ -2,14 +2,14 @@ import { combineReducers } from "redux";
 import { SearchReducer } from "./SerchReducer";
 import { AuthDetails } from "./AuthDetails";
 import { Clicked } from "./Clicked";
-import { Tesho } from "./tesho";
+import { TopAnime } from "./topAnimeReducer";
 import { WishListReducer } from "./WishlistReducer";
 
 export default combineReducers({
   srchRedu: SearchReducer,
   AuthDetail: AuthDetails,
   Clickd: Clicked,
-  Te: Tesho,
+  TopAnime: TopAnime,
   wishlistData: WishListReducer,
 });
 

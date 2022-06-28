@@ -11,7 +11,7 @@ import DetailedAnime from "../../DetailedAnime/DetailedAnime";
 
 import { clickedAnime } from "../../../redux/action/clickedAnime";
 
-import { Tester } from "../../../redux/action/tester";
+// import { Tester } from "../../../redux/action/topAnime";
 
 import "./AnimeSearched.css";
 import NavHeader from "../../Header-Footer/NavHeader/NavHeader";
@@ -366,9 +366,7 @@ const AnimeSearched = (props) => {
 const mapStateToProps = (state) => {
   return { detail: state.srchRedu, full: state };
 };
-export default connect(mapStateToProps, { clickedAnime, Tester, Wish })(
-  AnimeSearched
-);
+export default connect(mapStateToProps, { clickedAnime, Wish })(AnimeSearched);
 
 // arr.push(Object.values(a.info[0].img[0].src))
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import DetailedAnime from "./components/DetailedAnime/DetailedAnime";
-import { Tester } from "../src/redux/action/tester";
+// import { Tester } from "../src/redux/action/tester";
 
 const Tes = (props) => {
   console.log("e");
@@ -12,7 +12,7 @@ const Tes = (props) => {
     <div>
       <h2>tes</h2>
 
-      <button onClick={() => props.Tester("jusih ")}>click me</button>
+      {/* <button onClick={() => props.Tester("jusih ")}>click me</button> */}
 
       {/* <DetailedAnime /> */}
     </div>
@@ -24,4 +24,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { Tester })(Tes);
+export default connect(mapStateToProps, {})(Tes);
