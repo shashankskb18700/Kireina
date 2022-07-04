@@ -44,7 +44,7 @@
 
   /* margin-left: 10%; */
   display: block;
-  color: rgb(236, 193, 19);
+  color: rgb(255, 1, 1);
   /* font-size: 124px; */
   letter-spacing: 0.5vw;
   font-size: 30px;
@@ -76,8 +76,8 @@
     135deg,
     transparent 0,
     transparent 2px,
-    rgb(105, 74, 74) 2px,
-    rgb(146, 107, 107) 4px
+    rgb(255, 255, 255) 0.1px,
+    rgb(255, 0, 0) 4px
   );
   -webkit-background-clip: text;
   top: 0px;

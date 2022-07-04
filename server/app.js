@@ -85,7 +85,7 @@ app.post("/wishlist", async (req, res) => {
     `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${req.body.name}`
   );
 
-  console.log(wishlisted.data);
+  // console.log(wishlisted.data);
   xml2js.parseString(wishlisted.data, function (err, result) {
     // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
     console.log(result);

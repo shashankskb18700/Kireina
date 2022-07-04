@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -27,6 +27,20 @@ const AnimeSearched = (props) => {
   const [wishState, setWish] = useState([]);
 
   // console.log(Object.keys(props.detail));
+
+  useEffect(async () => {
+    const { addDoc, collection, onSnapshot, setDoc, doc } = dbService;
+    let querySnapshot = await dbService.getDocs(
+      collection(dbService.getFirestore(), email)
+    );
+    console.log(querySnapshot);
+    let arr = [];
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      arr.push(doc.data().value);
+    });
+    setWish([...arr]);
+  }, []);
 
   console.log(props.full);
   const arr = [];

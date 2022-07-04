@@ -16,17 +16,20 @@ const Header = ({ imgArray }) => {
   //       )}
   //     </div>
   //   ));
-  if (imgArray) {
-    imgArray.map((st) => (
-      <div>
-        {imgArr.push(
-          <img className="headerImg" key={st.value} src={`${st.value}`} />
-        )}
-      </div>
-    ));
-  }
 
-  // console.log(imgArr);
+  //
+
+  // if (imgArray) {
+  //   imgArray.map((st) => (
+  //     <div>
+  //       {imgArr.push(
+  //         <img className="headerImg" key={st.value} src={`${st.value}`} />
+  //       )}
+  //     </div>
+  //   ));
+  // }
+
+  // console.log(imgArray);
   return (
     <div className="head">
       <div className="alice">

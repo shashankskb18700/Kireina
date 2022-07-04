@@ -9,11 +9,12 @@
 .h-scroll {
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: none;
   /* overflow-x: hidden; */
   width: 95vw;
-  height: 30vh;
-  margin-top: 50px;
+  /* height: 30vh; */
+  /* margin-top: 20%; */
   /* border-style: double; */
   border-color: grey;
   border-radius: 5px;
@@ -23,14 +24,32 @@
 
   /* height: 30vh; */
 }
+.h-scroll img {
+  width: 230px;
+  height: 320px;
+  object-fit: cover;
+
+  margin-right: 20px;
+}
+.wishlistName {
+  position: absolute;
+  z-index: 5;
+}
 
 .compImg {
-  width: 150px;
+  width: 190px;
   border: solid 2px gray;
   margin: 3px;
   border-radius: 5px;
+  height: 280px;
   /* height: ; */
 }
+
+.card {
+  display: flex;
+  position: relative;
+}
+
 /* .chain {
   position: absolute;
   left: 0;

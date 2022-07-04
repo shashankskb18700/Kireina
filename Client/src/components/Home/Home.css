@@ -1,6 +1,18 @@
 .Best-T {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   font-family: best-title;
+  font-stretch: extra-expanded;
+  letter-spacing: 1px;
+  font-size: 40px;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  width: 100vw;
+  /* padding-top: 20px; */
+  z-index: 30;
+  mix-blend-mode: color-dodge;
+  -webkit-text-stroke: 4px red;
+  /* -webkit-text-fill-color: transparent;  */
   /* transform: rotate(-1.5deg);
   transform-origin: left bottom; */
 }
@@ -11,11 +23,14 @@
 
 .Best-list {
   /* background-color: #4c4177; */
-  background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
-  height: 53vh;
+  /* background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%); */
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  height: 90vh;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
+
   flex-direction: column;
   clip-path: polygon(0 12%, 100% 0%, 100% 85%, 0 100%);
 }
@@ -23,7 +38,7 @@
 .cont-all {
   /* background-color: #000000; */
   /* background-image: linear-gradient(147deg, #000000 0%, #04619f 74%); */
-  height: fit-content;
+  /* height: ; */
 
   padding-top: 90px;
   padding-bottom: 90px;

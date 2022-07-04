@@ -100,30 +100,49 @@ const Home = (props) => {
   }, []);
 
   console.log("form my side");
-  console.log(Object.values(item).length);
+  console.log(props.TopCategory);
 
   return (
     <div className="hom">
       <NavHeader />
       <Header imgArray={item ? item.headr : undefined} />
 
-      {/* <div className="cont-all">
+      <div className="cont-all">
+        <h2 className="Best-T">Top Airing Anime</h2>
         <div className="Best-list">
-          <h2 className="Best-T">Top Airing</h2>
+          <div></div>
 
-          <TopAriring animeId={item ? item.topAiring : undefined} />
+          <div>
+            <TopAriring
+              animeId={
+                props.TopCategory.length > 0
+                  ? props.TopCategory[0].topAiring
+                  : undefined
+              }
+            />
+          </div>
         </div>
-
+        <h2 className="Best-T">Top Upcoming Anime</h2>
         <div className="Best-list">
-          <h2 className="Best-T">Top Upcoming</h2>
-          <TopAriring animeId={item ? item.topUpcoming : undefined} />
+          <TopAriring
+            animeId={
+              props.TopCategory.length > 0
+                ? props.TopCategory[0].topUpcoming
+                : undefined
+            }
+          />
         </div>
-
+        <h2 className="Best-T">Most Popular Anime</h2>
         <div className="Best-list">
-          <h2 className="Best-T">All Time Popular</h2>
-          <TopAriring animeId={item ? item.allTime : undefined} />
+          <TopAriring
+            animeId={
+              props.TopCategory.length > 0
+                ? props.TopCategory[0].topAllTime
+                : undefined
+            }
+          />
         </div>
-      </div> */}
+      </div>
 
       {/* {item[1].month.map((it) => (
         <div key={it.id}>{it.value}</div>
@@ -133,7 +152,7 @@ const Home = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { state: state };
+  return { TopCategory: state.TopAnime };
 };
 
 export default connect(mapStateToProps, { TopAnimeActionCreator })(Home);
