@@ -32,7 +32,7 @@
   justify-content: center;
 
   flex-direction: column;
-  clip-path: polygon(0 12%, 100% 0%, 100% 85%, 0 100%);
+  clip-path: polygon(0 12%, 100% 0%, 100% 88%, 0 100%);
 }
 
 .cont-all {

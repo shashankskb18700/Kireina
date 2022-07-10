@@ -44,7 +44,7 @@
   font-size: 25px;
   /* margin-left: 2%;
   margin-right: 2%; */
-  clip-path: polygon(0 0, 100% 0%, 100% 90%, 0 100%);
+  clip-path: polygon(0 0, 100% 0%, 100% 88%, 0 100%);
   background-color: rgba(255, 0, 212, 0.856);
   background-image: linear-gradient(
       to top,

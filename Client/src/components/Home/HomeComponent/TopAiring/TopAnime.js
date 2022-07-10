@@ -55,6 +55,7 @@ const TopAnime = ({ animeId }) => {
   const displayCard = (index) => {
     let id = animeDetail[index].$.id;
     console.log(id);
+    setTimeout(function () {}, 2000);
     setHover(id);
   };
   const hideCard = (index) => {
@@ -66,7 +67,11 @@ const TopAnime = ({ animeId }) => {
       <div className="h-scroll">
         {anime.map((imgUrl) => (
           <div
-            onMouseEnter={() => displayCard(anime.indexOf(imgUrl))}
+            onMouseEnter={() =>
+              setTimeout(function () {
+                displayCard(anime.indexOf(imgUrl));
+              }, 500)
+            }
             onMouseLeave={() => {
               hideCard(anime.indexOf(imgUrl));
             }}
@@ -82,16 +87,58 @@ const TopAnime = ({ animeId }) => {
               {animeDetail[anime.indexOf(imgUrl)].$.id === hover ? (
                 <div
                   style={{
-                    width: "100px",
-                    height: "190px",
-                    background: "red",
+                    width: "370px",
+
+                    paddingLeft: "50px",
+                    height: "320px",
+                    // background: "red",
                     zIndex: "53",
                     position: "absolute",
+                    overflow: "auto",
                     // top: "400px",
+                    transition: "0 3s",
+                    WebkitTransition: "0 3s",
                   }}
+                  className="popUpCard"
                 >
                   {" "}
-                  {imgUrl}
+                  <div>
+                    <div className="cardName">
+                      {animeDetail[anime.indexOf(imgUrl)].$.name}
+                    </div>
+                    <div className="ratingAndType">
+                      <div>
+                        TYPE : {animeDetail[anime.indexOf(imgUrl)].$.type}
+                      </div>
+                      <div>
+                        ⭐️RATING :
+                        {animeDetail[anime.indexOf(imgUrl)].ratings
+                          ? animeDetail[anime.indexOf(imgUrl)].ratings[0].$
+                              .weighted_score
+                          : ""}
+                      </div>
+                    </div>
+                    <div className="ratingAndType">
+                      <div>
+                        {" "}
+                        Episode :
+                        {animeDetail[anime.indexOf(imgUrl)].episode
+                          ? animeDetail[anime.indexOf(imgUrl)].episode.length
+                          : "unavailable"}
+                      </div>
+                      <div>
+                        {" "}
+                        PRECISION :
+                        {animeDetail[anime.indexOf(imgUrl)].$.precision}{" "}
+                      </div>
+                    </div>
+                    <div className="plotSt">
+                      {animeDetail[anime.indexOf(imgUrl)].info.map((a) => (
+                        <div>{a.$.type === "Plot Summary" ? a._ : ""}</div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* {imgUrl} */}
                 </div>
               ) : (
                 ""

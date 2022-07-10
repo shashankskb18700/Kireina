@@ -9,8 +9,9 @@
 .h-scroll {
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  overflow-y: none;
+  overflow: auto;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
   /* overflow-x: hidden; */
   width: 95vw;
   /* height: 30vh; */
@@ -30,6 +31,11 @@
   object-fit: cover;
 
   margin-right: 20px;
+
+  /* margin-left: 20px; */
+}
+::-webkit-scrollbar {
+  display: none;
 }
 .wishlistName {
   position: absolute;
@@ -50,6 +56,89 @@
   position: relative;
 }
 
+.popUpCard {
+  color: black;
+  background-color: white;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  /* clip-path: polygon(
+    20% 1%,
+    100% 1%,
+    100% 98%,
+    19% 100%,
+    20% 17%,
+    20% 32%,
+    0% 26%,
+    19% 17%
+  ); */
+  /* clip-path: polygon(
+    9% 0%,
+    100% 1%,
+    100% 100%,
+    8% 100%,
+    9% 15%,
+    9% 26%,
+    0% 21%,
+    8% 16%
+  ); */
+
+  padding: 1.125em 1.5em;
+  font-size: 1.25em;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+  /* transform: scaleX(3); */
+  /* transition: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  transit */
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
+  /* transition: opacity 0.5s ease-in-out 0s; */
+  /* background-color: #f7710f; */
+}
+
+/* .popUpCard:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #c40c0c;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  left: -23px;
+}
+.popUpCard:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #fff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  left: -17px;
+} */
+
+.cardName {
+  text-align: center;
+  font-size: 30px;
+  color: red;
+}
+.ratingAndType {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4% 4% 4%;
+  align-items: center;
+  flex-direction: row;
+}
+
+.plotSt {
+  width: 95%;
+  padding-left: 5%;
+  padding-top: 5%;
+}
 /* .chain {
   position: absolute;
   left: 0;
