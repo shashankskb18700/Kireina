@@ -15,7 +15,7 @@ export const SearchReducer = (state = {}, action) => {
       // INITIAL_STATE = action.payload.data;
       // INITIAL_STATE.push(action.payload.data);
       // console.log(INITIAL_STATE);
-      return { ...state, srch: action.payload.data };
+      return { ...state, srch: action.payload };
     default:
       return state;
   }

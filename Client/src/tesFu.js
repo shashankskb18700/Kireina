@@ -21,6 +21,15 @@ class TesFu extends React.Component {
     //   mode: "cors",
     // });
     // console.log(dc);
+    // const s = await axios.get(
+    //   "https://neko-sama.fr/anime/info/7892-koe-no-katachi-vostfr"
+    // );
+
+    // const anotherData = await animeVostfr.loadAnime();
+    // var moreData = await animeVostfr.searchAnime(anotherData, "one piece");
+
+    // console.log(moreData);
+
     const { name } = this.state;
     const nam = {
       name,

@@ -122,6 +122,7 @@ const Wishlist = (props) => {
                 onClick={() =>
                   unWishlistItem(animeDetail[anime.indexOf(imgUrl)].$.id)
                 }
+                className="unWishlist"
               >
                 Remove{" "}
               </button>

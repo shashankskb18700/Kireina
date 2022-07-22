@@ -12,8 +12,40 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* background: linear-gradient(to left, red, white); */
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 255) 1%,
+    rgba(255, 4, 4, 0.096)
+  );
+  margin-bottom: 20px;
 }
 
 .WishlistTitleName {
   width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  font-family: wishlistTitleName;
+}
+
+.unWishlist {
+  width: 190px;
+  height: 25px;
+  font-size: 17px;
+  color: red;
+  border: none;
+  background-color: rgb(63, 63, 63);
+}
+.unWishlist:hover {
+  color: grey;
+  background: red;
+}
+
+@font-face {
+  font-family: wishlistTitleName;
+  src: url(../../Assets/fonts/MonoLisa-Medium.ttf);
 }

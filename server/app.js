@@ -9,11 +9,44 @@ import axios from "axios";
 import levenshtein from "fast-levenshtein";
 import translate from "translate";
 import _, { map } from "underscore";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
 
+const whitelist = ["https://kireinanime.web.app", "https://neko-sama.fr"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+// if you want to use it in offline means on local  host comment next line of code ;
+app.use(cors(corsOptions));
+
+// app.use(cors({ origin: "https://kireinanime.web.app/", credentials: true }));
+app.get("/", async (req, res) => {
+  // const htmlfil = await fs.readFileSync("./htmlResume.html", "utf-8");
+  // await pdf
+  //   .create(htmlfil, options)
+  //   .toFile("./Resume.pdf", function (err, res) {
+  //     if (err) return console.log(err);
+  //     console.log(res);
+  //     // { filename: '/app/businesscard.pdf' }
+  //   });
+  res.set("Access-Control-Allow-Origin", "*");
+  // res.send(l);
+
+  res.status(200).send("hello");
+  // res.download("./htmlResume.html", "htmlResume.html");
+  // res.send(htmlfil);
+});
 app.get("/serve", (req, res) => {
   console.log("herer");
   res.set("Access-Control-Allow-Origin", "*");
@@ -22,7 +55,7 @@ app.get("/serve", (req, res) => {
   });
 });
 
-app.post("/post", async (req, res) => {
+app.post("/search", async (req, res) => {
   console.log(req.body);
   // const response = await fetch(
   //   `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=~${req.body.name}`
@@ -35,12 +68,55 @@ app.post("/post", async (req, res) => {
     `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=~${req.body.name}`
   );
 
+  //----------------------------------------------------------------------------
+  // const displayInfo = function (info) {
+  //   console.log(`[INFO]  ${info}`);
+  // };
+  // const displayError = function (err) {
+  //   console.log(`[ERROR]  ${err}`);
+  // };
+
+  // let j = await axios.get(
+  //   "https://neko-sama.fr/anime/info/7892-koe-no-katachi-vostfr"
+  // );
+  // console.log(j);
+
+  // var d;
+
+  // displayInfo("Connexion en cours...");
+  // //VF same methods as vostfr
+  // api
+  //   .loadAnimeVF()
+  //   .then(async (data) => {
+  //     displayInfo("Connexion effectuée...");
+  //     console.log(data);
+  //   })
+  //   .catch((err) => displayError(err));
+
+  // api
+  //   .loadAnime()
+  //   .then(async (data) => {
+  //     displayInfo("Connexion effectuée...");
+
+  //     var another = api.searchAnime(data, req.body.name);
+  //     res.send(another);
+  //   })
+  //   .catch((err) => displayError(err));
+
+  //----------------------------------------------------------------------
+
   //animeVostfr api
-  const anotherData = await animeVostfr.loadAnime();
+
+  // const dataVF = await animeVostfr.loadAnimeVF();
+  // const anotherData = await animeVostfr.loadAnime(); ///***  */
 
   // var moreData = await animeVostfr.searchAnime(anotherData, `${req.body.name}`);
-  var moreData = await animeVostfr.searchAnime(anotherData, req.body.name);
-  console.log(moreData);
+  //
+
+  // var moreData = await animeVostfr.searchAnime(anotherData, req.body.name);
+  // console.log(moreData); ///***  */
+
+  //
   // res.send(JSON.stringify(moreData));
   // console.log(va.data);
   // res.send("request complete");
@@ -58,21 +134,34 @@ app.post("/post", async (req, res) => {
   // console.log("Youtube embed trailer link: ", valu.trailer);
   // console.log("Episodes: ", valu.eps);
 
-  //
-  var bestScore = animeVostfr.bestScoreAnime(anotherData);
-  var popularAnime = animeVostfr.popularAnime(anotherData);
-  //
+  // //
+  // var bestScore = animeVostfr.bestScoreAnime(anotherData); ///***  */
+  // var popularAnime = animeVostfr.popularAnime(anotherData); ///***  */
+
   xml2js.parseString(va.data, function (err, result) {
     // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
     console.log(result);
     let rre = {
       result: result,
-      d: moreData,
-      bestScore: bestScore,
-      popularAnime: popularAnime,
+      // d: moreData,
+      //
+      //
+      // only offline
+      // d: j,
+      //
+      //
+      // bestScore: bestScore,
+      // popularAnime: popularAnime,
     };
+    // res.set("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "https://kireinanime.web.app/"); // update to match the domain you will make the request from
+    // res.header(
+    //   "Access-Control-Allow-Headers",
+    //   "Origin, X-Requested-With, Content-Type, Accept"
+    // );
     res.send(JSON.stringify(rre, null, 2));
   });
+
   // console.log(va);
   // console.log("i am runnig");
   // res.status(200).send("data updated");
@@ -149,8 +238,8 @@ app.post("/mored", async (req, res) => {
   res.send(JSON.stringify(valu));
 });
 
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log("on port 5000");
 });

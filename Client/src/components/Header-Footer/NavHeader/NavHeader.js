@@ -20,7 +20,8 @@ const NavHeader = () => {
     <div className="NavHeader">
       <h2 className="title-name">Kireina</h2>
       <div className="searchCont">
-        {window.location.href === `http://localhost:3000/animeD` ? (
+        {window.location.href === `http://localhost:3000/animeD` ||
+        `https://kireinanime.web.app/animeD` ? (
           <Search />
         ) : (
           ""

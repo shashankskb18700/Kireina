@@ -72,7 +72,8 @@ const Search = (props) => {
       {/* // this call will fetch json dadta it to backend */}
       {/* {console.log(window.location.href)} */}
 
-      {window.location.href === `http://localhost:3000/` ? (
+      {window.location.href === `http://localhost:3000/` ||
+      `https://kireinanime.web.app/` ? (
         <Link to="/animeD">
           <button className="sub-but" onClick={() => props.backend(title)}>
             <img src={searchIcon} className="submit-png" />

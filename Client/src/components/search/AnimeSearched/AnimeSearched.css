@@ -14,9 +14,26 @@
 .anim-mang {
   width: 230px;
   height: 290px;
+
+  background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255));
 }
 
 .title-nam {
   color: red;
   width: 230px;
+}
+
+.wishlistIcon {
+  /* position: absolute; */
+  width: 30px;
+  top: 200px;
+}
+
+.iWhite {
+  text-shadow: 0 0 5px rgb(247, 218, 166), 0 0 25px rgb(245, 210, 151),
+    0 0 50px rgb(243, 205, 133), 0 0 100px rgb(245, 200, 110);
+}
+.iRed {
+  text-shadow: 0 0 5px rgb(255, 5, 5), 0 0 25px rgb(252, 5, 5),
+    0 0 50px rgb(245, 0, 0), 0 0 100px rgb(253, 9, 9);
 }

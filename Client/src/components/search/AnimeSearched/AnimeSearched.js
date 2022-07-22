@@ -303,31 +303,77 @@ const AnimeSearched = (props) => {
       <div className="anime-manga-grid">
         {anime.map((a) => (
           <div>
-            <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
-              <img
-                className="anim-mang"
-                src={a}
-                key={a}
-                onClick={() => fullDetail(anime.indexOf(a))}
-              />
-            </Link>
-            <br></br>
-            {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
+            <div
+              style={{
+                position: "relative",
+              }}
+            >
+              <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
+                <img
+                  className="anim-mang"
+                  src={a}
+                  key={a}
+                  onClick={() => fullDetail(anime.indexOf(a))}
+                />
+              </Link>
+              <br></br>
+              {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
               <Wishlist />
             </div> */}
-            {wishState.indexOf(animeDetail[anime.indexOf(a)].$.id) > 0 ? (
-              <button
-                type="button"
-                onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
-                style={{ width: "50px", height: "50px", background: "red" }}
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
-                style={{ width: "50px", height: "50px" }}
-              />
-            )}
+              {wishState.indexOf(animeDetail[anime.indexOf(a)].$.id) > 0 ? (
+                <div
+                  onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
+                  style={{
+                    width: "",
+                    height: "50px",
+                    // background: "red",
+                    //circle create kkaro use andar red  ya white dil hoga
+                    position: "absolute",
+                    top: "77%",
+                    left: "6%",
+                  }}
+                  className="wishlistIconRed"
+                >
+                  {" "}
+                  <i
+                    className="fas fa-heart nav fa-2x iRed"
+                    style={{
+                      color: "red",
+                      width: "100%",
+                      height: "fit-content",
+                      // background: "white",
+                      borderRadius: "5px",
+                      // border: "2px solid red",
+                    }}
+                  ></i>
+                </div>
+              ) : (
+                <div
+                  type="button"
+                  onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
+                  style={{
+                    // width: "50px",
+                    // height: "50px",
+                    position: "absolute",
+                    top: "77%",
+                    left: "6%",
+                  }}
+                  className="wishlistIconWhite"
+                >
+                  <i
+                    className="fas fa-heart nav fa-2x iWhite"
+                    style={{
+                      color: "white",
+                      // width: "200px",
+                      height: "fit-content",
+                      // background: "red",
+                      borderRadius: "5px",
+                    }}
+                  ></i>
+                </div>
+              )}
+            </div>
+
             {/* <button
               type="button"
               onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
