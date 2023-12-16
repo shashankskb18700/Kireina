@@ -24,28 +24,35 @@ export const backend = (title) => {
       return title || title_english || title_romanji || others;
     };
 
-    const vostfrData = await axios.get(
-      "https://neko-sama.fr/animes-search-vostfr.json"
-    );
+    // const vostfrData = await axios.get(
+    //   "https://neko-sama.fr/animes-search-vostfr.json"
+    // );
+    const nm = { name: title };
 
-    const additional = vostfrData.data.filter((elem) =>
-      getAnimeByTitle(elem, title)
-    );
+    const vostData = await axios.post("/vostfr", nm);
+
+    console.log("using backend fordata");
+    console.log(vostData);
+
+    // const additional = vostfrData.data.filter((elem) =>
+    //   getAnimeByTitle(elem, title)
+    // );
 
     //
 
     //online
 
-    const data = await axios.post(
-      "https://evening-thicket-96284.herokuapp.com/search",
-      name
-    );
+    // const data = await axios.post(
+    //   "https://evening-thicket-96284.herokuapp.com/search",
+    //   name
+    // );
 
     // offline
+    // console.log(additional);
 
-    // const data = await axios.post("/search", name);
+    const data = await axios.post("/search", name);
 
-    const dataObject = { result: data.data.result, d: additional };
+    const dataObject = { result: data.data.result, d: vostData.data };
 
     // console.log("------------------------------------");
     // console.log(data.data);

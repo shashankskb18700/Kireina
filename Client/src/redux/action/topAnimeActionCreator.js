@@ -20,11 +20,11 @@ export const TopAnimeActionCreator = (animeIdArray, animeIdObject) => {
 
     const name = { name: animeIdString };
     if (animeIdString.length > 0) {
-      data = await axios.post(
-        "https://evening-thicket-96284.herokuapp.com/wishlist",
-        name
-      );
-      // data = await axios.post("/wishlist", name);
+      // data = await axios.post(
+      //   "https://evening-thicket-96284.herokuapp.com/wishlist",
+      //   name
+      // );
+      data = await axios.post("/wishlist", name);
     }
 
     console.log(data.data.wishlisted.ann.anime);
