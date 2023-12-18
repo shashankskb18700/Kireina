@@ -65,6 +65,7 @@ const AnimeSearched = (props) => {
     if (Object.keys(props.detail.srch).length !== 0) {
       console.log(detail[0]);
       const animeManga = Object.values(detail[0].ann);
+      // const animeManga = [];
 
       // anime has two array one of really anime and another of manga so to seprate just check they have two array or not and split anime and manga apart
       console.log(animeManga);
@@ -160,7 +161,7 @@ const AnimeSearched = (props) => {
   // console.log(anime);
   // console.log(manga);
 
-  const fullDetail = (index) => {
+  const fullDetail = async (index) => {
     let name =
       animeDetail[index].$.name.length > animeName[index].length
         ? animeDetail[index].$.name
@@ -170,7 +171,11 @@ const AnimeSearched = (props) => {
     // console.log(animeDetail);
     setArrState(animeDetail[index]);
     // <DetailedAnime allInfo={index} />;
-    props.clickedAnime(animeDetail[index], props.full.srchRedu.srch.d, name);
+    await props.clickedAnime(
+      animeDetail[index],
+      props.full.srchRedu.srch.d,
+      name
+    );
   };
 
   const fullDetailManga = (index) => {

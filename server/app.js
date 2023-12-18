@@ -11,6 +11,8 @@ import translate from "translate";
 import _, { map } from "underscore";
 import cors from "cors";
 import { readFile } from "fs/promises";
+import cloudscraper from "cloudscraper";
+// import { DomParser } from "dom-parser";
 
 const app = express();
 
@@ -28,8 +30,10 @@ const corsOptions = {
   credentials: true,
 };
 
+// "https://neko-sama.fr"
+
 // if you want to use it in offline means on local  host comment next line of code ;
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // app.use(cors({ origin: "https://kireinanime.web.app/", credentials: true }));
 app.get("/", async (req, res) => {
@@ -44,9 +48,7 @@ app.get("/", async (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
   // res.send(l);
 
-  res.status(200).send("hello");
-  // res.download("./htmlResume.html", "htmlResume.html");
-  // res.send(htmlfil);
+  // res.status(200).send("hello");
 });
 app.get("/serve", (req, res) => {
   console.log("herer");
@@ -265,13 +267,77 @@ app.post("/vostfr", async (req, res) => {
     await readFile(new URL("./vostfrData.json", import.meta.url))
   );
 
-  console.log(vostfrData);
+  // console.log(vostfrData);
 
   const additional = vostfrData.filter((elem) => getAnimeByTitle(elem, title));
 
-  console.log(additional);
+  // console.log(additional);
 
   res.send(JSON.stringify(additional));
+});
+
+app.post("/moreData", async (req, res) => {
+  // console.log(req.body);
+
+  let moreDetails = {};
+  // try {
+  //   moreDetails = await animeVostfr.getMoreInformation(req.body.url);
+  // } catch (e) {
+  //   console.log(e);
+  // }
+
+  try {
+    moreDetails = await cloudscraper(`https://www.neko-sama.fr${req.body.url}`);
+  } catch (e) {
+    console.log(e);
+  }
+
+  // let parser = new DomParser();
+  // let document = parser.parseFromString(moreDetails);
+  // let synop = document
+  //   .getElementsByClassName("synopsis")[0]
+  //   .getElementsByTagName("p")[0].innerHTML;
+  // let ytb = document.getElementsByTagName("iframe")[0];
+  // let banner = document.getElementById("head").getAttribute("style");
+  // banner = banner.substring(banner.indexOf("url("));
+  // banner = banner.substring(4, banner.indexOf(")"));
+
+  // let result = html.substring(html.indexOf("episodes"));
+  // result = result.substring(0, result.indexOf("$(document)"));
+  // result = eval(result);
+
+  // let parser = new DomParser();
+  // let document = parseFromString(moreDetails.data);
+  // let synop = document
+  //   .getElementsByClassName("synopsis")[0]
+  //   .getElementsByTagName("p")[0].innerHTML;
+  // let ytb = document.getElementsByTagName("iframe")[0];
+  // let trailer = ytb ? ytb.getAttribute("src") : false;
+  // let banner = document.getElementById("head").getAttribute("style");
+  // banner = banner.substring(banner.indexOf("url("));
+  // banner = banner.substring(4, banner.indexOf(")"));
+
+  console.log("moreDetails ---------------------------------------------");
+  // banner = moreDetails.banner;
+  // synop = moreDetails.synop;
+  // trailer = moreDetails.trailer;
+  // const data = { banner: banner, synop: synop, trailer: trailer };
+  // console.log("req.body.url" + req.body.url);
+  //   return{
+  //     synop: synop,
+  //     banner: banner,
+  //     trailer: ytb ? ytb.getAttribute('src') : false,
+  //     eps: result
+  // };
+  // console.log("synop" + synop);
+  // console.log("banner" + banner);
+  // console.log("ytb" + ytb);
+  // console.log(moreDetails.synop);
+  // console.log(moreDetails.trailer);
+
+  res.send(JSON.stringify(moreDetails));
+
+  // res.send("");
 });
 
 const PORT = process.env.PORT || 5000;

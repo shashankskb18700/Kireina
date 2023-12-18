@@ -29,10 +29,17 @@ export const backend = (title) => {
     // );
     const nm = { name: title };
 
-    const vostData = await axios.post("/vostfr", nm);
+    //offline
+    // const vostData = await axios.post("/vostfr", nm); //.
 
-    console.log("using backend fordata");
-    console.log(vostData);
+    // online
+    const vostData = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/vostfr`,
+      nm
+    );
+
+    // console.log("using backend fordata");
+    // console.log(vostData);
 
     // const additional = vostfrData.data.filter((elem) =>
     //   getAnimeByTitle(elem, title)
@@ -40,17 +47,17 @@ export const backend = (title) => {
 
     //
 
-    //online
-
-    // const data = await axios.post(
-    //   "https://evening-thicket-96284.herokuapp.com/search",
-    //   name
-    // );
-
     // offline
     // console.log(additional);
 
-    const data = await axios.post("/search", name);
+    //offline
+    // const data = await axios.post("/search", name);
+
+    // online
+    const data = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/search`,
+      name
+    );
 
     const dataObject = { result: data.data.result, d: vostData.data };
 

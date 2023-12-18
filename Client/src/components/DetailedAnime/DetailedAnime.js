@@ -18,12 +18,15 @@ const DetailedAnime = (props) => {
   const [vostfr, setVostfr] = useState({});
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(1);
+  const [poster, SetPoster] = useState("");
+  const [ytubeurl, SetytubeUrl] = useState("");
+
   let plotStory = "";
   let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
   // setAllInfo(allInfo);
   console.log(props.detail);
-  console.log(props.detail.Clickd.newD);
+  // console.log(props.detail.Clickd[0]);
   // setAllInfo(props.detail.Clickd.newD);
   if (props.detail.Clickd.newD) {
     if (allInfo !== props.detail.Clickd.newD.ann) {
@@ -129,6 +132,8 @@ const DetailedAnime = (props) => {
   let youtubeUrl = props.detail.Clickd.newD
     ? props.detail.Clickd.newD.vostr.data.trailer
     : "";
+  // let bannerUrl = "";
+  // let youtubeUrl = "";
   // console.log(props.detail.Clickd.newD.vostr.data.banner);
 
   const staffList = {

@@ -50,7 +50,7 @@ export const clickedAnime = (picked, vostfr, name) => {
 
   //
 
-  return async function (dispatch, getState) {
+  return async (dispatch) => {
     // const response = await axios.post(
     //   "https://evening-thicket-96284.herokuapp.com/mored",
     //   {
@@ -112,9 +112,22 @@ export const clickedAnime = (picked, vostfr, name) => {
 
     //
 
-    // for online
+    // const valu = await axios.get(`https://www.neko-sama.fr${moreData.url}`);
 
-    const valu = await axios.get(`https://www.neko-sama.fr${moreData.url}`);
+    const url = { url: moreData.url };
+
+    // offline
+
+    // let vs;
+
+    // vs = await axios.post("/moreData", url);
+
+    // online
+    let vs = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/moreData`,
+      url
+    );
+    // console.log(vs.data);
     // valu.synop = valu.synop.replace(/l*L*&#\d*;/g, "");
 
     //language conversion setup
@@ -131,7 +144,7 @@ export const clickedAnime = (picked, vostfr, name) => {
     // valu.synop = _.unescape(valu.synop);
 
     let parser = new DomParser();
-    let document = parser.parseFromString(valu.data);
+    let document = parser.parseFromString(vs.data);
     let synop = document
       .getElementsByClassName("synopsis")[0]
       .getElementsByTagName("p")[0].innerHTML;
@@ -146,14 +159,35 @@ export const clickedAnime = (picked, vostfr, name) => {
     // result = eval(result);
 
     // console.log(synop + " " + ytb + " " + banner);
+    //
+    // console.log(valu.data);
 
-    console.log(valu.data);
-
-    console.log("Synopsis: ", synop);
-    console.log("Banner: ", banner);
-    console.log("Youtube embed trailer link: ", trailer);
-    console.log("Episodes: ");
+    // console.log("Synopsis: ", synop);
+    // console.log("Banner: ", banner);
+    // console.log("Youtube embed trailer link: ", trailer);
+    // console.log("Episodes: ");
     // res.send(JSON.stringify(valu));
+
+    // console.log("banner form clicke" + vs.banner);
+    // console.log(vs.trailer);
+    // console.log(mdata);
+
+    // const vs = await axios.post("/moreData", url);
+    //   .then((vs) => {
+    //   const data = {
+    //     banner: vs.banner,
+    //     synop: vs.synop,
+    //     trailer: vs.trailer,
+    //     // episode: result,
+    //   };
+    //   const response = { data: data };
+
+    //   dispatch({
+    //     type: "CLICK",
+    //     payload: { vostr: response, ann: picked, name: name, url: url },
+    //   });
+    // });
+    console.log(vs);
 
     const data = {
       banner: banner,
@@ -175,8 +209,6 @@ export const clickedAnime = (picked, vostfr, name) => {
     //   type: picked.$.type,
     // });
 
-    console.log("***************************************");
-    console.log(response);
     dispatch({
       type: "CLICK",
       payload: { vostr: response, ann: picked, name: name },

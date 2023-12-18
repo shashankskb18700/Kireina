@@ -16,7 +16,9 @@
   "dependencies": {
     "anime-vostfr": "^1.2.3",
     "axios": "^0.25.0",
+    "cloudscraper": "^4.6.0",
     "cors": "^2.8.5",
+    "dom-parser": "^1.1.5",
     "express": "^4.17.2",
     "fast-levenshtein": "^3.0.0",
     "node-fetch": "^3.2.0",
