@@ -56,37 +56,28 @@ const Auth = (props) => {
 
   return (
     <div className="authh">
-      <div className="brandName"> Kiriena</div>
-      <div className="container">
+      <div className="intro">
+        <div className="brandName"> Kiriena</div>
+
         <div className="gif">
           {" "}
           <div className="slog">
-            <span className="firstLet" style={{ fontSize: "80px" }}>
-              S
-            </span>
-            EARCH ,
-            <span className="firstLet" style={{ fontSize: "80px" }}>
-              T
-            </span>
-            RACK <br></br>
-            <span className="firstLet" style={{ fontSize: "80px" }}>
-              &
-            </span>
+            <span className="firstLet">S</span>
+            EARCH ,<span className="firstLet">T</span>
+            RACK
+            <span className="firstLet">&</span>
             &nbsp;
-            <span className="firstLet" style={{ fontSize: "80px" }}>
-              D
-            </span>
-            ISCOVER{" "}
-            <span className="firstLet" style={{ fontSize: "80px" }}>
-              A
-            </span>
+            <span className="firstLet">D</span>
+            ISCOVER <span className="firstLet">A</span>
             NIME
           </div>
         </div>
+      </div>
+      <div className="container">
         <div className="au">
           {newUser ? <SignUp /> : <SignIn />}
 
-          <div onClick={onClick}>
+          <div onClick={onClick} style={{ cursor: "pointer" }}>
             {newUser
               ? "Already a user ? please Log in     "
               : "New user ? please sign up    "}{" "}

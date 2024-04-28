@@ -118,15 +118,15 @@ export const clickedAnime = (picked, vostfr, name) => {
 
     // offline
 
-    // let vs;
+    let vs;
 
-    // vs = await axios.post("/moreData", url);
+    vs = await axios.post("/moreData", url);
 
     // online
-    let vs = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/moreData`,
-      url
-    );
+    // vs = await axios.post(
+    //   `${process.env.REACT_APP_API_BASE_URL}/moreData`,
+    //   url
+    // );
     // console.log(vs.data);
     // valu.synop = valu.synop.replace(/l*L*&#\d*;/g, "");
 
@@ -143,16 +143,18 @@ export const clickedAnime = (picked, vostfr, name) => {
     // valu.synop = text;
     // valu.synop = _.unescape(valu.synop);
 
-    let parser = new DomParser();
-    let document = parser.parseFromString(vs.data);
-    let synop = document
-      .getElementsByClassName("synopsis")[0]
-      .getElementsByTagName("p")[0].innerHTML;
-    let ytb = document.getElementsByTagName("iframe")[0];
-    let trailer = ytb ? ytb.getAttribute("src") : false;
-    let banner = document.getElementById("head").getAttribute("style");
-    banner = banner.substring(banner.indexOf("url("));
-    banner = banner.substring(4, banner.indexOf(")"));
+    // let parser = new DomParser();
+    // let document = parser.parseFromString(vs.data);
+
+    // let synop = document
+    //   .getElementsByClassName("synopsis")[0]
+    //   .getElementsByTagName("p")[0].innerHTML;
+
+    // let ytb = document.getElementsByTagName("iframe")[0];
+    // let trailer = ytb ? ytb.getAttribute("src") : false;
+    // let banner = document.getElementById("head").getAttribute("style");
+    // banner = banner.substring(banner.indexOf("url("));
+    // banner = banner.substring(4, banner.indexOf(")"));
 
     // let result = valu.data.substring(valu.data.indexOf("episodes"));
     // result = result.substring(0, result.indexOf("$(document)"));
@@ -190,9 +192,9 @@ export const clickedAnime = (picked, vostfr, name) => {
     console.log(vs);
 
     const data = {
-      banner: banner,
-      synop: synop,
-      trailer: trailer,
+      banner: "",
+      synop: "",
+      trailer: "",
       // episode: result,
     };
     const response = { data: data };

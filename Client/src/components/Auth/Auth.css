@@ -8,25 +8,20 @@
   width: 100vw;
   height: 100vh;
 
-  background: mintcream;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   /* background: blanchedalmond; */
   /* background: url(../../Assets/Harribel\ Ulquiorra\ Cifer\ wallpaper\ 1920x1080\ 292324\ WallpaperUP.jpg); */
   background-size: cover;
 
-  background-image: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0),
-      rgba(16, 14, 122, 0.616)
-    ),
+  background-image: linear-gradient(to right bottom, #0a0908cb, #0a0908d2),
     url(../../Assets//Harribel\ Ulquiorra\ Cifer\ wallpaper\ 1920x1080\ 292324\ WallpaperUP.jpg);
 }
 .gif {
   color: white;
-  font-size: 50px;
+  font-size: 2rem;
   font-family: boold;
   /* width: 400px; */
   /* height: 400px; */
@@ -37,11 +32,12 @@
   /* background-color: antiquewhite; */
 }
 .firstLet {
-  -webkit-text-stroke: 8px white;
+  -webkit-text-stroke: 2px white;
+  font-size: 3rem;
 }
 .container {
   display: flex;
-  width: 90vw;
+
   justify-content: space-between;
   /* margin: 0px 50px 0 50px; */
   align-items: center;
@@ -58,6 +54,10 @@
   ); */
 }
 
+.intro {
+  width: 100vw;
+  text-align: center;
+}
 /* linear-gradient(
     to right bottom,
     #297ea6 0%,
@@ -76,50 +76,59 @@
   ); */
   /* background-color: light; */
   /* background: linear-gradient(#7aabac, #b7dfec); */
-  background: rgba(255, 255, 255, 40%);
+  background: #f2f4f3;
   /* mix-blend-mode: color-dodge; */
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   text-align: end;
   /* width: 40vw; */
-  color: white;
+  color: black;
   font-family: sans-serif;
   font-style: italic;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin-top: 5%;
   /* padding-bottom: 10px;
   padding-right: 5px;
   padding-left: 10px; */
   /* margin-left: 40%; */
+  padding: 1em;
 }
 .au :hover {
-  color: red;
+  color: #a9927d;
+  transition: 0.5s;
 }
 
 .brandName {
-  font-size: 160px;
-  font-weight: 800;
-  position: absolute;
-  top: 50px;
-  left: 20px;
+  /* font-size: 160px; */
+  /* font-weight: 800; */
+  /* position: absolute; */
+  /* top: 50px;
+  left: 20px; */
   /* color: white; */
   /* -webkit-text-fill-color: transparent; */
   /* text-shadow: 0px 2px 2px rgba(233, 67, 67, 0.897); */
   /* background: rgba(255, 255, 255, 0.2); */
 
   font-family: boold;
+  font-size: 4rem;
   /* border: solid #7aabac 4px; */
-  -webkit-text-stroke: 12px white;
+  -webkit-text-stroke: 5px #f2f4f3;
   mix-blend-mode: difference;
 }
 
 .slog {
-  margin-top: 90px;
+  /* margin-top: 90px; */
 }
 
 @font-face {
   font-family: boold;
 
   src: url(/src/Assets/fonts/MonoLisa-Bold.ttf);
+}
+
+@font-face {
+  font-family: monalisaRegular;
+
+  src: url(/src/Assets/fonts/MonoLisa-Regular.ttf);
 }

@@ -12,6 +12,7 @@ import _, { map } from "underscore";
 import cors from "cors";
 import { readFile } from "fs/promises";
 import cloudscraper from "cloudscraper";
+
 // import { DomParser } from "dom-parser";
 
 const app = express();
@@ -33,7 +34,7 @@ const corsOptions = {
 // "https://neko-sama.fr"
 
 // if you want to use it in offline means on local  host comment next line of code ;
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // app.use(cors({ origin: "https://kireinanime.web.app/", credentials: true }));
 app.get("/", async (req, res) => {
@@ -291,6 +292,14 @@ app.post("/moreData", async (req, res) => {
   } catch (e) {
     console.log(e);
   }
+
+  // try {
+  //   moreDetails = CloudflareBypasser.request(
+  //     `https://www.neko-sama.fr${req.body.url}`
+  //   );
+  // } catch (e) {
+  //   console.log(e);
+  // }
 
   // let parser = new DomParser();
   // let document = parser.parseFromString(moreDetails);

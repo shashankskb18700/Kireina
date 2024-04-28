@@ -1,6 +1,4 @@
 .login-form {
-  width: 475px;
-  height: 55vh;
   padding: 2em;
   position: relative;
   /* background: rgba(0, 0, 0, 0.15); */
@@ -8,7 +6,8 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  border-radius: 15%;
+  /* border-radius: 15%; */
+  font-family: monalisaRegular;
 }
 /* .login-form:before {
   content: "";
@@ -45,6 +44,7 @@
   border: 0;
   color: #8f8f8f;
   font-size: 1rem;
+  font-family: monalisaRegular;
 }
 .lf--input:focus {
   outline: none;
@@ -55,14 +55,15 @@
   display: block;
   padding: 1em;
   width: 100%;
-  background: linear-gradient(to right, #ffffff, #09c5a9);
+  background: #22333b;
   /* mix-blend-mode: difference; */
   border: 0;
-  color: black;
+  color: #f2f4f3;
   /* -webkit-text-fill-color: transparent; */
   cursor: pointer;
   font-size: 0.75em;
   font-weight: 600;
+  font-family: monalisaRegular;
   /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); */
 }
 .lf--submit:focus {
@@ -79,4 +80,10 @@
 }
 ::placeholder {
   color: #8f8f8f;
+}
+
+@font-face {
+  font-family: monalisaRegular;
+
+  src: url(/src/Assets/fonts/MonoLisa-Regular.ttf);
 }

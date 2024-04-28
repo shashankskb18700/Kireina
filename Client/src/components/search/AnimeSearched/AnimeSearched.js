@@ -56,7 +56,9 @@ const AnimeSearched = (props) => {
   let anotherTitle = "";
   // console.log(props.detail.srch);
 
-  let email = authService.getAuth().currentUser.email;
+  let email = authService.getAuth().currentUser
+    ? authService.getAuth().currentUser.email
+    : "";
 
   if (Object.values(props.detail)[0]) {
     const detail = Object.values(props.detail.srch);
@@ -64,7 +66,7 @@ const AnimeSearched = (props) => {
 
     if (Object.keys(props.detail.srch).length !== 0) {
       console.log(detail[0]);
-      const animeManga = Object.values(detail[0].ann);
+      const animeManga = detail[0] ? Object.values(detail[0].ann) : [];
       // const animeManga = [];
 
       // anime has two array one of really anime and another of manga so to seprate just check they have two array or not and split anime and manga apart
