@@ -77,10 +77,13 @@ const Auth = (props) => {
         <div className="au">
           {newUser ? <SignUp /> : <SignIn />}
 
-          <div onClick={onClick} style={{ cursor: "pointer" }}>
+          <div
+            onClick={onClick}
+            style={{ color: "white", fontStyle: "normal", cursor: "pointer" }}
+          >
             {newUser
-              ? "Already a user ? please Log in     "
-              : "New user ? please sign up    "}{" "}
+              ? "Already a user ? Please Log in     "
+              : "New user ? Please sign up    "}{" "}
           </div>
         </div>
       </div>

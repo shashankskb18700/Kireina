@@ -9,7 +9,7 @@
   height: 100vh;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   /* background: blanchedalmond; */
@@ -76,7 +76,7 @@
   ); */
   /* background-color: light; */
   /* background: linear-gradient(#7aabac, #b7dfec); */
-  background: #f2f4f3;
+  background: #f2f4f393;
   /* mix-blend-mode: color-dodge; */
   display: flex;
   justify-content: space-around;
@@ -119,6 +119,18 @@
 
 .slog {
   /* margin-top: 90px; */
+}
+
+@media (max-width: 600px) {
+  .gif {
+    font-size: 1.2rem;
+  }
+  .firstLet {
+    font-size: 1.7rem;
+  }
+  .brandName {
+    font-size: 3.5rem;
+  }
 }
 
 @font-face {

@@ -1,4 +1,5 @@
 .login-form {
+  width: 30vw;
   padding: 2em;
   position: relative;
   /* background: rgba(0, 0, 0, 0.15); */
@@ -7,7 +8,7 @@
   justify-content: space-around;
   flex-direction: column;
   /* border-radius: 15%; */
-  font-family: monalisaRegular;
+  /* font-family: monalisaRegular; */
 }
 /* .login-form:before {
   content: "";
@@ -31,7 +32,6 @@
   margin-bottom: 1em;
 }
 .lf--label {
-  width: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,4 +86,10 @@
   font-family: monalisaRegular;
 
   src: url(/src/Assets/fonts/MonoLisa-Regular.ttf);
+}
+
+@media (max-width: 500px) {
+  .login-form {
+    width: 85vw;
+  }
 }
