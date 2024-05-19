@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "anime-vostfr": "^1.2.3",
+    "anime-wallpaper": "^2.0.0",
     "axios": "^0.25.0",
     "cloudscraper": "^4.6.0",
     "cors": "^2.8.5",

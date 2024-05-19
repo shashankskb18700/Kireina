@@ -31,6 +31,8 @@ const corsOptions = {
   credentials: true,
 };
 
+import { AnimeWallpaper, AnimeSource } from "anime-wallpaper";
+const wallpaper = new AnimeWallpaper();
 // "https://neko-sama.fr"
 
 // if you want to use it in offline means on local  host comment next line of code ;
@@ -71,6 +73,17 @@ app.post("/search", async (req, res) => {
   const va = await axios.get(
     `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=~${req.body.name}`
   );
+
+  let coverPic = "";
+
+  try {
+    coverPic = await wallpaper.search(
+      { title: req.body.name },
+      AnimeSource.WallHaven
+    );
+  } catch (e) {
+    console.log(e);
+  }
 
   //----------------------------------------------------------------------------
   // const displayInfo = function (info) {
@@ -145,8 +158,10 @@ app.post("/search", async (req, res) => {
   xml2js.parseString(va.data, function (err, result) {
     // fs.writeFileSync("./real.json", JSON.stringify(result, null, 2), "utf-8");
     console.log(result);
+
     let rre = {
       result: result,
+      wallpaper: coverPic,
       // d: moreData,
       //
       //

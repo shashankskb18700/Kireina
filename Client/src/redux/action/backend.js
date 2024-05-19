@@ -59,7 +59,11 @@ export const backend = (title) => {
     //   name
     // );
 
-    const dataObject = { result: data.data.result, d: vostData.data };
+    const dataObject = {
+      result: data.data.result,
+      d: vostData.data,
+      wallpaper: data.data.wallpaper,
+    };
 
     // console.log("------------------------------------");
     // console.log(data.data);

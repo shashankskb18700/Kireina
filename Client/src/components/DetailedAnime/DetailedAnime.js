@@ -25,7 +25,7 @@ const DetailedAnime = (props) => {
   let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
   // setAllInfo(allInfo);
-  console.log(props.detail);
+  console.log(props.detail.srchRedu.srch.wallpaper);
   // console.log(props.detail.Clickd[0]);
   // setAllInfo(props.detail.Clickd.newD);
   if (props.detail.Clickd.newD) {
@@ -125,9 +125,9 @@ const DetailedAnime = (props) => {
   //
   // console.log(Object.values(allInfo.info[0].img[0])[0].src);
   // style={{background:url(props.detail.Clickd.newD.vostr.data.banner)}}
-  let bannerUrl = props.detail.Clickd.newD
-    ? props.detail.Clickd.newD.vostr.data.banner
-    : "";
+
+  const coverPic = props.detail.srchRedu.srch.wallpaper;
+  let bannerUrl = coverPic[Math.floor(Math.random() * coverPic.length)];
 
   let youtubeUrl = props.detail.Clickd.newD
     ? props.detail.Clickd.newD.vostr.data.trailer
@@ -224,7 +224,7 @@ const DetailedAnime = (props) => {
         <div
           className="imgAndTitle"
           style={{
-            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(255 ,255, 255) ), url(${bannerUrl})`,
+            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(255 ,255, 255) ), url(${bannerUrl.image})`,
             // backgroundColor: "rgb(128 128 128)",
 
             backgroundPosition: "centre",
