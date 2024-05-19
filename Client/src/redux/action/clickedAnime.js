@@ -192,9 +192,9 @@ export const clickedAnime = (picked, vostfr, name) => {
     console.log(vs);
 
     const data = {
-      banner: "",
-      synop: "",
-      trailer: "",
+      banner: vs.banner,
+      synop: vs.synop,
+      trailer: vs.trailer,
       // episode: result,
     };
     const response = { data: data };

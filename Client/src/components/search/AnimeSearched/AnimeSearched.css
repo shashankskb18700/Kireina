@@ -7,20 +7,25 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 50px 35px;
-  margin-left: 4%;
+  margin-left: 2.4vw;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  justify-content: center;
+
   /* margin-left: 8%;
   margin-right: 8%; */
 }
 .anim-mang {
-  width: 230px;
-  height: 290px;
+  width: 20vw;
+  height: 45vh;
 
-  background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255));
+  /* background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255)); */
 }
 
 .title-nam {
   color: red;
-  width: 230px;
+  /* width: 230px; */
+  width: 20vw;
 }
 
 .wishlistIcon {
@@ -36,4 +41,21 @@
 .iRed {
   text-shadow: 0 0 5px rgb(255, 5, 5), 0 0 25px rgb(252, 5, 5),
     0 0 50px rgb(245, 0, 0), 0 0 100px rgb(253, 9, 9);
+}
+
+@media (max-width: 600px) {
+  .anime-manga-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px 35px;
+    margin-left: 4%;
+    /* margin-left: 8%;
+    margin-right: 8%; */
+  }
+  .anim-mang {
+    width: 40vw;
+    height: 30vh;
+
+    /* background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255)); */
+  }
 }

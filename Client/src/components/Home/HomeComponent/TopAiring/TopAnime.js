@@ -67,7 +67,7 @@ const TopAnime = ({ animeId }) => {
       <div className="h-scroll">
         {anime.map((imgUrl) => (
           <div
-            onMouseEnter={() =>
+            onClick={() =>
               setTimeout(function () {
                 displayCard(anime.indexOf(imgUrl));
               }, 500)
@@ -155,5 +155,3 @@ const TopAnime = ({ animeId }) => {
   );
 };
 export default TopAnime;
-
-// you are unable to acces top airing because of this syntax that you have use in passing value  i.e  item ? item.topAiring: undefined , there might be case that item has something called headr but it dont have top airing but again after getting value in top airing you are unable to use it

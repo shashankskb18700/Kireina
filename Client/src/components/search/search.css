@@ -5,23 +5,27 @@
 .inp {
   width: 100%;
   height: 100%;
+  font-size: 1.3em;
+  color: #f2f4f3;
   border: none;
   outline: none;
-  background-color: grey;
+  background-color: #22333b;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 .inp:focus {
   outline: none;
-  background-color: rgba(128, 128, 128, 0.63);
+  /* background-color: rgba(128, 128, 128, 0.63); */
 }
 .sub-but {
   outline: none;
   border: none;
-  background-color: grey;
-  position: absolute;
+  background-color: #22333b;
+  /* position: absolute; */
+  scale: 2;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  color: #f2f4f3;
 }
 .sub-but :hover {
   /* background-color: white; */
@@ -39,4 +43,8 @@
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 2px rgb(255, 255, 255);
   mix-blend-mode: difference;
+}
+
+a {
+  text-decoration: none;
 }

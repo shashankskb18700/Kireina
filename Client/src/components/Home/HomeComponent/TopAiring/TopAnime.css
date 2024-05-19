@@ -20,11 +20,6 @@
   /* border-style: double; */
   border-color: grey;
   border-radius: 5px;
-
-  transform: rotate(-0.5deg);
-  transform-origin: left bottom;
-
-  /* height: 30vh; */
 }
 .h-scroll img {
   width: 230px;

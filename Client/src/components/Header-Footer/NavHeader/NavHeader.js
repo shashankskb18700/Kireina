@@ -17,45 +17,54 @@ const NavHeader = () => {
   console.log(authStatus);
 
   return (
-    <div className="NavHeader">
-      <h2 className="title-name">Kireina</h2>
-      <div className="searchCont">
+    <div>
+      <div className="NavHeader">
+        <h2 className="title-name">Kireina</h2>
+        <div className="searchCont">
+          {window.location.href === `http://localhost:3000/animeD` ||
+          window.location.href === `https://kireinanime.web.app/animeD` ? (
+            <Search />
+          ) : (
+            ""
+          )}
+        </div>
+        {console.log(window.location.href)}
+        <div className="navigator">
+          <Link to="/">
+            <i className="fas fa-home nav"></i>
+          </Link>
+
+          <Link to="/wishlist">
+            <i className="fas fa-heart nav"></i>
+          </Link>
+
+          <i className="fas fa-user nav"></i>
+
+          {authStatus ? (
+            <button
+              style={{
+                backgroundColor: `inherit`,
+                color: "white",
+                outline: "none",
+                border: "none",
+              }}
+              onClick={() => signOut()}
+            >
+              <i className="fas fa-sign-out-alt  fa-lg nav"></i>
+            </button>
+          ) : (
+            <Link to="/auth">
+              <i className="fas fa-sign-in-alt nav"></i>
+            </Link>
+          )}
+        </div>
+      </div>
+      <div className="searchContMobile">
         {window.location.href === `http://localhost:3000/animeD` ||
-        `https://kireinanime.web.app/animeD` ? (
+        window.location.href === `https://kireinanime.web.app/animeD` ? (
           <Search />
         ) : (
           ""
-        )}
-      </div>
-      {console.log(window.location.href)}
-
-      <div className="navigator">
-        <Link to="/">
-          <i className="fas fa-home nav"></i>
-        </Link>
-
-        <Link to="/wishlist">
-          <i className="fas fa-heart nav"></i>
-        </Link>
-
-        <i className="fas fa-user nav"></i>
-
-        {authStatus ? (
-          <button
-            style={{
-              backgroundColor: `inherit`,
-              color: "white",
-              outline: "none",
-              border: "none",
-            }}
-            onClick={() => signOut()}
-          >
-            <i className="fas fa-sign-out-alt  fa-lg nav"></i>
-          </button>
-        ) : (
-          <Link to="/auth">
-            <i className="fas fa-sign-in-alt nav"></i>
-          </Link>
         )}
       </div>
     </div>

@@ -42,7 +42,6 @@ const AnimeSearched = (props) => {
     setWish([...arr]);
   }, []);
 
-  console.log(props.full);
   const arr = [];
   const arrDetail = [];
   let anime = [];
@@ -70,7 +69,7 @@ const AnimeSearched = (props) => {
       // const animeManga = [];
 
       // anime has two array one of really anime and another of manga so to seprate just check they have two array or not and split anime and manga apart
-      console.log(animeManga);
+
       // anime = animeManga[0];
       // manga = animeManga[1];
 
@@ -306,15 +305,10 @@ const AnimeSearched = (props) => {
   return (
     <div>
       <NavHeader></NavHeader>
-      <h3>ANIME</h3>
       <div className="anime-manga-grid">
         {anime.map((a) => (
           <div>
-            <div
-              style={{
-                position: "relative",
-              }}
-            >
+            <div style={{ position: "relative" }}>
               <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
                 <img
                   className="anim-mang"
@@ -336,7 +330,7 @@ const AnimeSearched = (props) => {
                     // background: "red",
                     //circle create kkaro use andar red  ya white dil hoga
                     position: "absolute",
-                    top: "77%",
+                    top: "70%",
                     left: "6%",
                   }}
                   className="wishlistIconRed"
@@ -398,7 +392,7 @@ const AnimeSearched = (props) => {
           </div>
         ))}
       </div>
-      <h3>MANGA</h3>
+      {/* <h3>MANGA</h3>
       <div className="anime-manga-grid">
         {manga.map((a) => (
           <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
@@ -413,7 +407,7 @@ const AnimeSearched = (props) => {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
       {/* {arr.map((a) => (
         <img
           src={a}
@@ -424,7 +418,7 @@ const AnimeSearched = (props) => {
       {/* {arr.map((a) => (
         <img src={a} key={a} onClick={() => props.Tester()} />
       ))} */}
-      //only anime which is aired on tv nothing else
+
       {/* {arrState.$.type === "TV" ? <DetailedAnime allInf={arrState} /> : "ewe"} */}
     </div>
   );

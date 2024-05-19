@@ -55,7 +55,15 @@ const Search = (props) => {
   // console.log(props.wholest);
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "0em 2em",
+        background: "#22333B",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <input
         className="inp"
         type="text"
@@ -76,12 +84,12 @@ const Search = (props) => {
       `https://kireinanime.web.app/` ? (
         <Link to="/animeD">
           <button className="sub-but" onClick={() => props.backend(title)}>
-            <img src={searchIcon} className="submit-png" />
+            <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </Link>
       ) : (
         <button className="sub-but" onClick={() => props.backend(title)}>
-          <img src={searchIcon} className="submit-png" />
+          <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       )}
 

@@ -30,13 +30,13 @@ export const backend = (title) => {
     const nm = { name: title };
 
     //offline
-    // const vostData = await axios.post("/vostfr", nm); //.
+    const vostData = await axios.post("/vostfr", nm); //.
 
     // online
-    const vostData = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/vostfr`,
-      nm
-    );
+    // const vostData = await axios.post(
+    //   `${process.env.REACT_APP_API_BASE_URL}/vostfr`,
+    //   nm
+    // );
 
     // console.log("using backend fordata");
     // console.log(vostData);
@@ -51,13 +51,13 @@ export const backend = (title) => {
     // console.log(additional);
 
     //offline
-    // const data = await axios.post("/search", name);
+    const data = await axios.post("/search", name);
 
     // online
-    const data = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/search`,
-      name
-    );
+    // const data = await axios.post(
+    //   `${process.env.REACT_APP_API_BASE_URL}/search`,
+    //   name
+    // );
 
     const dataObject = { result: data.data.result, d: vostData.data };
 

@@ -108,11 +108,9 @@ const Home = (props) => {
       <Header imgArray={item ? item.headr : undefined} />
 
       <div className="cont-all">
-        <h2 className="Best-T">Top Airing Anime</h2>
         <div className="Best-list">
-          <div></div>
-
-          <div>
+          <div className="Best-list-cont">
+            <h2 className="Best-T">Top Airing Anime</h2>
             <TopAriring
               animeId={
                 props.TopCategory.length > 0
@@ -122,25 +120,31 @@ const Home = (props) => {
             />
           </div>
         </div>
-        <h2 className="Best-T">Top Upcoming Anime</h2>
+
         <div className="Best-list">
-          <TopAriring
-            animeId={
-              props.TopCategory.length > 0
-                ? props.TopCategory[0].topUpcoming
-                : undefined
-            }
-          />
+          <div className="Best-list-cont">
+            <h2 className="Best-T">Top Upcoming Anime</h2>
+            <TopAriring
+              animeId={
+                props.TopCategory.length > 0
+                  ? props.TopCategory[0].topUpcoming
+                  : undefined
+              }
+            />
+          </div>
         </div>
-        <h2 className="Best-T">Most Popular Anime</h2>
+
         <div className="Best-list">
-          <TopAriring
-            animeId={
-              props.TopCategory.length > 0
-                ? props.TopCategory[0].topAllTime
-                : undefined
-            }
-          />
+          <div className="Best-list-cont">
+            <h2 className="Best-T">Most Popular Anime</h2>
+            <TopAriring
+              animeId={
+                props.TopCategory.length > 0
+                  ? props.TopCategory[0].topAllTime
+                  : undefined
+              }
+            />
+          </div>
         </div>
       </div>
 

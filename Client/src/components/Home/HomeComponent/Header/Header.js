@@ -33,7 +33,7 @@ const Header = ({ imgArray }) => {
   return (
     <div className="head">
       <div className="alice">
-        <h1 className="tagLine"> Search thousands of anime & manga </h1>
+        <div className="tagLine"> Search thousands of anime & manga </div>
         <br></br>
         <div className="srchCont">
           <Search />
