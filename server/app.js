@@ -1,17 +1,19 @@
 // const { response } = require("express");
 // const express = require("express");
-import animeVostfr from "anime-vostfr";
-import express, { json } from "express";
+// const animeVostfr = require("anime-vostfr");
+const express = require("express");
 // const fetch = require("node-fetch");
-import fetch from "node-fetch";
-import xml2js from "xml2js";
-import axios from "axios";
-import levenshtein from "fast-levenshtein";
-import translate from "translate";
-import _, { map } from "underscore";
-import cors from "cors";
-import { readFile } from "fs/promises";
-import cloudscraper from "cloudscraper";
+// import fetch from "node-fetch";
+const xml2js = require("xml2js");
+const axios = require("axios");
+const levenshtein = require("fast-levenshtein");
+const translate = require("translate");
+// const _,
+//   { map } = require("underscore");
+const cors = require("cors");
+const { readFile } = require("fs/promises");
+const YouTube = require("youtube-sr").default;
+const google = require("googlethis");
 
 // import { DomParser } from "dom-parser";
 
@@ -31,7 +33,7 @@ const corsOptions = {
   credentials: true,
 };
 
-import { AnimeWallpaper, AnimeSource } from "anime-wallpaper";
+const { AnimeWallpaper, AnimeSource } = require("anime-wallpaper");
 const wallpaper = new AnimeWallpaper();
 // "https://neko-sama.fr"
 
@@ -39,6 +41,7 @@ const wallpaper = new AnimeWallpaper();
 // app.use(cors(corsOptions));
 
 // app.use(cors({ origin: "https://kireinanime.web.app/", credentials: true }));
+
 app.get("/", async (req, res) => {
   // const htmlfil = await fs.readFileSync("./htmlResume.html", "utf-8");
   // await pdf
@@ -279,9 +282,10 @@ app.post("/vostfr", async (req, res) => {
     return title || title_english || title_romanji || others;
   };
 
-  var vostfrData = JSON.parse(
-    await readFile(new URL("./vostfrData.json", import.meta.url))
-  );
+  // var vostfrData = JSON.parse(
+  //   await readFile(new URL("./vostfrData.json", import.meta.url))
+  // );
+  var vostfrData = [];
 
   // console.log(vostfrData);
 
@@ -362,6 +366,42 @@ app.post("/moreData", async (req, res) => {
   res.send(JSON.stringify(moreDetails));
 
   // res.send("");
+});
+
+app.post("/trailer", async (req, res) => {
+  const name = req.body.name;
+  const videos = await YouTube.search(req.body.name, { limit: 25 });
+  let url = "";
+  const options = {
+    page: 0,
+    safe: false, // Safe Search
+    parse_ads: false, // If set to true sponsored results will be parsed
+    additional_params: {
+      // add additional parameters here, see https://moz.com/blog/the-ultimate-guide-to-the-google-search-parameters and https://www.seoquake.com/blog/google-search-param/
+      hl: "en",
+    },
+  };
+
+  const response = await google.search(req.body.name, options);
+  // console.log(
+  //   videos.map((m, i) => `[${++i}] ${m.title} (${m.url})`).join("\n")
+  // );
+
+  videos.map((m, i) => {
+    if (m.title.toLocaleLowerCase().indexOf("trailer") > -1) {
+      url = m.url;
+      url = url.replace("watch", "embed");
+      console.log(url);
+    }
+  });
+  console.log(response.knowledge_panel.description);
+
+  const additionalData = {
+    trailer: url,
+    synopsis: response.knowledge_panel.description,
+  };
+
+  res.send(additionalData);
 });
 
 const PORT = process.env.PORT || 5000;

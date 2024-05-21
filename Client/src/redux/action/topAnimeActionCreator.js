@@ -26,13 +26,13 @@ export const TopAnimeActionCreator = (animeIdArray, animeIdObject) => {
       // );
 
       //offline
-      data = await axios.post("/wishlist", name);
+      // data = await axios.post("/wishlist", name);
 
       // online
-      // data = await axios.post(
-      //   `${process.env.REACT_APP_API_BASE_URL}/wishlist`,
-      //   name
-      // );
+      data = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/wishlist`,
+        name
+      );
     }
 
     console.log(data.data.wishlisted.ann.anime);

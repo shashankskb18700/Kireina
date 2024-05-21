@@ -44,6 +44,11 @@
   color: grey;
   background: red;
 }
+.userStatus {
+  font-size: 1em;
+  font-family: wishlistTitleName;
+  text-align: center;
+}
 
 @font-face {
   font-family: wishlistTitleName;

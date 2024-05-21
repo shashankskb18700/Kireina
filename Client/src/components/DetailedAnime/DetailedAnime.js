@@ -21,6 +21,15 @@ const DetailedAnime = (props) => {
   const [poster, SetPoster] = useState("");
   const [ytubeurl, SetytubeUrl] = useState("");
 
+  useEffect(() => {
+    if (props.detail.srchRedu.srch.wallpaper) {
+      let coverPicture = props.detail.srchRedu.srch.wallpaper;
+      SetPoster(
+        coverPicture[Math.floor(Math.random() * coverPicture.length)].image
+      );
+    }
+  }, []);
+
   let plotStory = "";
   let bannerSrc = "";
   //it will cause innfinite rerender , figure way to stop it
@@ -126,12 +135,11 @@ const DetailedAnime = (props) => {
   // console.log(Object.values(allInfo.info[0].img[0])[0].src);
   // style={{background:url(props.detail.Clickd.newD.vostr.data.banner)}}
 
-  const coverPic = props.detail.srchRedu.srch.wallpaper;
-  let bannerUrl = coverPic[Math.floor(Math.random() * coverPic.length)];
-
+  console.log(props.detail.Clickd.newD);
   let youtubeUrl = props.detail.Clickd.newD
     ? props.detail.Clickd.newD.vostr.data.trailer
     : "";
+
   // let bannerUrl = "";
   // let youtubeUrl = "";
   // console.log(props.detail.Clickd.newD.vostr.data.banner);
@@ -187,6 +195,8 @@ const DetailedAnime = (props) => {
         staffList[a.task[0]].push(a.person[0]._);
       }
 
+      console.log(plotStory);
+
       // a.task[0] === "Script" ||
       //       a.task[0] === "Director" ||
       //       a.task[0] === "Sound Director" ||
@@ -224,7 +234,7 @@ const DetailedAnime = (props) => {
         <div
           className="imgAndTitle"
           style={{
-            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(255 ,255, 255) ), url(${bannerUrl.image})`,
+            backgroundImage: `linear-gradient( rgb(255, 255, 255, 0), rgb(255 ,255, 255) ), url(${poster})`,
             // backgroundColor: "rgb(128 128 128)",
 
             backgroundPosition: "centre",
@@ -232,7 +242,7 @@ const DetailedAnime = (props) => {
           }}
         >
           {/* <img src={bannerUrl}></img> */}
-          <div>
+          <div className="imgTitle">
             <img
               className="img-det"
               src={
@@ -280,6 +290,18 @@ const DetailedAnime = (props) => {
             <h3>{plotStory}</h3>
             {/* //only works with anime for managa you need to set fall back or go and render other page for managa */}
             {/* {console.log(allInfo.episode[0].title[0]._)} */}
+
+            <div className="specific-det-mobile">
+              <Info valueName={"Type"} value={allInfo.$.type} />{" "}
+              {allInfo.ratings ? (
+                <Rating
+                  value={allInfo.ratings[0].$.weighted_score}
+                  text={"Rating"}
+                />
+              ) : (
+                <div></div>
+              )}
+            </div>
             <h2> {allInfo.episode ? "Episode" : ""}</h2>
             <div className="episod">
               {/* {allInfo.episode
@@ -373,6 +395,8 @@ const DetailedAnime = (props) => {
                   frameBorder="0"
                   style={{ width: "100%", height: "600px" }}
                   src={youtubeUrl}
+                  rameborder="0"
+                  allowfullscreen
                 ></iframe>
               ) : (
                 <div>Not found </div>

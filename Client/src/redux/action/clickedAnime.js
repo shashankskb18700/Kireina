@@ -29,25 +29,6 @@ export const clickedAnime = (picked, vostfr, name) => {
   });
   console.log(name);
 
-  const getAnimeByTitle = (elem, name) => {
-    name = name.toLowerCase().trim();
-
-    let title = elem.title
-      ? elem.title.toLowerCase().trim().includes(name)
-      : false;
-    let title_english = elem.title_english
-      ? elem.title_english.toLowerCase().trim().includes(name)
-      : false;
-    let title_romanji = elem.title_romanji
-      ? elem.title_romanji.toLowerCase().trim().includes(name)
-      : false;
-    let others = elem.others
-      ? elem.others.toLowerCase().trim().includes(name)
-      : false;
-
-    return title || title_english || title_romanji || others;
-  };
-
   //
 
   return async (dispatch) => {
@@ -85,6 +66,18 @@ export const clickedAnime = (picked, vostfr, name) => {
       // console.log(element.title);
     });
 
+    // online
+
+    const additionalData = await axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/trailer`,
+      { name: name }
+    );
+
+    //offline
+
+    // const additionalData = await axios.post("/trailer", { name: name });
+
+    // console.log(additionalData);
     // console.log(levenshtein.get("body", "bod"));
 
     // const anotherData = await animeVostfr.loadAnime();
@@ -114,13 +107,13 @@ export const clickedAnime = (picked, vostfr, name) => {
 
     // const valu = await axios.get(`https://www.neko-sama.fr${moreData.url}`);
 
-    const url = { url: moreData.url };
+    // const url = { url: moreData.url };
 
     // offline
 
-    let vs;
+    // let vs;
 
-    vs = await axios.post("/moreData", url);
+    // vs = await axios.post("/moreData", url);
 
     // online
     // vs = await axios.post(
@@ -143,18 +136,18 @@ export const clickedAnime = (picked, vostfr, name) => {
     // valu.synop = text;
     // valu.synop = _.unescape(valu.synop);
 
-    let parser = new DomParser();
-    let document = parser.parseFromString(vs.data);
+    // let parser = new DomParser();
+    // let document = parser.parseFromString(vs.data);
 
-    let synop = document
-      .getElementsByClassName("synopsis")[0]
-      .getElementsByTagName("p")[0].innerHTML;
+    // let synop = document
+    //   .getElementsByClassName("synopsis")[0]
+    //   .getElementsByTagName("p")[0].innerHTML;
 
-    let ytb = document.getElementsByTagName("iframe")[0];
-    let trailer = ytb ? ytb.getAttribute("src") : false;
-    let banner = document.getElementById("head").getAttribute("style");
-    banner = banner.substring(banner.indexOf("url("));
-    banner = banner.substring(4, banner.indexOf(")"));
+    // let ytb = document.getElementsByTagName("iframe")[0];
+    // let trailer = ytb ? ytb.getAttribute("src") : false;
+    // let banner = document.getElementById("head").getAttribute("style");
+    // banner = banner.substring(banner.indexOf("url("));
+    // banner = banner.substring(4, banner.indexOf(")"));
 
     // let result = valu.data.substring(valu.data.indexOf("episodes"));
     // result = result.substring(0, result.indexOf("$(document)"));
@@ -189,12 +182,12 @@ export const clickedAnime = (picked, vostfr, name) => {
     //     payload: { vostr: response, ann: picked, name: name, url: url },
     //   });
     // });
-    console.log(vs);
+    // console.log(vs);
 
     const data = {
-      banner: banner,
-      synop: synop,
-      trailer: trailer,
+      banner: "",
+      synop: additionalData.data.synopsis,
+      trailer: additionalData.data.trailer,
       // episode: result,
     };
     const response = { data: data };

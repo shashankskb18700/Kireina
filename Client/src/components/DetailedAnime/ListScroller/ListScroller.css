@@ -1,9 +1,12 @@
 .listIndivisual {
   /* margin: 30px; */
   width: 70vw;
+  /* margin-left: 5vw; */
   /* height: 400px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
 
 .epi {
@@ -19,6 +22,18 @@
 .episodeBlock {
   display: flex;
   margin-top: 40px;
-  margin-right: 40px;
-  width: 30vw;
+  /* margin-right: 40px; */
+  /* width: 30vw; */
+}
+@media (max-width: 600px) {
+  .listIndivisual {
+    /* margin: 30px; */
+    width: 90vw;
+    margin-left: 5vw;
+    /* height: 400px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
 }

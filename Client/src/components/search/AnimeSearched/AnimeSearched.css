@@ -42,6 +42,9 @@
   text-shadow: 0 0 5px rgb(255, 5, 5), 0 0 25px rgb(252, 5, 5),
     0 0 50px rgb(245, 0, 0), 0 0 100px rgb(253, 9, 9);
 }
+.error {
+  text-align: center;
+}
 
 @media (max-width: 600px) {
   .anime-manga-grid {

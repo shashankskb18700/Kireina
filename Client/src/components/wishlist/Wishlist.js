@@ -14,7 +14,9 @@ const Wishlist = (props) => {
   const [idAnime, setIdAnime] = useState("");
   const [arrayId, setArrayId] = useState([]);
 
-  let userName = authService.getAuth().currentUser.email;
+  let userName = authService.getAuth().currentUser
+    ? authService.getAuth().currentUser.email
+    : "Not logged in";
   console.log(props.wishlistItem);
   let anime = [];
   let animeDetail = [];
@@ -130,8 +132,13 @@ const Wishlist = (props) => {
           </div>
         ))}
       </div>
-      <button>wish</button>
-      <button onClick={() => props.Wish("5232/2333")}> action creator</button>
+      {/* <button>wish</button>
+      <button onClick={() => props.Wish("5232/2333")}> action creator</button> */}
+      <div className="userStatus">
+        {userName === "Not logged in"
+          ? "Not logged in ! Please log in to view your wishlist"
+          : ""}
+      </div>
     </div>
   );
 };

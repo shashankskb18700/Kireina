@@ -75,80 +75,83 @@ const AnimeSearched = (props) => {
 
       animeManga.map((d) => (
         <div>
-          {console.log(d)}
-          {d.map((a) => (
-            <div>
-              {/* {a.$.type === "manga"
+          {console.log(d[0])}
+          {typeof d[0] !== "string"
+            ? d.map((a) => (
+                <div>
+                  {/* {a.$.type === "manga"
                 ? mangaDetail.push(a)
                 : a.credit !== undefined
                 ? ""
                 : ""} */}
-              {/* {console.log(Object.keys(a.info[0])[1] === "img")} */}
-              {/* {console.log(a.info[0])} */}
-              {/* {console.log(Object.values(a.ratings[0])[0])} */}
-              {/* {console.log(a.$.type === "anime")} */}
-              {/* // here either you do img[1] whihc will give you better quality photo or in some case it is missing so be sure in taking img[0] */}
-              {/* {Object.keys(a.info[0])[1] === "img"
+                  {/* {console.log(Object.keys(a.info[0])[1] === "img")} */}
+                  {/* {console.log(a.info[0])} */}
+                  {/* {console.log(Object.values(a.ratings[0])[0])} */}
+                  {/* {console.log(a.$.type === "anime")} */}
+                  {/* // here either you do img[1] whihc will give you better quality photo or in some case it is missing so be sure in taking img[0] */}
+                  {/* {Object.keys(a.info[0])[1] === "img"
                 ? arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
-              {/* {console.log(Object.values(a.info[0].img[1])[0].src)} */}
+                  {/* {console.log(Object.values(a.info[0].img[1])[0].src)} */}
 
-              {/* {console.log(a.$.type)} */}
-              {/* {console.log(Object.values(a.info[0].img).length)} */}
-              {/* // i think in code geass case Object.keys(a.info[0])[1] === "img"
+                  {/* {console.log(a.$.type)} */}
+                  {/* {console.log(Object.values(a.info[0].img).length)} */}
+                  {/* // i think in code geass case Object.keys(a.info[0])[1] === "img"
               this thing ins nothing */}
-              {/* {Object.keys(a.info[0])[1] === "img"
+                  {/* {Object.keys(a.info[0])[1] === "img"
                 ? Object.values(a.info[0].img).length > 1
                   ? arr.push(Object.values(a.info[0].img[1])[0].src)
                   : arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
 
-              {/*  */}
+                  {/*  */}
 
-              {a.info.map((inf) => (
-                <div>
-                  {a.$.type !== "manga" && a.credit !== undefined
-                    ? inf.$.type === "Alternative title" && inf.$.lang === "EN"
-                      ? anotherTitle.length < inf._.length
-                        ? (anotherTitle = inf._)
-                        : ""
-                      : ""
-                    : ""}
-                </div>
-              ))}
+                  {a.info.map((inf) => (
+                    <div>
+                      {a.$.type !== "manga" && a.credit !== undefined
+                        ? inf.$.type === "Alternative title" &&
+                          inf.$.lang === "EN"
+                          ? anotherTitle.length < inf._.length
+                            ? (anotherTitle = inf._)
+                            : ""
+                          : ""
+                        : ""}
+                    </div>
+                  ))}
 
-              {/* {Object.keys(a.info[0])[1] === "img"
+                  {/* {Object.keys(a.info[0])[1] === "img"
                 ? a.info[0].img.length > 1
                   ? arr.push(Object.values(a.info[0].img[1])[0].src)
                   : arr.push(Object.values(a.info[0].img[0])[0].src)
                 : ""} */}
-              {/* && a.$.type !== "manga"
+                  {/* && a.$.type !== "manga"
               
                 && a.$.type === "manga" */}
-              {console.log(a.credit)}
-              {Object.keys(a.info[0])[1] === "img" &&
-              a.$.type !== "manga" &&
-              a.credit !== undefined
-                ? a.info[0].img.length > 1
-                  ? anime.push(Object.values(a.info[0].img[1])[0].src) &&
-                    animeDetail.push(a) &&
-                    animeName.push(anotherTitle)
-                  : anime.push(Object.values(a.info[0].img[0])[0].src) &&
-                    animeDetail.push(a) &&
-                    animeName.push(anotherTitle)
-                : ""}
+                  {console.log(a.credit)}
+                  {Object.keys(a.info[0])[1] === "img" &&
+                  a.$.type !== "manga" &&
+                  a.credit !== undefined
+                    ? a.info[0].img.length > 1
+                      ? anime.push(Object.values(a.info[0].img[1])[0].src) &&
+                        animeDetail.push(a) &&
+                        animeName.push(anotherTitle)
+                      : anime.push(Object.values(a.info[0].img[0])[0].src) &&
+                        animeDetail.push(a) &&
+                        animeName.push(anotherTitle)
+                    : ""}
 
-              {Object.keys(a.info[0])[1] === "img" && a.$.type === "manga"
-                ? a.info[0].img.length > 1
-                  ? manga.push(Object.values(a.info[0].img[1])[0].src) &&
-                    mangaDetail.push(a)
-                  : manga.push(Object.values(a.info[0].img[0])[0].src) &&
-                    mangaDetail.push(a)
-                : ""}
+                  {Object.keys(a.info[0])[1] === "img" && a.$.type === "manga"
+                    ? a.info[0].img.length > 1
+                      ? manga.push(Object.values(a.info[0].img[1])[0].src) &&
+                        mangaDetail.push(a)
+                      : manga.push(Object.values(a.info[0].img[0])[0].src) &&
+                        mangaDetail.push(a)
+                    : ""}
 
-              {(anotherTitle = "")}
-            </div>
-          ))}
+                  {(anotherTitle = "")}
+                </div>
+              ))
+            : d[0]}
         </div>
       ));
     }
@@ -299,98 +302,111 @@ const AnimeSearched = (props) => {
     console.log(id);
   };
   // console.log(arrDetail[0]);
-  console.log(arrState);
-  console.log(wishState);
+  console.log();
 
   return (
     <div>
       <NavHeader></NavHeader>
       <div className="anime-manga-grid">
-        {anime.map((a) => (
-          <div>
-            <div style={{ position: "relative" }}>
-              <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
-                <img
-                  className="anim-mang"
-                  src={a}
-                  key={a}
-                  onClick={() => fullDetail(anime.indexOf(a))}
-                />
-              </Link>
-              <br></br>
-              {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
+        {props.detail.srch ? (
+          props.detail.srch.result.ann["warning"] == undefined ? (
+            anime.map((a) => (
+              <div>
+                <div style={{ position: "relative" }}>
+                  <Link to="/animeD/fullD" style={{ textDecoration: "none" }}>
+                    <img
+                      className="anim-mang"
+                      src={a}
+                      key={a}
+                      onClick={() => fullDetail(anime.indexOf(a))}
+                    />
+                  </Link>
+                  <br></br>
+                  {/* <div onClick={() => props.Wish(animeDetail[anime.indexOf(a)].$.id)}>
               <Wishlist />
             </div> */}
-              {wishState.indexOf(animeDetail[anime.indexOf(a)].$.id) > 0 ? (
-                <div
-                  onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
-                  style={{
-                    width: "",
-                    height: "50px",
-                    // background: "red",
-                    //circle create kkaro use andar red  ya white dil hoga
-                    position: "absolute",
-                    top: "70%",
-                    left: "6%",
-                  }}
-                  className="wishlistIconRed"
-                >
-                  {" "}
-                  <i
-                    className="fas fa-heart nav fa-2x iRed"
-                    style={{
-                      color: "red",
-                      width: "100%",
-                      height: "fit-content",
-                      // background: "white",
-                      borderRadius: "5px",
-                      // border: "2px solid red",
-                    }}
-                  ></i>
+                  {wishState.indexOf(animeDetail[anime.indexOf(a)].$.id) > 0 ? (
+                    <div
+                      onClick={() =>
+                        wishlist(animeDetail[anime.indexOf(a)].$.id)
+                      }
+                      style={{
+                        width: "",
+                        height: "50px",
+                        // background: "red",
+                        //circle create kkaro use andar red  ya white dil hoga
+                        position: "absolute",
+                        top: "70%",
+                        left: "6%",
+                      }}
+                      className="wishlistIconRed"
+                    >
+                      {" "}
+                      <i
+                        className="fas fa-heart nav fa-2x iRed"
+                        style={{
+                          color: "red",
+                          width: "100%",
+                          height: "fit-content",
+                          // background: "white",
+                          borderRadius: "5px",
+                          // border: "2px solid red",
+                        }}
+                      ></i>
+                    </div>
+                  ) : (
+                    <div
+                      type="button"
+                      onClick={() =>
+                        wishlist(animeDetail[anime.indexOf(a)].$.id)
+                      }
+                      style={{
+                        // width: "50px",
+                        // height: "50px",
+                        position: "absolute",
+                        top: "77%",
+                        left: "6%",
+                      }}
+                      className="wishlistIconWhite"
+                    >
+                      <i
+                        className="fas fa-heart nav fa-2x iWhite"
+                        style={{
+                          color: "white",
+                          // width: "200px",
+                          height: "fit-content",
+                          // background: "red",
+                          borderRadius: "5px",
+                        }}
+                      ></i>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div
-                  type="button"
-                  onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
-                  style={{
-                    // width: "50px",
-                    // height: "50px",
-                    position: "absolute",
-                    top: "77%",
-                    left: "6%",
-                  }}
-                  className="wishlistIconWhite"
-                >
-                  <i
-                    className="fas fa-heart nav fa-2x iWhite"
-                    style={{
-                      color: "white",
-                      // width: "200px",
-                      height: "fit-content",
-                      // background: "red",
-                      borderRadius: "5px",
-                    }}
-                  ></i>
-                </div>
-              )}
-            </div>
 
-            {/* <button
+                {/* <button
               type="button"
               onClick={() => wishlist(animeDetail[anime.indexOf(a)].$.id)}
               style={{ width: "50px", height: "50px" }}
             /> */}
 
-            <div className="title-nam">
-              {animeDetail[anime.indexOf(a)].$.name.length >
-              animeName[anime.indexOf(a)].length
-                ? animeDetail[anime.indexOf(a)].$.name
-                : animeName[anime.indexOf(a)]}
-              {/* {animeDetail[anime.indexOf(a)].$.name} */}
-              {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
+                <div className="title-nam">
+                  {animeDetail[anime.indexOf(a)].$.name.length >
+                  animeName[anime.indexOf(a)].length
+                    ? animeDetail[anime.indexOf(a)].$.name
+                    : animeName[anime.indexOf(a)]}
+                  {/* {animeDetail[anime.indexOf(a)].$.name} */}
+                  {/* yahi pe synopses bhi dal do lekin put it in red zone  */}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="error">
+              {props.detail.srch.result.ann["warning"]}
             </div>
-          </div>
-        ))}
+          )
+        ) : (
+          ""
+        )}
       </div>
       {/* <h3>MANGA</h3>
       <div className="anime-manga-grid">
